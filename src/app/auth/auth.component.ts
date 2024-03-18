@@ -12,4 +12,4 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
+ }

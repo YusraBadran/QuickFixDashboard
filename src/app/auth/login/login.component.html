@@ -1,11 +1,22 @@
-<div class="card">
-  <div class="grid p-fluid">
-<div class="col-12">
-  <div class="flex flex-column">
-    <label for="userNmaeOrEmale"> User Name Or Email</label>
-    <input pInputText type="text" id="userNmaeOrEmale" [(ngModel)]="loginRequest.userNameOrEmail" />
-  </div>
-</div>
-  </div>
 
+<div class="flex flex-wrap justify-content-center m-8 ">
+<div class="w-24rem border-round  h-30rem m-2  p-3 bg-black-alpha-10  font-bold  flex-wrap  ">
+    <h1 style="text-align: center; margin-top: 30px;" class="font-bold">SINGN IN</h1>
+
+    <div class="field" style="margin-top: 50px;">
+      <label for="userNmaeOrEmale"> UserName Or Email</label>
+      <input pInputText type="text" id="userNmaeOrEmale" placeholder="Enter Your UserName Or Email" [(ngModel)]="loginRequest.userNameOrEmail" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-22rem" />
+    </div>
+
+    <div class="field" style="margin-top: 30px;">
+      <label for="password"> Password</label>
+      <input pInputText type="text" id="password" placeholder="Enter Your Password" [(ngModel)]="loginRequest.password" class=" text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-22rem" />
+    </div>
+    <button pButton pRipple label="LogIn" style="margin-top: 20px;" class=" text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-22rem"></button>
+  </div>
 </div>
+
+
+
+
+
