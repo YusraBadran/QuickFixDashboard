@@ -1,0 +1,17 @@
+<div class="flex flex-column" *ngIf="mode=='advanced'">
+  <p-fileUpload name="demo[]" (onSelect)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="multiple"
+    [showCancelButton]="false" [showUploadButton]="false" [maxFileSize]="1000000">
+    <ng-template pTemplate="content">
+      <ul *ngIf="uploadedFilesList.length&&multiple">
+        <li *ngFor="let file of uploadedFilesList">{{ file.name }} - {{ file.size }} bytes</li>
+      </ul>
+      <span *ngIf="!multiple&&uploadedSingleFiles">{{ uploadedSingleFiles?.name }} - {{ uploadedSingleFiles?.size }}
+        bytes</span>
+    </ng-template>
+  </p-fileUpload>
+</div>
+<div class="flex flex-column" *ngIf="mode=='basic'">
+  <p-fileUpload mode="basic" name="demo[]" accept="image/*" (onSelect)="singleUpload($event)" [maxFileSize]="1000000"
+    [auto]="true" [chooseIcon]="" [chooseLabel]="labelText|translate"></p-fileUpload>
+
+</div>

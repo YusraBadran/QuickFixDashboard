@@ -1,0 +1,36 @@
+{
+  "webpackConfig": {
+    "auth": {
+      "type": "module",
+      "remoteEntry": "http://localhost:12200/remoteEntry.js",
+      "exposedModule": "./Module"
+    },
+    "company": {
+      "type": "module",
+      "remoteEntry": "http://localhost:16500/remoteEntry.js",
+      "exposedModule": "./Module"
+    },
+    "branch": {
+      "type": "module",
+      "remoteEntry": "http://localhost:16500/remoteEntry.js",
+      "exposedModule": "./Branch"
+    },
+    "service": {
+      "type": "module",
+      "remoteEntry": "http://localhost:16500/remoteEntry.js",
+      "exposedModule": "./Service"
+    },
+    "unit": {
+      "type": "module",
+      "remoteEntry": "http://localhost:16500/remoteEntry.js",
+      "exposedModule": "./Unit"
+    },
+    "user": {
+      "type": "module",
+      "remoteEntry": "http://localhost:2700/remoteEntry.js",
+      "exposedModule": "./User"
+    }
+  },
+  "IdIeTime": 18,
+  "IdIeTimeOut": 30
+}

@@ -1,0 +1,118 @@
+.hover-x-10:hover,
+.hover-x-10:focus {
+  transform: translate(-10px);
+}
+
+.hover-y-10 {
+  transition: all 0.5s ease-in-out;
+}
+
+.hover-y-10:hover,
+.hover-y-10:focus {
+  transform: translateY(-10px);
+}
+
+.hover-x-5 {
+  transition: all 0.5s ease-in-out;
+}
+
+.hover-x-5:hover,
+.hover-x-5:focus {
+  transform: translate(-5px);
+}
+
+.hover-y-5 {
+  transition: all 0.5s ease-in-out;
+}
+
+.hover-y-5:hover,
+.hover-y-5:focus {
+  transform: translateY(-5px);
+}
+.flaticon {
+  top: -30%;
+  width: -webkit-fill-available;
+  left: 0%;
+  right: 0%;
+}
+.flatarrow {
+  width: -webkit-fill-available;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+/* .rtl .pi {
+  transform: rotateY(180deg);
+} */
+
+/* .p-tabview-nav-container {
+  display: none !important;
+} */
+.p-tabview .p-tabview-panels {
+  background: inherit !important;
+  color: inherit !important;
+}
+.bg-sub-main-card {
+  background: #e3f1ff;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 1px #fff;
+  border-radius: 20px;
+}
+.bg-main-card {
+  background: #e3f1ff !important;
+  border: 1.62411px solid #ffffff !important;
+  border-radius: 16px !important;
+}
+.bg-main-container {
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+  border-color: #fff !important;
+  border-width: 3px !important;
+  box-shadow: unset !important;
+}
+.bg-mesh-gradient {
+  background-image: linear-gradient(
+    0deg,
+    rgb(237, 240, 245) 0%,
+    rgb(155, 190, 217) 100%
+  );
+  /* opacity: 30%; */
+}
+.bg-secoundry-card {
+  background: #ffffff;
+  border: 1.5px solid #e6e7eb;
+  border-radius: 16px;
+}
+.bg-main-container {
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+  border-color: #fff !important;
+  border-width: 3px !important;
+  box-shadow: unset !important;
+}
+.border {
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+}
+.border-round-4xl {
+  border-radius: 1.5rem !important;
+}
+.required:after {
+  content: "*";
+  color: #bf524d;
+  font-size: 1.2rem;
+  display: inline;
+  line-height: 1;
+  margin: 0 2px;
+}
+.w-50 {
+  width: 50rem;
+}
+.bottom-border-no-nuv .p-tabview-nav-container {
+  display: none !important;
+}
+.swal2-container {
+  z-index: 99999999;
+}

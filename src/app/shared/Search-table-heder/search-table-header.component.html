@@ -1,0 +1,54 @@
+<p-toolbar styleClass="mb-4 gap-2">
+  <div class="grid" style="width: 100%;">
+    <div class="col-12">
+      <div class="grid">
+        <div class="col-12 flex sm:justify-content-start justify-content-center sm:col-4 ">
+          <p-button *ngIf="selectedTableItem==false || selectedTableItem==undefined" [label]="'public.add'|translate"
+            (click)="addButtonClicked()" icon="pi pi-plus"></p-button>
+          <p-button (click)="deleteButtonClicked()" [hidden]="selectedTableItem==undefined"
+            *ngIf="selectedTableItem!=false " [label]="'public.delete'|translate" icon="pi pi-trash"></p-button>
+          <!-- <p-splitButton *ngIf="selectedCompany!=false" [label]="'public.add'|translate" icon="pi pi-plus"
+              [routerLink]="" [model]="splatButt"></p-splitButton> -->
+        </div>
+        <div class="col-12 flex sm:justify-content-end justify-content-center sm:col-8 ">
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (keyup)="GlopFilter($event)" [placeholder]="'public.search'|translate" />
+          </span>
+          <button type="button" pButton pRipple (click)="openFilterBar()" icon="pi pi-filter" class="p-button-info mx-2"
+            pTooltip="Selection Only" tooltipPosition="bottom"></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="IsFilterBarOpen">
+      <div class="flex flex-wrap flex-md-nowrap  flex-sm-row flex-md-row gap-2 align-items-center">
+        <div style="width: 100%;">
+          <div class="grid p-fluid align-items-center">
+            <div class="col-12 md:col-4">
+              <div class="flex flex-column gap-2">
+                <label for="name">{{filter1Title|translate}}</label>
+                <input pInputText type="text" [(ngModel)]="inputFilter1" [placeholder]="hintFieldFilter1|translate" />
+              </div>
+            </div>
+            <div class="col-12 md:col-4">
+              <div class="flex flex-column gap-2">
+                <label for="name">{{Filter2Title|translate}}</label>
+                <input pInputText type="text" [(ngModel)]="inputFilter2" [placeholder]="hintFieldFilter2|translate" />
+              </div>
+            </div>
+            <div class="col-12 md:col-3">
+              <div class="flex flex-column gap-2">
+                <label for="name">{{'public.status'|translate}}</label>
+                <p-dropdown [showClear]="true" [options]="dropItem" [(ngModel)]="dropFieldFilters"
+                  [placeholder]="'public.select'|translate" styleClass="flex "></p-dropdown>
+              </div>
+            </div>
+            <div class="col-1">
+              <p-button icon="pi pi-search" styleClass="mt-4" (onClick)="searchFilter()"></p-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-toolbar>

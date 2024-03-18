@@ -1,0 +1,11 @@
+@import "./mixins.scss";
+@import "./loader.scss";
+// @import "./ltrdir/ltrdir.scss";
+.ltr {
+  @import "./ltrdir/ltrdir.scss";
+  direction: ltr;
+}
+.rtl {
+  @import "rtldir/rtldir.scss";
+  direction: rtl;
+}

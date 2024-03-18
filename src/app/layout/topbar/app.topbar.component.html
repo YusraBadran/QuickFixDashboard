@@ -1,0 +1,68 @@
+<div class="layout-topbar">
+  <a class="layout-topbar-logo" routerLink="">
+    <span class="text-base md:text-lg xl:text-2xl">{{'menu.topbar.title'|translate}}</span>
+  </a>
+
+
+  <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+    <i class="pi pi-bars"></i>
+  </button>
+
+  <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button"
+    (click)="layoutService.showProfileSidebar()">
+    <i class="pi pi-ellipsis-v"></i>
+  </button>
+
+  <div #topbarmenu class="layout-topbar-menu"
+    [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+    <div>
+      <p-button [link]="true" (click)="op1.toggle($event)">
+        <img src="assets/images/flag/flag_placeholder.png" [class]="'flag flag-'+activeLang.icon" style="width: 21px" />
+        <span class="ml-2">{{ activeLang.label|translate }}</span>
+      </p-button>
+      <p-overlayPanel #op1>
+
+        <div class="flex align-items-center m-1" *ngFor="let item of lang; let i = index">
+          <p-button [link]="true" (onClick)="op1.toggle($event)" (click)="language(item)">
+            <img src="assets/images/flag/flag_placeholder.png" [class]="'flag flag-' + item.icon" style="width: 21px" />
+            <span class="ml-2">{{ item.label|translate }}</span>
+          </p-button>
+        </div>
+        <!-- </ng-template> -->
+      </p-overlayPanel>
+    </div>
+    <div [hidden]="!isDArkTheme">
+      <button class="p-link layout-topbar-button " (click)="light()">
+        <i class="pi  pi-sun"></i>
+        <span>WebMode</span>
+      </button>
+
+    </div>
+    <div [hidden]="isDArkTheme">
+      <button class="p-link layout-topbar-button " (click)="dark()">
+        <i class="pi pi-moon"></i>
+        <span>WebMode</span>
+      </button>
+    </div>
+    <button (click)="profile.toggle($event)" class="p-link layout-topbar-button">
+      <i class="pi pi-user"></i>
+      <span>Profile</span>
+    </button>
+    <p-overlayPanel #profile>
+      <div class="flex align-items-center m-1">
+        <p-button [link]="true" (click)="profile.toggle($event)">
+          <i class="pi pi-user"></i>
+          <span class="ml-2">{{token.UserName}}</span>
+        </p-button>
+      </div>
+      <div class="flex align-items-center m-1">
+        <p-button [text]="true" severity="danger " (click)="logout();profile.toggle($event)">
+          <i class="pi pi-power-off"></i>
+          <span class="ml-2 ">Logout</span>
+        </p-button>
+      </div>
+    </p-overlayPanel>
+  </div>
+
+
+</div>

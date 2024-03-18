@@ -1,0 +1,16 @@
+<div class="card p-4">
+  <p class="text-2xl">Delete Account</p>
+  <div class="flex flex-column ">
+
+    <p-checkbox [binary]="true" styleClass="m-1" label=" I confirm my account deactivation" id="deleteConfirm"
+      #deleteConfirm="ngModel" [class]=" isVal ==false ?'ng-dirty ng-invalid':''" [(ngModel)]="isConfirm"
+      (onChange)="isValidate()" [required]="true"></p-checkbox>
+    <samp *ngIf="isVal ==false  " class="p-error block">
+      {{'public.inputRequired'|translate}}
+    </samp>
+  </div>
+  <div class="mt-3">
+    <p-button label=" Deactivate Account " [severity]="'danger'" class="w-full" (click)="onClicKedDelete()"
+      [disabled]="!isConfirm"></p-button>
+  </div>
+</div>

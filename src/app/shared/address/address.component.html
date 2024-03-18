@@ -1,0 +1,52 @@
+<div class="grid p-fluid">
+  <div class="col-12 sm:col-6 ">
+    <div *ngIf="view" class="flex flex-column ">
+      <label class=" font-bold required mb-2">{{'public.address'|translate}}</label>
+      <input pInputText id="addresses" #addresses="ngModel" class="form-control" [(ngModel)]="address.location" required
+        [placeholder]="'public.addressHint'|translate"
+        [ngClass]="{'ng-dirty': addresses.invalid && submitted || addresses.dirty && addresses.invalid}" />
+      <samp *ngIf="(addresses.invalid && submitted) || (addresses.dirty && addresses.invalid) " class="p-error block">
+        {{'public.inputRequired'|translate}}
+      </samp>
+    </div>
+    <div *ngIf="!view" class="flex flex-column ">
+      <label class=" font-bold mb-2">{{'public.address'|translate}}</label>
+      <p class="card-text mb-0">{{address.location}}</p>
+    </div>
+  </div>
+  <div class="col-12 sm:col-6 ">
+    <div *ngIf="view" class="flex flex-column ">
+      <label class=" font-bold mb-2">{{'public.description'|translate}}</label>
+      <textarea pInputTextarea [placeholder]="'public.descriptionAddress'|translate"
+        [(ngModel)]="address.description"></textarea>
+    </div>
+    <div *ngIf="!view" class="flex flex-column ">
+      <label class=" font-bold mb-2">{{'public.description'|translate}}</label>
+      <p class="card-text mb-0">{{address.description}}</p>
+    </div>
+  </div>
+  <div class="col-12 relative" [style]="'min-height: 20rem; height:'+height+'px;'">
+    <google-map height="100%" width="100%" [zoom]="zoom" [center]="center" [options]="options"
+      (zoomChanged)="zoomChange()" (mapClick)="click($event)">
+      <map-marker #markerElem="mapMarker" *ngFor="let marker of markers" [position]="marker.position"
+        [label]="marker.label" [title]="marker.title" [options]="marker.options"
+        (mapClick)="openInfo(markerElem, marker.info)">
+      </map-marker>
+
+      <map-info-window>{{ infoContent }}</map-info-window>
+    </google-map>
+
+    <div class="flex flex-column justify-content-between bottom-0 right-0 py-4 px-3 w-5rem absolute h-18rem">
+      <p-button severity="secondary" (click)="getMyLocation()" icon="pi pi-compass"></p-button>
+      <span class="p-buttonset flex-column ">
+        <p-button styleClass="border-noround-bottom" severity="secondary" [disabled]="zoomInDisable"
+          (click)="zoomInMeth()" icon="pi pi-plus"></p-button>
+        <p-button styleClass="border-noround-top" severity="secondary" [disabled]="zoomOutDisable"
+          (click)="zoomOutMeth()" icon="pi pi-minus"></p-button>
+      </span>
+
+    </div>
+  </div>
+
+</div>
+<!-- <div style="display: inline-block; max-width: 531; min-width: 400px; width: 531px;"></div> -->

@@ -1,0 +1,19 @@
+.p-splitbutton-menubutton,
+.p-splitbutton.p-button-rounded>.p-splitbutton-menubutton.p-button,
+.p-splitbutton.p-button-outlined>.p-splitbutton-menubutton.p-button {
+  border-radius: 0 !important;
+
+  border-top-right-radius: 6px !important;
+    border-bottom-right-radius: 6px !important;
+}
+
+.p-splitbutton .p-splitbutton-defaultbutton,
+.p-splitbutton.p-button-rounded>.p-splitbutton-defaultbutton.p-button,
+.p-splitbutton.p-button-outlined>.p-splitbutton-defaultbutton.p-button {
+  border-radius: 0 !important;
+  border-top-left-radius: 6px !important;
+    border-bottom-left-radius: 6px !important;
+}
+.p-multiselect.p-multiselect-chip .p-multiselect-token {
+  margin: 2px;
+}
