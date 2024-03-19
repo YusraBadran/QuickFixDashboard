@@ -25,11 +25,15 @@ export class LoginComponent  {
   @HostListener('window:keydown.enter')
   public submit(): void {
     if (this.loginRequest.userNameOrEmail && this.loginRequest.password) {
+      console.log(this.loginRequest);
+
       this.apiService.login('identity', this.loginRequest).subscribe({
         next: (response: any) => {
+          console.log(response);
+
           if (response.statusCode === 200) {
             this.token.setToken(response.data.accessToken);
-            localStorage.setItem('menu', JSON.stringify(response.data.menu));
+            // localStorage.setItem('menu', JSON.stringify(response.data.menu));
             this._router.navigate([routes.baseUrl]);
           }
         },

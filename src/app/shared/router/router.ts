@@ -9,7 +9,7 @@ export class routes {
     return this.baseUrl + '/auth';
   }
   public static get signIn(): string {
-    return this.auth + '/sing-in';
+    return this.auth + '/login';
   }
   public static get userSignUp(): string {
     return this.auth + '/sing-up-user';

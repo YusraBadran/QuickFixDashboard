@@ -32,7 +32,7 @@ import { StepsModule } from 'primeng/steps';
 import { TranslatesService } from './translate/translate.service';
 import { AlertMessageService } from './services/alert-message.service';
 import { RadioButtonModule } from 'primeng/radiobutton';
-import { GoogleMap } from '@angular/google-maps';
+//import { GoogleMap } from '@angular/google-maps';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { AuthHttpRequestMessageService } from './services/HttpRequestMessage/authHttpRequestMessag.service';
 //
@@ -101,7 +101,7 @@ import { AuthHttpRequestMessageService } from './services/HttpRequestMessage/aut
     TranslateStore,
     TranslateService,
     AlertMessageService,
-    GoogleMap,
+    //GoogleMap,
     DialogService,
     AuthHttpRequestMessageService,
   ],

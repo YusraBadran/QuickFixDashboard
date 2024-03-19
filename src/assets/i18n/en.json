@@ -25,7 +25,6 @@
     "status": "Status",
     "active": "Active",
     "inactive": "Inactive",
-    "companyName": "Company Name",
     "email": "Email",
     "confirm": "Confirm",
     "are_you_sure": "Are you sure?",
@@ -43,7 +42,6 @@
     "address": "Address",
     "locationAddress": "Location Address",
     "nameContains": "Name Contains",
-    "nameContainsEn": "Name Contains English",
     "addNewProduct": "Add New Product",
     "description": "Description",
     "addressDescription": "Address Description",
@@ -95,9 +93,7 @@
     "inputRequired": "This field is required",
     "selectorRequired": "Please select",
     "nameAr": " Name Arabic",
-    "nameEn": " Name English",
-    "descriptionAr": " Description Arabic",
-    "descriptionEn": " Description English",
+    "descriptionAr": " Description",
     "noDescription": "No Description",
     "descriptionAddress": "Describe your address in detail",
     "addressHint": "Country, City, Street, Building",
@@ -110,14 +106,7 @@
       "title": "Home",
       "dashboard": "Dashboard"
     },
-    "company": {
-      "title": "Company",
-      "create": "Create Company"
-    },
-    "branch": {
-      "title": "Branches",
-      "create": "Create Branch"
-    },
+
     "topbar": {
       "title": "CleanUp"
     },
@@ -140,73 +129,30 @@
   },
   "auth": {
     "password": "Password",
+    "enterYourPassword": "Enter Your Password",
     "logout": "logout",
+    "signInToContinue": "Sign in to continue",
+    "welcomeBack": "Welcome Back!",
     "register": "Register",
-    "haveAccount": "Already have an account?",
     "userAccount": " Create User",
-    "goToLogin": "Go to Login",
-    "singIn": {
-      "loginToContinue": "Welcome back!👋 Please login to Continue",
+    "signIn": {
       "usernameEmail": "UserName or Email",
+      "enterYourUserNameOrEmail": "Enter Your UserName or Email",
       "rememberMe": "Remember Me",
       "forgotPassword": "Forgot Password?",
       "login": "Login",
-      "company": "Company",
-      "user": "User",
-      "orCreateNewAccountAs": "Or create new account as"
-    },
-    "singUp": {
-      "name": "First Name",
-      "lastName": "List Name",
-      "userName": "User Name",
-      "email": "Email",
-      "emailCompany": "Email Company",
-      "nameCompany": "Company Name",
-      "phoneNumber": "Phone Number",
-      "passwordConfig": "Password Configuration",
-      "Congratulations": "Congratulations! 🎉",
-      "companyCreated": "Your Company has been created successfully!  🫢 You can now login to your account.",
-      "accountCreated": "Your Account has been created successfully!  🫢 You can now login to your account."
+      "user": "User"
     }
-  },
-  "company": {
-    "mainBranch": "Main Branch",
-    "branch": "Branch",
-    "branches": "Branches",
-    "branchType": "Branch Type",
-    "branchType1": "Main Branch",
-    "branchType2": " Branch ",
-    "company": "Company",
-    "name": "Company Name",
-    "nameEn": "Company Name English",
-    "description": "Company Description",
-    "descriptionEn": "Company Description English",
-    "locationOnMap": "Location Company On Map"
-  },
-  "branch": {
-    "mainBranch": "Main Branch",
-    "branchName": "Branch Name",
-    "branchNameEn": "Branch Name English",
-    "branch": "Branch",
-    "branches": "Branches",
-    "branchType": "Branch Type",
-    "branchType1": "Main Branch",
-    "branchType2": " Branch ",
-    "mainBranchService": "Main Branch Service",
-    "noFacebook": "No Facebook Link",
-    "noWebLink": "No Web Link"
   },
   "service": {
     "service": "Service",
     "services": "Services",
     "name": "Service Name",
-    "nameEn": "Service Name English",
     "pricePerUnit": "Price Per Unit",
     "unit": "Unit"
   },
   "units": {
     "name": "Unit Name",
-    "nameEn": "Unit Name English",
     "shortName": "Short Name",
     "unit": "Unit",
     "units": "Units",
@@ -216,7 +162,6 @@
   },
   "categories": {
     "name": "Category Name",
-    "nameEn": "Category Name English",
     "category": "Category",
     "categories": "Categories"
   },
@@ -228,9 +173,8 @@
       "userName": "User Name",
       "email": "Email",
       "user": "User",
+
       "permission": "Permission",
-      "ownerInfo": "Owner Information",
-      "owner": "Owner",
       "title": "Users",
       "create": "Create User",
       "edit": "Edit User",
@@ -243,8 +187,6 @@
     "userPermission": {
       "superAdmin": "Super Admin",
       "adminUser": "Admin User",
-      "companyAdmin": "Company Admin",
-      "companyUser": "Company User",
       "user": "User"
     },
     "permissions": {

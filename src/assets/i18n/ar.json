@@ -13,9 +13,7 @@
     "email": "البريد الإلكتروني",
     "phone": " الهاتف",
     "phoneNumber": "رقم الهاتف",
-    "fax": "الفاكس",
     "website": "الموقع الإلكتروني",
-    "facebook": "فيسبوك",
     "close": "إغلاق",
     "yes": "نعم",
     "no": "لا",
@@ -24,7 +22,6 @@
     "active": "نشط",
     "inactive": "غير نشط",
     "actions": "الإجراءات",
-    "companyName": "اسم الشركة",
     "confirm": "تأكيد",
     "are_you_sure": "هل أنت متأكد؟",
     "error": "خطأ",
@@ -93,10 +90,8 @@
     "showing": "عرض",
     "inputRequired": "هذا الحقل مطلوب",
     "selectorRequired": "يجب الاختيار  ",
-    "nameAr": "الاسم بالعربي",
-    "nameEn": "الاسم بالانجليزي",
-    "descriptionAr": " الوصف بالعربي",
-    "descriptionEn": " الوصف بالانجليزي",
+    "nameAr": "الاسم ",
+    "descriptionAr": " الوصف ",
     "noDescription": "لا يوجد وصف",
     "descriptionAddress": " قم بوصف موقعك بالتفصيل ",
     "addressHint": " الدولة,المدينة,الحي,الشارع,المبنى ",
@@ -108,16 +103,8 @@
       "title": "الرئيسية",
       "dashboard": "لوحة التحكم"
     },
-    "company": {
-      "title": "الشركات",
-      "create": "إنشاء شركة"
-    },
-    "branch": {
-      "title": "الفروع",
-      "create": "إنشاء فرع"
-    },
     "topbar": {
-      "title": " تنظيف "
+      "title": "  "
     },
     "service": {
       "title": "الخدمات",
@@ -138,75 +125,30 @@
   },
   "auth": {
     "password": "كلمة المرور",
+    "enterYourPassword":"ادخل كلمة المرور",
     "logout": "تسجيل الخروج",
-    "register": "انشاء حساب",
-    "haveAccount": "هل لديك حساب؟",
-    "userAccount": " انشاء مستخدم ",
     "goToLogin": "تسجيل الدخول",
-    "singIn": {
+    "signInToContinue": "تسجيل الدخول للمتابعة",
+    "welcomeBack": "مرحبا بك مجددا",
+    "signIn": {
       "login": "تسجيل الدخول",
       "forgotPassword": "نسيت كلمة المرور؟",
       "rememberMe": "تذكرني",
-      "loginToContinue": "مرحبا بك!👋 الرجاء تسجيل الدخول للمتابعة",
       "usernameEmail": "اسم المستخدم او الايميل ",
-      "company": "شركة",
-      "user": "مستخدم",
-      "orCreateNewAccountAs": "أو إنشاء حساب جديد كـ"
-    },
-    "singUp": {
-      "name": "الاسم الثلاثي",
-      "lastName": "الاسم الاخير",
-      "userName": "اسم المستخدم",
-      "email": "الايميل",
-      "emailCompany": "ايميل الشركة",
-      "nameCompanyEn": "اسم الشركة بالانجليزي",
-      "nameCompanyAr": "اسم الشركة بالعربي",
-      "phoneNumber": "رقم الهاتف",
-      "passwordConfig": "تاكيد كلمة المرور ",
-      "Congratulations": " 🎉 !مبروك ",
-      "companyCreated": "لقد تم إنشاء شركتك بنجاح! 🫢 يمكنك الآن تسجيل الدخول إلى حسابك.",
-      "accountCreated": "لقد تم إنشاء حسابك بنجاح! 🫢 يمكنك الآن تسجيل الدخول إلى حسابك."
+      "enterYourUserNameOrEmail":"ادخل اسم المستخدم او الايميل",
+      "user": "مستخدم"
     }
   },
 
-  "company": {
-    "mainBranch": "الفرع الرئيسي",
-    "branch": "الفرع",
-    "branches": "الفروع",
-    "branchType": "نوع الفرع",
-    "branchType1": "رئيسي",
-    "branchType2": "فرعي",
-    "company": "الشركة",
-    "name": "اسم الشركة",
-    "nameEn": "اسم الشركة بالانجليزي",
-    "description": "وصف الشركة",
-    "descriptionEn": "وصف الشركة بالانجليزي",
-    "locationOnMap": "الموقع على الخريطة"
-  },
-  "branch": {
-    "mainBranch": "الفرع الرئيسي",
-    "branchName": "اسم الفرع",
-    "branchNameEn": "اسم الفرع بالانجليزي",
-    "branch": "الفرع",
-    "branches": "الفروع",
-    "branchType": "نوع الفرع",
-    "branchType1": "رئيسي",
-    "branchType2": "فرعي",
-    "mainBranchService": "خدمات الفرع الرئيسي",
-    "noFacebook": "لا يوجد صفحة فيسبوك",
-    "noWebLink": "لا يوجد رابط موقع"
-  },
   "service": {
     "service": "الخدمة",
     "services": "الخدمات",
     "name": "اسم الخدمة",
-    "nameEn": "اسم الخدمة بالانجليزي",
     "pricePerUnit": "السعر للوحدة",
     "unit": "الوحدة"
   },
   "units": {
     "name": "اسم الوحدة",
-    "nameEn": "اسم الوحدة بالانجليزي",
     "shortName": "الاسم المختصر",
     "unit": "الوحدة",
     "units": "الوحدات",
@@ -216,7 +158,6 @@
   },
   "categories": {
     "name": "اسم الفئه",
-    "nameEn": "اسم الفئه بالانجليزي",
     "unit": "الفئه",
     "category": "الفئهات"
   },
@@ -229,8 +170,6 @@
       "email": "البريد الإلكتروني",
       "user": "المستخدم",
       "permission": "الصلاحيات",
-      "ownerInfo": "بيانات المالك",
-      "owner": "المالك",
       "title": "المستخدمين",
       "create": "إنشاء مستخدم",
       "edit": "تعديل مستخدم",
@@ -243,8 +182,6 @@
     "userPermission": {
       "superAdmin": "مدير عام",
       "adminUser": "مستخدم مدير",
-      "companyAdmin": "مدير الشركة",
-      "companyUser": "مستخدم شركة",
       "user": "مستخدم"
     },
     "permissions": {

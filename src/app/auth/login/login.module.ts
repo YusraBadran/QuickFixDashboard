@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
-import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
+
+import { SharedModule } from 'src/app/shared/shared.module';
+
+import { AvatarModule } from 'primeng/avatar';
+import { PasswordModule } from 'primeng/password';
 @NgModule({
   declarations: [
     LoginComponent
@@ -12,9 +15,9 @@ import { ButtonModule } from 'primeng/button';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    FormsModule,
-    InputTextModule,
-    ButtonModule
+ SharedModule,
+ AvatarModule,
+ PasswordModule
   ],
   exports: [
     LoginComponent

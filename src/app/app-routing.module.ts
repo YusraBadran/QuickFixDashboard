@@ -4,9 +4,20 @@ import { AppLayoutComponent } from './layout/app.layout.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     // component: AppLayoutComponent,
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'dashboard',
+    component: AppLayoutComponent,
+  },
+
+
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
   },
 ];
 
