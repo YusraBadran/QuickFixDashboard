@@ -1,15 +1,21 @@
 <div
   class="surface-ground flex align-items-center justify-content-center min-h-screen overflow-hidden"
+  style="
+    background-image: url(assets/images/carrr.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 50%;
+  "
 >
   <div
-    style="max-width: 40rem; width: 100%"
+    style="max-width: 40rem; width: 100%; margin-left: 50%"
     class="flex flex-column align-items-center justify-content-center"
   >
-    <img
+    <!-- <img
       src="assets/images/quickFixLogo.png"
       alt="QuickFix logo"
       class="mb-5 w-6rem flex-shrink-0"
-    />
+    /> -->
     <div
       style="
         border-radius: 56px;
@@ -17,12 +23,23 @@
         width: -webkit-fill-available;
       "
     >
-      <div class="surface-card py-5 px-5 md:px-8" style="border-radius: 53px">
+      <div
+        class="surface-card py-5 px-5 md:px-8 border-500 hover:border-700 border-left-2 border-right-2"
+        style="border-radius: 53px"
+      >
         <div class="text-center mb-5">
-          <img src="assets/images/icons/user.jpg" alt="Image" height="75" class="mb-3">
-          <div class="text-900 text-3xl font-medium mb-1">{{'auth.welcomeBack'|translate}}</div>
-          <span class="text-600 font-medium">{{'auth.signInToContinue'|translate}}</span>
-
+          <img
+            src="assets/images/icons/user.jpg"
+            alt="Image"
+            height="75"
+            class="mb-3"
+          />
+          <div class="text-900 text-3xl font-medium mb-1">
+            {{ "auth.welcomeBack" | translate }}
+          </div>
+          <span class="text-600 font-medium">{{
+            "auth.signInToContinue" | translate
+          }}</span>
         </div>
         <div></div>
         <div class="grid p-fluid">
@@ -57,9 +74,7 @@
             </div>
           </div>
           <div class="col-12">
-            <div
-              class="flex align-items-center justify-content-between mb-2 "
-            >
+            <div class="flex align-items-center justify-content-between mb-2">
               <div class="flex align-items-center">
                 <p-checkbox
                   id="remember_me"

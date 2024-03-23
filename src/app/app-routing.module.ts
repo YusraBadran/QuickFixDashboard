@@ -6,14 +6,26 @@ const routes: Routes = [
   {
     path: 'auth',
     // component: AppLayoutComponent,
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'dashboard',
     component: AppLayoutComponent,
   },
-
-
+  {
+    path: 'services-type',
+    component: AppLayoutComponent,
+    loadChildren: () =>
+      import('./services-type/services-type.module').then(
+        (m) => m.ServicesTypeModule
+      ),
+  },
+  {
+    path: 'categories',
+    component: AppLayoutComponent,
+    loadChildren: () =>
+      import('./categories/category.module').then((m) => m.CategoryModule),
+  },
   {
     path: '',
     redirectTo: 'dashboard',
@@ -23,6 +35,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,0 +1,78 @@
+<div class="card">
+  <p-table
+    [value]="paging.data"
+    [lazy]="true"
+    [rows]="paging.pageSize"
+    [first]="paging.currentStartIndex"
+    [totalRecords]="paging.totalItems"
+    [paginator]="true"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <!-- currentPageReportTemplate="{{ 'public.showing' | translate }} {{
+    paging.currentStartIndex
+  }} {{ 'public.to' | translate }} {{ paging.currentEndIndex }} {{
+    'public.of' | translate
+  }} {{ paging.totalItems }} {{ 'public.rows' | translate }}" -->
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <button
+          pButton
+          [label]="'public.new' | translate"
+          class="p-button-outlined"
+          icon="pi pi-plus"
+          (click)="openCreateCategoriesPopup()"
+        ></button>
+        <span class="p-input-icon-left ml-auto">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            (keyup)="filterUpdate($event)"
+            [placeholder]="'service.search' | translate"
+          />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ "service.img" | translate }}</th>
+        <th>{{ "service.name" | translate }}</th>
+        <th>{{ "service.status" | translate }}</th>
+        <th style="width: 12rem; text-align: center">
+          {{ "service.actions" | translate }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-service>
+      <tr>
+        <td><img src="" alt="" srcset="" width="60" /></td>
+        <td>{{ service.name }}</td>
+        <td>
+          <p-tag
+            [value]="status.getStatusName(service.status) | translate"
+            [icon]="status.getStatusIcon(service.status)"
+            [severity]="status.getStatusStyle(service.status)"
+          ></p-tag>
+        </td>
+        <td>
+          <div class="text-center">
+            <p-button
+              icon="pi pi-info"
+              class="p-button-rounded p-button-success"
+            ></p-button>
+            <p-button
+              icon="pi pi-pencil"
+              class="p-button-rounded p-button-success mx-1"
+            ></p-button>
+            <p-button
+              icon="pi pi-trash"
+              class="p-button-rounded p-button-success"
+            ></p-button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

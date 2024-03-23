@@ -11,83 +11,24 @@ export class routes {
   public static get signIn(): string {
     return this.auth + '/login';
   }
-  public static get userSignUp(): string {
-    return this.auth + '/sing-up-user';
-  }
-  public static get companySignUp(): string {
-    return this.auth + '/sing-up-company';
-  }
-  public static get companyCompSignUp(): string {
-    return this.companySignUp + '/company-sing-up';
-  }
-  public static get userCompSignUp(): string {
-    return this.companySignUp + '/user-sing-up';
-  }
-  public static get addressCompSignUp(): string {
-    return this.companySignUp + '/address-sing-up';
-  }
+
   // core pages child routes *ends*
-  /**
-   * Company routes
-   */
-  public static get company(): string {
-    return this.baseUrl + '/company';
-  }
-  public static get companyCreate(): string {
-    return this.company + '/create';
-  }
-  public static get companyDetails(): string {
-    return this.company + '/details/';
-  }
-  public static get CompanyUpdate(): string {
-    return this.company + '/update/';
-  }
-  /**
-   * Branches routes
-   */
-  public static get branches(): string {
-    return this.baseUrl + '/branch/';
-  }
-  public static get branchesCreate(): string {
-    return this.branches + '/create/';
-  }
-  public static get branchesDetails(): string {
-    return this.branches + '/details/';
-  }
-  public static get BranchesUpdate(): string {
-    return this.branches + '/update/';
-  }
+
   /**
    * Services routes
    */
-  public static get services(): string {
-    return this.baseUrl + '/service/';
+  public static get servicesType(): string {
+    return this.baseUrl + '/services-type/';
   }
   public static get servicesCreate(): string {
-    return this.services + '/create/';
+    return this.servicesType + '/create/';
   }
   public static get servicesDetails(): string {
-    return this.services + '/details/';
+    return this.servicesType + '/details/';
   }
   public static get ServicesUpdate(): string {
-    return this.services + '/update/';
+    return this.servicesType + '/update/';
   }
-  /**
-   * Units routes
-   */
-  public static get units(): string {
-    return this.baseUrl + '/units/';
-  }
-  public static get unitsCreate(): string {
-    return this.units + '/create/';
-  }
-  public static get unitsDetails(): string {
-    return this.units + '/details/';
-  }
-  public static get UnitsUpdate(): string {
-    return this.units + '/update/';
-  }
-  // core pages child routes *ends*
   /**
    * Category routes
    */

@@ -4,8 +4,8 @@
     "ar": "Arabic",
     "add": "Add",
     "addNew": "Add New",
-    "New": "New",
     "phone": "Phone",
+    "new":"New",
     "phoneNumber": "Phone Number",
     "fax": "Fax",
     "website": "Website URL",
@@ -24,7 +24,7 @@
     "no": "No",
     "status": "Status",
     "active": "Active",
-    "inactive": "Inactive",
+    "unactive": "unactive",
     "email": "Email",
     "confirm": "Confirm",
     "are_you_sure": "Are you sure?",
@@ -108,7 +108,7 @@
     },
 
     "topbar": {
-      "title": "CleanUp"
+      "title": "Quick Fix"
     },
     "service": {
       "title": "Services",
@@ -149,7 +149,12 @@
     "services": "Services",
     "name": "Service Name",
     "pricePerUnit": "Price Per Unit",
-    "unit": "Unit"
+    "unit": "Unit",
+    "img":"Image",
+    "name": "Name",
+    "status" : "Status",
+    "search" : "Search...",
+    "actions" :"Actions"
   },
   "units": {
     "name": "Unit Name",

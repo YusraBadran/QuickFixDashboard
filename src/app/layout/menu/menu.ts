@@ -15,30 +15,11 @@ export const menu = [
   {
     label: 'menu.company.title',
     items: [
+
       {
-        label: 'menu.company.title',
+        label: 'menu.service.title',
         icon: 'pi pi-fw pi-home',
-        routerLink: [routes.company],
-      },
-      {
-        label: 'menu.company.create',
-        icon: 'pi pi-fw pi-home',
-        routerLink: [routes.companyCreate],
-      },
-      // {
-      //   label: 'menu.branch.create',
-      //   icon: 'pi pi-fw pi-home',
-      //   routerLink: [routes.branches],
-      // },
-      // {
-      //   label: 'menu.service.title',
-      //   icon: 'pi pi-fw pi-home',
-      //   routerLink: [routes.services],
-      // },
-      {
-        label: 'menu.units.title',
-        icon: 'pi pi-fw pi-home',
-        routerLink: [routes.units],
+        routerLink: [routes.servicesType],
       },
       {
         label: 'menu.categories.title',
