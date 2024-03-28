@@ -1,0 +1,96 @@
+<div class="card">
+  <p-table
+    #dt
+    [value]="paging.data"
+    [rows]="paging.pageSize"
+    [lazy]="true"
+    [paginator]="true"
+    [first]="paging.currentStartIndex"
+    [totalRecords]="paging.totalItems"
+    (onPage)="onPageChange($event)"
+    [rowHover]="true"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="{{ 'public.showing' | translate }} {{
+      paging.currentStartIndex
+    }} {{ 'public.to' | translate }} {{ paging.currentEndIndex }} {{
+      'public.of' | translate
+    }} {{ paging.totalItems }} {{ 'public.rows' | translate }}"
+    [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+    dataKey="id"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <button
+          pButton
+          [label]="'public.new' | translate"
+          class="p-button-outlined"
+          icon="pi pi-plus"
+          (click)="openCreateCategoriesItemPopup()"
+        ></button>
+        <span class="p-input-icon-left ml-auto">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            (keyup)="filterUpdate($event)"
+            [placeholder]="'service.search' | translate"
+          />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ "service.img" | translate }}</th>
+        <th>{{ "service.name" | translate }}</th>
+        <th>subCategory</th>
+        <th>{{ "service.status" | translate }}</th>
+        <th style="width: 12rem; text-align: center">
+          {{ "service.actions" | translate }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-category>
+      <tr>
+        <td>
+          <img
+            [src]="
+              category.logo ? imageUrlApi.serverUrl + '/' + category.logo : ''
+            "
+            alt=""
+            srcset=""
+            width="60"
+          />
+        </td>
+        <td>{{ category.name }}</td>
+        <td>{{ category.subCategory?.name }}</td>
+        <td>
+          <p-tag
+            [value]="status.getStatusName(category.status) | translate"
+            [icon]="status.getStatusIcon(category.status)"
+            [severity]="status.getStatusStyle(category.status)"
+          ></p-tag>
+        </td>
+        <td>
+          <div class="text-center">
+            <p-button
+              icon="pi pi-info"
+              class="p-button-rounded p-button-success"
+              (click)="openDetailsCategoriesItemPopup(category.id)"
+            ></p-button>
+            <p-button
+              icon="pi pi-pencil"
+              (click)="openUpdateCategoriesItemPopup(category.id)"
+              class="p-button-rounded p-button-success mx-1"
+            ></p-button>
+            <p-button
+              icon="pi pi-trash"
+              class="p-button-rounded p-button-success"
+              (click)="deleteBtn(category.id)"
+            ></p-button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -38,7 +38,20 @@
     </div>
   </div>
 
-  <div class="col-12">
+  <div class="col-12 m-1">
+    <div class="flex flex-column">
+      <label class="font-bold required mb-2">{{
+        "public.image" | translate
+      }}</label>
+
+      <shared-file-uploaded
+        [multiple]="false"
+        [moduleFolder]="'serviceType'"
+        (urlResult)="getIog($event)"
+      ></shared-file-uploaded>
+    </div>
+  </div>
+  <div class="col-12 m-1">
     <div class="flex flex-column">
       <label class="font-bold required mb-2">{{
         "public.description" | translate
@@ -69,7 +82,7 @@
     </div>
   </div>
 
-  <div class="col-12">
+  <div class="col-12 m-1">
     <div class="flex flex-wrap gap-2 mt-3 mb-2 justify-content-end">
       <p-button
         [label]="'public.save' | translate"

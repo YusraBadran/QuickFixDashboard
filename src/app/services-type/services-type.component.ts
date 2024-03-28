@@ -9,6 +9,7 @@ import { TablePageEvent } from 'primeng/table';
 import { TranslatesService } from '../shared/translate/translate.service';
 import { map } from 'rxjs';
 import { AlertMessageService } from '../shared/services/alert-message.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-services-type',
@@ -23,6 +24,7 @@ export class ServicesTypeComponent {
   status: StatusReturn = new StatusReturn();
   page: number = 1;
   rows: number = 5;
+  imageUrlApi = environment;
   tempData!: any[];
   constructor(
     private httpService: BasMicroServicesApiService,
@@ -72,29 +74,14 @@ export class ServicesTypeComponent {
   }
   getByPost() {
     this.itemFilters = [];
-    if (
-      this.statusFilter != null ||
-      this.statusFilter != undefined ||
-      this.statusFilter != ''
-    ) {
-      this.itemFilters.push({
-        fieldName: 'status',
-        comparision: '==',
-        fieldValue: this.status.getStatusNumber(this.statusFilter).toString(),
-      });
-    }
-    if (
-      this.nameFilter != null ||
-      this.nameFilter != undefined ||
-      this.nameFilter != ''
-    ) {
-      this.itemFilters.push({
-        fieldName: 'name',
-        comparision: 'Contains',
-        fieldValue: this.nameFilter,
-      });
-    }
 
+    this.filter = {
+      page: this.page,
+      pageSize: this.rows,
+      includes: [],
+      filters: this.itemFilters,
+      sorts: [],
+    };
     this.httpService
       .getPageByPost('service_type', this.page, this.rows, this.filter)
       .pipe(

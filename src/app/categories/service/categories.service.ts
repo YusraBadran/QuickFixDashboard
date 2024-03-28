@@ -21,7 +21,7 @@ export class ServiceCategories {
       width: '50rem',
       contentStyle: {
         'max-height': '800px',
-        overflow: 'inherit',
+        overflow: 'auto',
         padding: '0 1.5rem 0rem 1.5rem',
       },
     });
@@ -34,7 +34,7 @@ export class ServiceCategories {
 
       contentStyle: {
         'max-height': '800px',
-        overflow: 'inherit',
+        overflow: 'auto',
         padding: '0 1.5rem 0rem 1.5rem',
       },
     });
@@ -47,7 +47,7 @@ export class ServiceCategories {
 
       contentStyle: {
         'max-height': '800px',
-        overflow: 'inherit',
+        overflow: 'auto',
         padding: '0 1.5rem 0rem 1.5rem',
       },
     });

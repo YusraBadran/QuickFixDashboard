@@ -1,0 +1,91 @@
+<!-- <p-breadcrumb class="max-w-full " styleClass="mb-3" [model]="items" [home]="home"></p-breadcrumb> -->
+<div class="grid p-fluid">
+  <div class="col-6">
+    <div class="flex flex-column">
+      <label class="font-bold required mb-2">{{
+        "service.name" | translate
+      }}</label>
+      <input
+        pInputText
+        id="name"
+        #name="ngModel"
+        [(ngModel)]="categories.name"
+        [disabled]="true"
+      />
+      <samp
+        *ngIf="(name.invalid && submitted) || (name.dirty && name.invalid)"
+        class="p-error block"
+      >
+        {{ "public.inputRequired" | translate }}
+      </samp>
+    </div>
+  </div>
+
+  <div class="col-6" *ngIf="categories.subCategory">
+    <div class="flex flex-column">
+      <label class="font-bold required mb-2">Sub Category</label>
+      <input
+        pInputText
+        id="subCategory"
+        #subCategory="ngModel"
+        [(ngModel)]="categories.subCategory.name"
+        [disabled]="true"
+      />
+    </div>
+  </div>
+  <div class="col-6" *ngIf="categories.serviceType">
+    <div class="flex flex-column">
+      <label class="font-bold required mb-2">Service Type</label>
+      <input
+        pInputText
+        id="serviceId"
+        #serviceId="ngModel"
+        [(ngModel)]="categories.serviceId"
+        [disabled]="true"
+      />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="flex flex-column">
+      <label class="font-bold mb-2 required">{{
+        "public.status" | translate
+      }}</label>
+      <input pInputText [(ngModel)]="state" [disabled]="true" />
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="flex flex-column">
+      <label class="font-bold required mb-2">{{
+        "public.description" | translate
+      }}</label>
+
+      <textarea
+        pInputTextarea
+        id="description"
+        #description="ngModel"
+        [(ngModel)]="categories.description"
+        [disabled]="true"
+      ></textarea>
+      <samp
+        *ngIf="
+          (description.invalid && submitted) ||
+          (description.dirty && description.invalid)
+        "
+        class="p-error block"
+      >
+        {{ "public.inputRequired" | translate }}
+      </samp>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="flex flex-wrap gap-2 mt-3 mb-2 justify-content-end">
+      <p-button
+        severity="danger"
+        [label]="'public.cancel' | translate"
+        (onClick)="closePopup()"
+      ></p-button>
+    </div>
+  </div>
+</div>

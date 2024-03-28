@@ -1,12 +1,14 @@
 <div class="card">
   <p-table
+    #dt
     [value]="paging.data"
-    [lazy]="true"
     [rows]="paging.pageSize"
+    [lazy]="true"
+    [paginator]="true"
     [first]="paging.currentStartIndex"
     [totalRecords]="paging.totalItems"
-    [paginator]="true"
     (onPage)="onPageChange($event)"
+    [rowHover]="true"
     [showCurrentPageReport]="true"
     currentPageReportTemplate="{{ 'public.showing' | translate }} {{
       paging.currentStartIndex
@@ -14,6 +16,7 @@
       'public.of' | translate
     }} {{ paging.totalItems }} {{ 'public.rows' | translate }}"
     [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+    dataKey="id"
     [tableStyle]="{ 'min-width': '50rem' }"
   >
     <ng-template pTemplate="caption">
@@ -48,7 +51,16 @@
     </ng-template>
     <ng-template pTemplate="body" let-service>
       <tr>
-        <td><img src="" alt="" srcset="" width="60" /></td>
+        <td>
+          <img
+            [src]="
+              service.logo ? imageUrlApi.serverUrl + '/' + service.logo : ''
+            "
+            alt=""
+            srcset=""
+            width="60"
+          />
+        </td>
         <td>{{ service.name }}</td>
         <td>
           <p-tag

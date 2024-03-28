@@ -44,6 +44,21 @@ export class routes {
   public static get categoryUpdate(): string {
     return this.categories + '/update/';
   }
+  /**
+   * Category routes
+   */
+  public static get categoriesItem(): string {
+    return this.baseUrl + '/categoriesItem/';
+  }
+  public static get categoryItemCreate(): string {
+    return this.categoriesItem + '/create/';
+  }
+  public static get categoryItemDetails(): string {
+    return this.categoriesItem + '/details/';
+  }
+  public static get categoryItemUpdate(): string {
+    return this.categoriesItem + '/update/';
+  }
   // core pages child routes *ends*
   // Setting pages child routes *starts*
   /**

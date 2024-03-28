@@ -27,6 +27,14 @@ const routes: Routes = [
       import('./categories/category.module').then((m) => m.CategoryModule),
   },
   {
+    path: 'categoriesItem',
+    component: AppLayoutComponent,
+    loadChildren: () =>
+      import('./categories-item/category-item.module').then(
+        (m) => m.CategoryItemModule
+      ),
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

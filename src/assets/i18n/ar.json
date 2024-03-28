@@ -117,6 +117,7 @@
     "categories": {
       "title": "الفئات"
     },
+
     "setting": {
       "title": "الإعدادات",
       "users": "المستخدمين",
@@ -166,6 +167,12 @@
     "name": "اسم الفئه",
     "unit": "الفئه",
     "category": "الفئات"
+  },
+  "categoriesItem": {
+    "title": "عناصر الفئات",
+    "name": "اسم عناصر الفئه",
+    "categoryItem": " الفئه",
+    "categoriesItem": "عناصر الفئات"
   },
   "setting": {
     "users": {

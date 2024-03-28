@@ -9,11 +9,11 @@ interface UploadEvent {
   templateUrl: './file-uploaded.component.html',
 })
 export class FileUploadedComponent implements OnInit {
-  @Input() mode: 'basic' | 'advanced' | undefined = 'basic';
   @Input() multiple: boolean = true;
   @Input() labelText: string = 'Upload';
-  @Input() companyFolder!: string;
   @Input() moduleFolder!: string;
+  @Input() isView: boolean | null = false;
+  @Input() vewImageUrl!: string;
   @Input() uploadOnClick = new EventEmitter<any>();
   @Output() urlResult = new EventEmitter<any>();
   uploadedSingleFiles!: any;
@@ -45,7 +45,7 @@ export class FileUploadedComponent implements OnInit {
       this.uploadedFilesList.push(file);
       formData.append('file', file, file.name);
     }
-    this.upload(this.companyFolder, this.moduleFolder, formData);
+    this.upload(this.moduleFolder, formData);
   }
   singleUpload(event: any) {
     const formData = new FormData();
@@ -54,7 +54,7 @@ export class FileUploadedComponent implements OnInit {
       formData.append('file', file, file.name);
     }
 
-    this.upload(this.companyFolder, this.moduleFolder, formData);
+    this.upload(this.moduleFolder, formData);
   }
   /**
    * remove File
@@ -74,12 +74,10 @@ export class FileUploadedComponent implements OnInit {
   singleRemove(event: any) {
     this.uploadedSingleFiles = null;
   }
-  upload(companyFolder: string, moduleFolder: string, fileUpload: FormData) {
-    this.apiService
-      .uploadFile(companyFolder, moduleFolder, fileUpload)
-      .subscribe((res) => {
-        this.urlResult.emit(res);
-      });
+  upload(moduleFolder: string, fileUpload: FormData) {
+    this.apiService.uploadFile(moduleFolder, fileUpload).subscribe((res) => {
+      this.urlResult.emit(res);
+    });
   }
   ngOnInit(): void {}
 }

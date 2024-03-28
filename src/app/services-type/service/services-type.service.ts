@@ -7,7 +7,7 @@ import { DetailsComponent } from '../details/details.component';
 import { UpdateComponent } from '../update/update.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServicesTypeService {
   public ref!: DynamicDialogRef;
@@ -21,7 +21,7 @@ export class ServicesTypeService {
       width: '50rem',
       contentStyle: {
         'max-height': '800px',
-        overflow: 'inherit',
+        overflow: 'auto',
         padding: '0 1.5rem 0rem 1.5rem',
       },
     });
@@ -34,7 +34,7 @@ export class ServicesTypeService {
 
       contentStyle: {
         'max-height': '800px',
-        overflow: 'inherit',
+        overflow: 'auto',
         padding: '0 1.5rem 0rem 1.5rem',
       },
     });
@@ -47,7 +47,7 @@ export class ServicesTypeService {
 
       contentStyle: {
         'max-height': '800px',
-        overflow: 'inherit',
+        overflow: 'auto',
         padding: '0 1.5rem 0rem 1.5rem',
       },
     });

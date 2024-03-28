@@ -53,7 +53,7 @@ export class DetailsComponent {
           this.status.getStatusName(StatusEnum.Active)
         ),
         this.translate.getTranslate(
-          this.status.getStatusName(StatusEnum.Inactive)
+          this.status.getStatusName(StatusEnum.Unactive)
         ),
       ];
     }, 1000);

@@ -1,20 +1,24 @@
 <div class="card">
   <p-table
+    #dt
     [value]="paging.data"
-    [lazy]="true"
     [rows]="paging.pageSize"
+    [lazy]="true"
+    [paginator]="true"
     [first]="paging.currentStartIndex"
     [totalRecords]="paging.totalItems"
-    [paginator]="true"
+    (onPage)="onPageChange($event)"
+    [rowHover]="true"
     [showCurrentPageReport]="true"
+    currentPageReportTemplate="{{ 'public.showing' | translate }} {{
+      paging.currentStartIndex
+    }} {{ 'public.to' | translate }} {{ paging.currentEndIndex }} {{
+      'public.of' | translate
+    }} {{ paging.totalItems }} {{ 'public.rows' | translate }}"
     [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+    dataKey="id"
     [tableStyle]="{ 'min-width': '50rem' }"
   >
-    <!-- currentPageReportTemplate="{{ 'public.showing' | translate }} {{
-    paging.currentStartIndex
-  }} {{ 'public.to' | translate }} {{ paging.currentEndIndex }} {{
-    'public.of' | translate
-  }} {{ paging.totalItems }} {{ 'public.rows' | translate }}" -->
     <ng-template pTemplate="caption">
       <div class="flex">
         <button
@@ -39,21 +43,32 @@
       <tr>
         <th>{{ "service.img" | translate }}</th>
         <th>{{ "service.name" | translate }}</th>
+        <th>subCategory</th>
         <th>{{ "service.status" | translate }}</th>
         <th style="width: 12rem; text-align: center">
           {{ "service.actions" | translate }}
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-service>
+    <ng-template pTemplate="body" let-category>
       <tr>
-        <td><img src="" alt="" srcset="" width="60" /></td>
-        <td>{{ service.name }}</td>
+        <td>
+          <img
+            [src]="
+              category.logo ? imageUrlApi.serverUrl + '/' + category.logo : ''
+            "
+            alt=""
+            srcset=""
+            width="60"
+          />
+        </td>
+        <td>{{ category.name }}</td>
+        <td>{{ category.subCategory?.name }}</td>
         <td>
           <p-tag
-            [value]="status.getStatusName(service.status) | translate"
-            [icon]="status.getStatusIcon(service.status)"
-            [severity]="status.getStatusStyle(service.status)"
+            [value]="status.getStatusName(category.status) | translate"
+            [icon]="status.getStatusIcon(category.status)"
+            [severity]="status.getStatusStyle(category.status)"
           ></p-tag>
         </td>
         <td>
@@ -61,14 +76,17 @@
             <p-button
               icon="pi pi-info"
               class="p-button-rounded p-button-success"
+              (click)="openDetailsCategoriesPopup(category.id)"
             ></p-button>
             <p-button
               icon="pi pi-pencil"
+              (click)="openUpdateCategoriesPopup(category.id)"
               class="p-button-rounded p-button-success mx-1"
             ></p-button>
             <p-button
               icon="pi pi-trash"
               class="p-button-rounded p-button-success"
+              (click)="deleteBtn(category.id)"
             ></p-button>
           </div>
         </td>

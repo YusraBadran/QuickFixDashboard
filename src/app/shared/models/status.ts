@@ -11,7 +11,7 @@ export class StatusReturn {
       case 1:
         return 'public.active';
       case 0:
-        return 'public.inactive';
+        return 'public.unactive';
       default:
         return 'public.active';
     }
@@ -22,7 +22,7 @@ export class StatusReturn {
         return 1;
       case 'نشط':
         return 1;
-      case 'Inactive':
+      case 'unactive':
         return 0;
       case 'غير نشط':
         return 0;
@@ -58,6 +58,6 @@ export class StatusReturn {
 // enum class
 export enum StatusEnum {
   Active = 1,
-  Inactive = 0,
+  Unactive = 0,
 }
 // status class

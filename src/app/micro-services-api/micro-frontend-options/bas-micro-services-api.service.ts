@@ -555,7 +555,6 @@ export class BasMicroServicesApiService {
    * @returns
    */
   public uploadFile<T>(
-    companyFolder: string,
     moduleFolder: string,
     fileUpload: FormData,
     operation: string = 'upload',
@@ -566,7 +565,7 @@ export class BasMicroServicesApiService {
     // `${env.serverUrl}/api/fileManger/${operation}/v${version}?companyFolder=${companyFolder}&moduleFolder=${moduleFolder}`,
     return this.http
       .post<T>(
-        `${env.serverUrl}/api/fileManger/${operation}/v${version}?companyFolder=${companyFolder}&moduleFolder=${moduleFolder}`,
+        `${env.serverUrl}/api/fileManger/${operation}/v${version}?moduleFolder=${moduleFolder}`,
         fileUpload,
         {
           reportProgress: true,

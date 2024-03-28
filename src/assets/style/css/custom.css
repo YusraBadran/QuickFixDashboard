@@ -128,3 +128,8 @@
   left: 0;
   z-index: -1; */
 }
+.p-fileupload .p-fileupload-content {
+
+  padding: 0rem 1rem !important;
+
+}

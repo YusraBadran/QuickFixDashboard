@@ -101,6 +101,7 @@
     "sessionExpired": "Your session has expired, do you want to continue?"
   },
 
+
   "menu": {
     "home": {
       "title": "Home",
@@ -169,6 +170,12 @@
     "name": "Category Name",
     "category": "Category",
     "categories": "Categories"
+  },
+  "categoriesItem": {
+    "title": "Category Item",
+    "name": "Category Item Name",
+    "category": "Category Item",
+    "categories": "Categories Item"
   },
   "setting": {
     "users": {

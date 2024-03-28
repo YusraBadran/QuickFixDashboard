@@ -22,7 +22,9 @@ export class CreateComponent {
   serviceType: any;
   serviceTypeValue: any;
   categoryLookup: any;
-  categoryLookupValue: any;
+  categoryLookupValue = {} as any;
+  option: any[] = [];
+  optionValue: any = {} as any;
   constructor(
     private createCategories: ServiceCategories,
     public translate: TranslatesService,
@@ -40,9 +42,17 @@ export class CreateComponent {
           this.status.getStatusName(StatusEnum.Active)
         ),
         this.translate.getTranslate(
-          this.status.getStatusName(StatusEnum.Inactive)
+          this.status.getStatusName(StatusEnum.Unactive)
         ),
       ];
+      this.option = [
+        { name: this.translate.getTranslate('public.yes'), value: true },
+        { name: this.translate.getTranslate('public.no'), value: false },
+      ];
+      this.optionValue = {
+        name: this.translate.getTranslate('public.yes'),
+        value: true,
+      };
     }, 1000);
     this.getServiceLookup();
     this.getCategoryLookup();
@@ -71,14 +81,35 @@ export class CreateComponent {
         this.categoryLookup = response;
       });
   }
+  getIog(event: any) {
+    this.categories.logo = event[0];
+  }
   closePopup() {
     this.createCategories.close();
   }
-  createServiceType() {
+  createCatgories() {
+    // console.log(this.optionValue?.value==true);{
+
+    // }
+
     if (this.categories.name && this.categories.description && this.state) {
       this.categories.status = this.status.getStatusNumber(this.state);
+      if (
+        this.serviceTypeValue &&
+        this.serviceTypeValue != null &&
+        this.serviceTypeValue != undefined
+      ) {
+        this.categories.serviceId = this.serviceTypeValue.id;
+      }
+      if (
+        this.categoryLookupValue &&
+        this.categoryLookupValue != null &&
+        this.categoryLookupValue != undefined
+      ) {
+        this.categories.subCategoryId = this.categoryLookupValue.id;
+      }
       this.httpService
-        .create('service_type', this.categories)
+        .create('category', this.categories)
         .pipe(
           map((response: any) => {
             return response;

@@ -1,0 +1,170 @@
+<!-- <p-breadcrumb class="max-w-full " styleClass="mb-3" [model]="items" [home]="home"></p-breadcrumb> -->
+<div class="grid p-fluid">
+  <div class="col-6">
+    <div class="flex flex-column">
+      <label class="font-bold required mb-2">{{
+        "service.name" | translate
+      }}</label>
+      <input
+        pInputText
+        id="name"
+        #name="ngModel"
+        [(ngModel)]="categories.name"
+        required
+        [placeholder]="'service.name' | translate"
+        [ngClass]="{
+          'ng-dirty':
+            (name.invalid && submitted) || (name.dirty && name.invalid)
+        }"
+      />
+      <samp
+        *ngIf="(name.invalid && submitted) || (name.dirty && name.invalid)"
+        class="p-error block"
+      >
+        {{ "public.inputRequired" | translate }}
+      </samp>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div class="flex flex-column">
+      <label class="font-bold required mb-2">Has Sub Category</label>
+      <p-dropdown
+        [options]="option"
+        [optionLabel]="'name'"
+        [(ngModel)]="optionValue"
+        [placeholder]="'public.selectOption' | translate"
+      ></p-dropdown>
+    </div>
+  </div>
+
+  <div class="col-6" *ngIf="optionValue?.value == true">
+    <div class="flex flex-column">
+      <label class="font-bold required mb-2">Categories</label>
+      <p-dropdown
+        id="hasSubCategory"
+        #hasSubCategory="ngModel"
+        [options]="categoryLookup"
+        [optionLabel]="'name'"
+        [(ngModel)]="categoryLookupValue"
+        [filter]="true"
+        [filterBy]="'name'"
+        [placeholder]="'public.selectOption' | translate"
+        [ngClass]="{
+          'ng-dirty':
+            (hasSubCategory.invalid && submitted) ||
+            (hasSubCategory.dirty && hasSubCategory.invalid)
+        }"
+      ></p-dropdown>
+      <samp
+        *ngIf="
+          (hasSubCategory.invalid && submitted) ||
+          (optionValue?.value && submitted) ||
+          (hasSubCategory.dirty && hasSubCategory.invalid)
+        "
+        class="p-error block"
+      >
+        {{ "public.inputRequired" | translate }}
+      </samp>
+    </div>
+  </div>
+  <div class="col-6" *ngIf="optionValue?.value != true">
+    <div class="flex flex-column">
+      <label class="font-bold required mb-2">Service Type</label>
+      <p-dropdown
+        id="service_type"
+        #service_type="ngModel"
+        [options]="serviceType"
+        [optionLabel]="'name'"
+        [(ngModel)]="serviceTypeValue"
+        [filter]="true"
+        [filterBy]="'name'"
+        [placeholder]="'public.selectOption' | translate"
+        [ngClass]="{
+          'ng-dirty':
+            (service_type.invalid && submitted) ||
+            (service_type.dirty && service_type.invalid)
+        }"
+      ></p-dropdown>
+      <samp
+        *ngIf="
+          (service_type.invalid && submitted) ||
+          (!optionValue?.value && submitted) ||
+          (service_type.dirty && service_type.invalid)
+        "
+        class="p-error block"
+      >
+        {{ "public.inputRequired" | translate }}
+      </samp>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div class="flex flex-column">
+      <label class="font-bold mb-2">{{ "public.status" | translate }}</label>
+      <p-dropdown
+        [options]="states"
+        [(ngModel)]="state"
+        [placeholder]="'public.selectOption' | translate"
+      ></p-dropdown>
+    </div>
+  </div>
+  <div class="col-12 m-1">
+    <div class="flex flex-column">
+      <label class="font-bold required mb-2">{{
+        "public.image" | translate
+      }}</label>
+
+      <shared-file-uploaded
+        [multiple]="false"
+        [moduleFolder]="'serviceType'"
+        (urlResult)="getIog($event)"
+      ></shared-file-uploaded>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="flex flex-column">
+      <label class="font-bold required mb-2">{{
+        "public.description" | translate
+      }}</label>
+
+      <textarea
+        pInputTextarea
+        id="description"
+        #description="ngModel"
+        [(ngModel)]="categories.description"
+        required
+        [placeholder]="'public.description' | translate"
+        [ngClass]="{
+          'ng-dirty':
+            (description.invalid && submitted) ||
+            (description.dirty && description.invalid)
+        }"
+      ></textarea>
+      <samp
+        *ngIf="
+          (description.invalid && submitted) ||
+          (description.dirty && description.invalid)
+        "
+        class="p-error block"
+      >
+        {{ "public.inputRequired" | translate }}
+      </samp>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="flex flex-wrap gap-2 mt-3 mb-2 justify-content-end">
+      <p-button
+        [label]="'public.save' | translate"
+        (click)="createCatgories()"
+      ></p-button>
+
+      <p-button
+        severity="danger"
+        [label]="'public.cancel' | translate"
+        (onClick)="closePopup()"
+      ></p-button>
+    </div>
+  </div>
+</div>

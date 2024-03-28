@@ -36,12 +36,14 @@ export class CreateComponent {
           this.status.getStatusName(StatusEnum.Active)
         ),
         this.translate.getTranslate(
-          this.status.getStatusName(StatusEnum.Inactive)
+          this.status.getStatusName(StatusEnum.Unactive)
         ),
       ];
     }, 1000);
   }
-
+  getIog(event: any) {
+    this.serviceType.logo = event[0];
+  }
   closePopup() {
     this.createService.close();
   }

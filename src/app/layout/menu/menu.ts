@@ -15,7 +15,6 @@ export const menu = [
   {
     label: 'menu.company.title',
     items: [
-
       {
         label: 'menu.service.title',
         icon: 'pi pi-fw pi-home',
@@ -25,6 +24,11 @@ export const menu = [
         label: 'menu.categories.title',
         icon: 'pi pi-fw pi-home',
         routerLink: [routes.categories],
+      },
+      {
+        label: 'categoriesItem.title',
+        icon: 'pi pi-fw pi-home',
+        routerLink: [routes.categoriesItem],
       },
     ],
   },

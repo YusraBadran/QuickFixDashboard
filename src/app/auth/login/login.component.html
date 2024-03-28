@@ -1,14 +1,14 @@
 <div
   class="surface-ground flex align-items-center justify-content-center min-h-screen overflow-hidden"
   style="
-    background-image: url(assets/images/carrr.png);
+    background-image: url(assets/images/Qf.png);
     background-repeat: no-repeat;
-    background-position: left;
-    background-size: 50%;
+    background-position: center;
+    background-size: cover;
   "
 >
   <div
-    style="max-width: 40rem; width: 100%; margin-left: 50%"
+    style="max-width: 40rem; width: 40%"
     class="flex flex-column align-items-center justify-content-center"
   >
     <!-- <img
@@ -24,8 +24,13 @@
       "
     >
       <div
-        class="surface-card py-5 px-5 md:px-8 border-500 hover:border-700 border-left-2 border-right-2"
-        style="border-radius: 53px"
+        class="py-5 px-5 md:px-8 hover:border-red-300 border-indigo-200 border-left-2 border-right-2"
+        style="
+          border-radius: 53px;
+          background: transparent;
+
+          backdrop-filter: blur(10px);
+        "
       >
         <div class="text-center mb-5">
           <img
@@ -37,7 +42,7 @@
           <div class="text-900 text-3xl font-medium mb-1">
             {{ "auth.welcomeBack" | translate }}
           </div>
-          <span class="text-600 font-medium">{{
+          <span class="text-900 font-medium">{{
             "auth.signInToContinue" | translate
           }}</span>
         </div>
@@ -45,7 +50,7 @@
         <div class="grid p-fluid">
           <div class="col-12">
             <div class="flex flex-column">
-              <label for="userNmaeOrEmale">{{
+              <label for="userNmaeOrEmale" class="text-white">{{
                 "auth.signIn.usernameEmail" | translate
               }}</label>
               <input
@@ -56,20 +61,24 @@
                   'auth.signIn.enterYourUserNameOrEmail' | translate
                 "
                 [(ngModel)]="loginRequest.userNameOrEmail"
-                style="padding: 1rem"
+                style="padding: 1rem; background: transparent"
+                class="mt-1 text-white"
               />
             </div>
           </div>
           <div class="col-12">
             <div class="flex flex-column">
-              <label for="password">{{ "auth.password" | translate }}</label>
+              <label for="password" class="text-white">{{
+                "auth.password" | translate
+              }}</label>
               <input
                 pInputText
                 type="password"
                 id="password"
                 [placeholder]="'auth.enterYourPassword' | translate"
                 [(ngModel)]="loginRequest.password"
-                style="padding: 1rem"
+                style="padding: 1rem; background: transparent"
+                class="mt-1 text-white"
               />
             </div>
           </div>
@@ -84,12 +93,12 @@
                   aria-describedby="remember_me"
                   styleClass="mr-2"
                 ></p-checkbox>
-                <label for="remember_me">{{
+                <label for="remember_me" class="text-white">{{
                   "auth.signIn.rememberMe" | translate
                 }}</label>
               </div>
               <a
-                class="font-medium no-underline ml-2 text-right cursor-pointer"
+                class="font-medium no-underline ml-2 text-right cursor-pointer text-white"
                 style="color: var(--primary-color)"
                 >{{ "auth.signIn.forgotPassword" | translate }}</a
               >

@@ -6,6 +6,7 @@ import { TranslatesService } from 'src/app/shared/translate/translate.service';
 import { AlertMessageService } from 'src/app/shared/services/alert-message.service';
 import { BasMicroServicesApiService } from 'src/app/micro-services-api/micro-frontend-options/bas-micro-services-api.service';
 import { map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-update',
@@ -15,6 +16,7 @@ export class UpdateComponent {
   submitted: boolean = false;
   states: any[] = [];
   state: any;
+  imageUrlApi = environment;
   serviceType: ServicesType = new ServicesType();
   status: StatusReturn = new StatusReturn();
   id!: string;
@@ -24,7 +26,9 @@ export class UpdateComponent {
     public messageAlert: AlertMessageService,
     private httpService: BasMicroServicesApiService
   ) {}
-
+  getIog(event: any) {
+    this.serviceType.logo = event[0];
+  }
   closePopup() {
     this.updateService.close();
   }
@@ -72,7 +76,7 @@ export class UpdateComponent {
           this.status.getStatusName(StatusEnum.Active)
         ),
         this.translate.getTranslate(
-          this.status.getStatusName(StatusEnum.Inactive)
+          this.status.getStatusName(StatusEnum.Unactive)
         ),
       ];
     }, 1000);
