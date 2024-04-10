@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { DetailsComponent } from './details.component';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/shared/shared.module';
 
-@Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
+@NgModule({
+  declarations: [DetailsComponent],
+  imports: [CommonModule, SharedModule],
+  exports: [DetailsComponent],
 })
-export class DetailsComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class DetailsModule {}

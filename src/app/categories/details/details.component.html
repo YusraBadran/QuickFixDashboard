@@ -23,7 +23,9 @@
 
   <div class="col-6" *ngIf="categories.subCategory">
     <div class="flex flex-column">
-      <label class="font-bold required mb-2">Sub Category</label>
+      <label class="font-bold required mb-2">{{
+        "categories.subCategory" | translate
+      }}</label>
       <input
         pInputText
         id="subCategory"
@@ -35,12 +37,14 @@
   </div>
   <div class="col-6" *ngIf="categories.serviceType">
     <div class="flex flex-column">
-      <label class="font-bold required mb-2">Service Type</label>
+      <label class="font-bold required mb-2">{{
+        "menu.service.title" | translate
+      }}</label>
       <input
         pInputText
-        id="serviceId"
+        id="serviceType"
         #serviceId="ngModel"
-        [(ngModel)]="categories.serviceId"
+        [(ngModel)]="categories.serviceType.name"
         [disabled]="true"
       />
     </div>

@@ -1,34 +1,33 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Paging } from '../shared/models/paging';
 import { Filters, ItemFilters } from '../shared/models/filter';
-import { environment } from 'src/environments/environment';
 import { StatusReturn } from '../shared/models/status';
+import { environment } from 'src/environments/environment';
 import { BasMicroServicesApiService } from '../micro-services-api/micro-frontend-options/bas-micro-services-api.service';
-import { ServiceCategoriesItem } from './service/categories-item.service';
+import { UserService } from './service/users.service';
 import { TranslatesService } from '../shared/translate/translate.service';
 import { AlertMessageService } from '../shared/services/alert-message.service';
 import { TablePageEvent } from 'primeng/table';
 import { map } from 'rxjs';
 
 @Component({
-  selector: 'app-category-item',
-  templateUrl: './category-item.component.html',
+  selector: 'app-user',
+  templateUrl: './user.component.html',
 })
-export class CategoryItemComponent {
+export class UserComponent {
   paging: Paging = new Paging();
   filter: Filters = new Filters();
   itemFilters!: Array<ItemFilters>;
-  imageUrlApi = environment;
   statusFilter: string = '';
   nameFilter: string = '';
   status: StatusReturn = new StatusReturn();
   page: number = 1;
   rows: number = 5;
+  imageUrlApi = environment;
   tempData!: any[];
-
   constructor(
     private httpService: BasMicroServicesApiService,
-    private serviceCategoriesItem: ServiceCategoriesItem,
+    private userService: UserService,
     public translate: TranslatesService,
     public messageAlert: AlertMessageService
   ) {}
@@ -39,36 +38,39 @@ export class CategoryItemComponent {
     });
     this.paging.data = temp;
   }
+  /**
+   * Change Table Page
+   *
+   * @param event
+   */
   onPageChange(event: TablePageEvent) {
     this.page = event.first / event.rows + 1;
     this.rows = event.rows;
     this.getByPost();
   }
 
-  openCreateCategoriesItemPopup() {
-    this.serviceCategoriesItem.showCreate();
-  }
-  openDetailsCategoriesItemPopup(Id: any) {
-    this.serviceCategoriesItem.showDetails(Id);
-  }
-  openUpdateCategoriesItemPopup(Id: any) {
-    this.serviceCategoriesItem.showUpdate(Id);
-  }
-
-  getCategoryItem() {
+  // openCreateServicesTypePopup() {
+  //   this.userService.showCreate();
+  // }
+  // openDetailsServicesTypePopup(Id: any) {
+  //   this.userService.showDetails(Id);
+  // }
+  // openUpdateServicesTypePopup(Id: any) {
+  //   this.userService.showUpdate(Id);
+  // }
+  getUsers() {
     this.httpService
-      .getByPage('category_item', 1, 5)
+      .getByPage('user', 1, 5)
       .pipe(
         map((response: any) => {
           return response;
         })
       )
       .subscribe((response) => {
-        this.paging = response.categoryItem;
+        this.paging = response.users;
         this.tempData = this.paging.data;
       });
   }
-
   getByPost() {
     this.itemFilters = [];
 
@@ -80,22 +82,25 @@ export class CategoryItemComponent {
       sorts: [],
     };
     this.httpService
-      .getPageByPost('category_item', this.page, this.rows, this.filter)
+      .getPageByPost('user', this.page, this.rows, this.filter)
       .pipe(
         map((response: any) => {
           return response;
         })
       )
       .subscribe((response) => {
-        this.paging = response.categoryItem;
+        this.paging = response.users;
         this.tempData = this.paging.data;
       });
   }
-
+  /**
+   * @description delete data from table
+   * @param val
+   */
   async deleteBtn(Id: any) {
     if (await this.messageAlert.msgQuestion()) {
       this.httpService
-        .delete('category_item', Id)
+        .delete('user', Id)
         .pipe(
           map((response: any) => {
             return response;
@@ -117,13 +122,10 @@ export class CategoryItemComponent {
         );
     }
   }
-
   ngOnInit(): void {
-    this.getCategoryItem();
-    this.serviceCategoriesItem._loadData$.subscribe((res) => {
+    this.getUsers();
+    this.userService._loadData$.subscribe((res) => {
       if (res) {
-        console.log('load data');
-
         this.getByPost();
       }
     });

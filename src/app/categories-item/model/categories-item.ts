@@ -1,4 +1,6 @@
-export class Categories {
+import { Lookups } from 'src/app/shared/models/lookups';
+
+export class CategoriesItem {
   id!: string;
   name!: string;
   logo!: string;
@@ -6,4 +8,6 @@ export class Categories {
   status!: number;
   price!: number;
   categoryId!: string;
+  category: Lookups = new Lookups();
+  image: any[] = [];
 }

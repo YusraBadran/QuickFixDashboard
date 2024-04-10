@@ -43,7 +43,8 @@
       <tr>
         <th>{{ "service.img" | translate }}</th>
         <th>{{ "service.name" | translate }}</th>
-        <th>subCategory</th>
+        <th>{{ "menu.service.title" | translate }}</th>
+        <th>{{ "categories.subCategory" | translate }}</th>
         <th>{{ "service.status" | translate }}</th>
         <th style="width: 12rem; text-align: center">
           {{ "service.actions" | translate }}
@@ -63,7 +64,20 @@
           />
         </td>
         <td>{{ category.name }}</td>
-        <td>{{ category.subCategory?.name }}</td>
+        <td>
+          {{
+            category.serviceType
+              ? category.serviceType?.name
+              : ("categories.nothing" | translate)
+          }}
+        </td>
+        <td>
+          {{
+            category.subCategory
+              ? category.subCategory?.name
+              : ("categories.nothing" | translate)
+          }}
+        </td>
         <td>
           <p-tag
             [value]="status.getStatusName(category.status) | translate"

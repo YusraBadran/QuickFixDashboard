@@ -23,6 +23,7 @@
     "active": "نشط",
     "unactive": "غير نشط",
     "actions": "الإجراءات",
+    "image":"الصوره",
     "confirm": "تأكيد",
     "are_you_sure": "هل أنت متأكد؟",
     "error": "خطأ",
@@ -80,6 +81,7 @@
     "of": "من",
     "to": "إلى",
     "rows": "صفوف",
+    "choose": "اختر",
     "rowsPerPage": "صفوف في الصفحة",
     "firstPage": " الصفحة الأولى",
     "lastPage": "الصفحة الأخيرة",
@@ -166,13 +168,17 @@
   "categories": {
     "name": "اسم الفئه",
     "unit": "الفئه",
-    "category": "الفئات"
+    "category": "الفئات",
+    "nothing" : "لا يوجد",
+    "subCategory": "الفئات الفرعية",
+    "hasSubCategory": "يمتلك فئات فرعية"
   },
   "categoriesItem": {
     "title": "عناصر الفئات",
     "name": "اسم عناصر الفئه",
     "categoryItem": " الفئه",
-    "categoriesItem": "عناصر الفئات"
+    "categoriesItem": "عناصر الفئات",
+    "price": "السعر"
   },
   "setting": {
     "users": {

@@ -1,25 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CategoryItemComponent } from './category-item.component';
-import { RouterModule, Routes } from '@angular/router';
-import { CategoryRoutingModule } from '../categories/category-routing.module';
+import { UserRoutingModule } from './user-routing.module';
+import { UserComponent } from './user.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CustomLoader } from '../shared/models/CustomLoader ';
 import { HttpLoaderFactory } from '../app.module';
-import { ServiceCategoriesItem } from './service/categories-item.service';
+import { UserService } from './service/users.service';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClient } from '@angular/common/http';
-import { CategoryItemRoutingModule } from './category-item-routing.module';
-import { AvatarModule } from 'primeng/avatar';
-import { AvatarGroupModule } from 'primeng/avatargroup';
 
 @NgModule({
-  declarations: [CategoryItemComponent],
+  declarations: [UserComponent],
   imports: [
     CommonModule,
-    CategoryItemRoutingModule,
-    AvatarModule,
-    AvatarGroupModule,
+    UserRoutingModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -30,6 +24,8 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
     }),
     SharedModule,
   ],
-  providers: [ServiceCategoriesItem],
+  providers: [UserService],
+
+  exports: [UserComponent],
 })
-export class CategoryItemModule {}
+export class UserModule {}

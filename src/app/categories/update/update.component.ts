@@ -118,7 +118,7 @@ export class UpdateComponent implements OnInit {
   closePopup() {
     this.updateCategories.close();
   }
-  createCatgories() {
+  updateCategory() {
     // console.log(this.optionValue?.value==true);{
 
     // }
@@ -140,7 +140,7 @@ export class UpdateComponent implements OnInit {
         this.categories.subCategoryId = this.categoryLookupValue.id;
       }
       this.httpService
-        .create('category', this.categories)
+        .update('category', this.categories)
         .pipe(
           map((response: any) => {
             return response;

@@ -28,7 +28,9 @@
 
   <div class="col-6">
     <div class="flex flex-column">
-      <label class="font-bold required mb-2">Has Sub Category</label>
+      <label class="font-bold required mb-2">{{
+        "categories.hasSubCategory" | translate
+      }}</label>
       <p-dropdown
         [options]="option"
         [optionLabel]="'name'"
@@ -40,7 +42,9 @@
 
   <div class="col-6" *ngIf="optionValue?.value == true">
     <div class="flex flex-column">
-      <label class="font-bold required mb-2">Categories</label>
+      <label class="font-bold required mb-2">{{
+        "categories.name" | translate
+      }}</label>
       <p-dropdown
         id="hasSubCategory"
         #hasSubCategory="ngModel"
@@ -70,7 +74,9 @@
   </div>
   <div class="col-6" *ngIf="optionValue?.value != true">
     <div class="flex flex-column">
-      <label class="font-bold required mb-2">Service Type</label>
+      <label class="font-bold required mb-2">{{
+        "menu.service.title" | translate
+      }}</label>
       <p-dropdown
         id="service_type"
         #service_type="ngModel"

@@ -90,6 +90,8 @@
     "refresh": "Refresh",
     "loading": "Loading...",
     "showing": "Showing",
+    "choose": "Choose",
+    "image":"Image",
     "inputRequired": "This field is required",
     "selectorRequired": "Please select",
     "nameAr": " Name Arabic",
@@ -103,6 +105,7 @@
 
 
   "menu": {
+    "menu": "Menu",
     "home": {
       "title": "Home",
       "dashboard": "Dashboard"
@@ -169,13 +172,17 @@
   "categories": {
     "name": "Category Name",
     "category": "Category",
-    "categories": "Categories"
+    "categories": "Categories",
+    "nothing" : "Nothing",
+    "subCategory": "Sub Category",
+    "hasSubCategory": "Has Sub Category"
   },
   "categoriesItem": {
     "title": "Category Item",
     "name": "Category Item Name",
     "category": "Category Item",
-    "categories": "Categories Item"
+    "categories": "Categories Item",
+    "price": "Price"
   },
   "setting": {
     "users": {

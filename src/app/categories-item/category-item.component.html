@@ -43,32 +43,42 @@
       <tr>
         <th>{{ "service.img" | translate }}</th>
         <th>{{ "service.name" | translate }}</th>
-        <th>subCategory</th>
+        <th>{{ "categoriesItem.price" | translate }}</th>
         <th>{{ "service.status" | translate }}</th>
         <th style="width: 12rem; text-align: center">
           {{ "service.actions" | translate }}
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-category>
+    <ng-template pTemplate="body" let-categoryItem>
       <tr>
         <td>
+          <p-avatarGroup styleClass="mb-3">
+            <p-avatar
+              *ngFor="let item of categoryItem.image"
+              [image]="imageUrlApi.serverUrl + '/' + item.url"
+              size="large"
+              shape="circle"
+            ></p-avatar>
+          </p-avatarGroup>
           <img
             [src]="
-              category.logo ? imageUrlApi.serverUrl + '/' + category.logo : ''
+              categoryItem.logo
+                ? imageUrlApi.serverUrl + '/' + categoryItem.logo
+                : ''
             "
             alt=""
             srcset=""
             width="60"
           />
         </td>
-        <td>{{ category.name }}</td>
-        <td>{{ category.subCategory?.name }}</td>
+        <td>{{ categoryItem.name }}</td>
+        <td>{{ categoryItem.price }}</td>
         <td>
           <p-tag
-            [value]="status.getStatusName(category.status) | translate"
-            [icon]="status.getStatusIcon(category.status)"
-            [severity]="status.getStatusStyle(category.status)"
+            [value]="status.getStatusName(categoryItem.status) | translate"
+            [icon]="status.getStatusIcon(categoryItem.status)"
+            [severity]="status.getStatusStyle(categoryItem.status)"
           ></p-tag>
         </td>
         <td>
@@ -76,17 +86,17 @@
             <p-button
               icon="pi pi-info"
               class="p-button-rounded p-button-success"
-              (click)="openDetailsCategoriesItemPopup(category.id)"
+              (click)="openDetailsCategoriesItemPopup(categoryItem.id)"
             ></p-button>
             <p-button
               icon="pi pi-pencil"
-              (click)="openUpdateCategoriesItemPopup(category.id)"
+              (click)="openUpdateCategoriesItemPopup(categoryItem.id)"
               class="p-button-rounded p-button-success mx-1"
             ></p-button>
             <p-button
               icon="pi pi-trash"
               class="p-button-rounded p-button-success"
-              (click)="deleteBtn(category.id)"
+              (click)="deleteBtn(categoryItem.id)"
             ></p-button>
           </div>
         </td>

@@ -35,6 +35,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'users',
+    component: AppLayoutComponent,
+    loadChildren: () => import('./users/user.module').then((m) => m.UserModule),
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
