@@ -75,6 +75,7 @@ export class CreateComponent {
   createCatgories() {
     if (
       this.categoriesItem.name &&
+      this.categoriesItem.price &&
       this.categoriesItem.description &&
       this.state
     ) {

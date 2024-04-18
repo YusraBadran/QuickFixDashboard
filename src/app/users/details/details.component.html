@@ -1,0 +1,182 @@
+<!-- <p-breadcrumb class="max-w-full " styleClass="mb-3" [model]="items" [home]="home"></p-breadcrumb> -->
+<div class="flex flex-wrap gap-2 mt-1 mb-2 justify-content-start">
+  <p-button
+    icon="pi pi-times"
+    [rounded]="true"
+    [routerLink]="rout.users"
+  ></p-button>
+</div>
+
+<div class="card mt-4">
+  <div class="grid p-fluid bg-primary-reverse flex justify-content-center">
+    <p-image
+      src="assets/images/icons/adminLogo.png"
+      alt="Image"
+      width="130"
+      height="130"
+      class="mr-1 mt-4 -ml-8"
+    ></p-image>
+    <div class="flex flex-column">
+      <label class="font-bold mt-5 ml-3">User Name</label>
+      <input
+        pInputText
+        type="text"
+        class="p-inputtext-sm ml-3 border-none"
+        [disabled]="true"
+      />
+      <label class="font-bold ml-3">Email</label>
+      <input
+        pInputText
+        type="text"
+        class="p-inputtext-sm ml-3 border-none"
+        [disabled]="true"
+      />
+    </div>
+    <div class="flex flex-column">
+      <label class="font-bold mt-5 ml-4">PhoneNomber</label>
+      <input
+        pInputText
+        type="text"
+        class="p-inputtext-sm ml-4 border-none"
+        [disabled]="true"
+      />
+      <label class="font-bold ml-4">State</label>
+      <input
+        pInputText
+        type="text"
+        class="p-inputtext-sm ml-4 border-none"
+        [disabled]="true"
+      />
+    </div>
+  </div>
+</div>
+<!-- permission -->
+
+<div class="card">
+  <div class="font-bold text-900 mb-3">
+    <label>{{ "setting.users.permission" | translate }}</label>
+  </div>
+  <!-- table -->
+  <p-table [value]="screen" [tableStyle]="{ 'min-width': '60rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 10%">
+          {{ "setting.permissions.screens" | translate }}
+        </th>
+        <th style="width: 10%">
+          {{ "setting.permissions.isView" | translate }}
+        </th>
+        <th style="width: 10%">{{ "setting.permissions.menu" | translate }}</th>
+        <th style="width: 10%">
+          {{ "setting.permissions.isDetail" | translate }}
+        </th>
+        <th style="width: 10%">
+          {{ "setting.permissions.isCreate" | translate }}
+        </th>
+        <th style="width: 10%">
+          {{ "setting.permissions.isUpdate" | translate }}
+        </th>
+        <th style="width: 10%">
+          {{ "setting.permissions.isDelete" | translate }}
+        </th>
+        <th style="width: 10%">
+          {{ "setting.permissions.isPrint" | translate }}
+        </th>
+        <th style="width: 10%">
+          {{ "setting.permissions.isImport" | translate }}
+        </th>
+        <th style="width: 10%">
+          {{ "setting.permissions.isExport" | translate }}
+        </th>
+        <th style="width: 10%">
+          {{ "setting.permissions.all" | translate }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-screen>
+      <tr>
+        <td>
+          {{ screen.translate | translate }}
+        </td>
+        <td>
+          <p-checkbox
+            [binary]="true"
+            [(ngModel)]="screen.isView"
+            (onChange)="addPermission()"
+          ></p-checkbox>
+        </td>
+        <td>
+          <p-checkbox
+            [binary]="true"
+            [(ngModel)]="screen.menu"
+            [disabled]="!screen.isView"
+            (onChange)="addPermission()"
+          ></p-checkbox>
+        </td>
+        <td>
+          <p-checkbox
+            [binary]="true"
+            [disabled]="!screen.isView"
+            [(ngModel)]="screen.isDetail"
+            (onChange)="addPermission()"
+          ></p-checkbox>
+        </td>
+        <td>
+          <p-checkbox
+            [binary]="true"
+            [disabled]="!screen.isView"
+            [(ngModel)]="screen.isCreated"
+            (onChange)="addPermission()"
+          ></p-checkbox>
+        </td>
+        <td>
+          <p-checkbox
+            [binary]="true"
+            [disabled]="!screen.isView"
+            [(ngModel)]="screen.isUpdated"
+            (onChange)="addPermission()"
+          ></p-checkbox>
+        </td>
+        <td>
+          <p-checkbox
+            [binary]="true"
+            [disabled]="!screen.isView"
+            [(ngModel)]="screen.isDeleted"
+            (onChange)="addPermission()"
+          ></p-checkbox>
+        </td>
+        <td>
+          <p-checkbox
+            [binary]="true"
+            [disabled]="!screen.isView"
+            [(ngModel)]="screen.isPrint"
+            (onChange)="addPermission()"
+          ></p-checkbox>
+        </td>
+        <td>
+          <p-checkbox
+            [binary]="true"
+            [disabled]="!screen.isView"
+            [(ngModel)]="screen.isImport"
+            (onChange)="addPermission()"
+          ></p-checkbox>
+        </td>
+        <td>
+          <p-checkbox
+            [binary]="true"
+            [disabled]="!screen.isView"
+            [(ngModel)]="screen.isExport"
+            (onChange)="addPermission()"
+          ></p-checkbox>
+        </td>
+        <td>
+          <p-checkbox
+            [binary]="true"
+            [(ngModel)]="screen.all"
+            (onChange)="addAllPermissionToScreen()"
+          ></p-checkbox>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

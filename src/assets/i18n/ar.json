@@ -123,7 +123,9 @@
     "setting": {
       "title": "الإعدادات",
       "users": "المستخدمين",
-      "createUser": "إنشاء مستخدم"
+      "createUser": "إنشاء مستخدم",
+      "detailsUser": "تفاصيل المستخدم",
+      "updateUser": "تعديل المستخدم"
     }
   },
   "auth": {
@@ -187,6 +189,8 @@
       "lastName": "الاسم الأخير",
       "userName": "اسم المستخدم",
       "email": "البريد الإلكتروني",
+      "password" : "كلمة المرور",
+      "passwordConfiguration" : "تأكيد كلمة المرور",
       "user": "المستخدم",
       "permission": "الصلاحيات",
       "title": "المستخدمين",
@@ -214,7 +218,8 @@
       "isPrint": "طباعة",
       "isExport": "تصدير",
       "isImport": "استيراد",
-      "all": "الكل"
+      "all": "الكل",
+      "menu":"القائمة"
     }
   },
   "shared": {

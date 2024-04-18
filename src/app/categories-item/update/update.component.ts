@@ -108,12 +108,15 @@ export class UpdateComponent implements OnInit {
   closePopup() {
     this.updateCategories.close();
   }
-  updateCatgories() {
+  updateCategoryItem() {
     if (
       this.categoriesItem.name &&
       this.categoriesItem.description &&
       this.state
     ) {
+      console.log(this.categoryLookupValue);
+      console.log(this.categoryLookupValue);
+
       this.categoriesItem.status = this.status.getStatusNumber(this.state);
       if (
         this.categoryLookupValue &&
@@ -123,7 +126,7 @@ export class UpdateComponent implements OnInit {
         this.categoriesItem.categoryId = this.categoryLookupValue.id;
       }
       this.httpService
-        .update('categoryItem', this.categoriesItem)
+        .update('category_item', this.categoriesItem)
         .pipe(
           map((response: any) => {
             return response;

@@ -9,6 +9,7 @@ import { TranslatesService } from '../shared/translate/translate.service';
 import { AlertMessageService } from '../shared/services/alert-message.service';
 import { TablePageEvent } from 'primeng/table';
 import { map } from 'rxjs';
+import { routes } from '../shared/router/router';
 
 @Component({
   selector: 'app-user',
@@ -17,6 +18,7 @@ import { map } from 'rxjs';
 export class UserComponent {
   paging: Paging = new Paging();
   filter: Filters = new Filters();
+  rout = routes;
   itemFilters!: Array<ItemFilters>;
   statusFilter: string = '';
   nameFilter: string = '';

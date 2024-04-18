@@ -128,7 +128,9 @@
     "setting": {
       "title": "Settings",
       "users": "Users",
-      "createUser": "Create User"
+      "createUser": "Create User",
+      "detailsUser": "Details User",
+      "updateUser": "Update User"
     }
   },
   "auth": {
@@ -191,9 +193,11 @@
       "lastName": "List Name",
       "userName": "User Name",
       "email": "Email",
+      "password" :"Password",
+      "passwordConfiguration" : "password configuration",
       "user": "User",
 
-      "permission": "Permission",
+      "permission": "Permissions",
       "title": "Users",
       "create": "Create User",
       "edit": "Edit User",
@@ -219,7 +223,8 @@
       "isPrint": "Print",
       "isExport": "Export",
       "isImport": "Import",
-      "all": "All"
+      "all": "All",
+      "menu":"Menu"
     }
   },
   "shared": {

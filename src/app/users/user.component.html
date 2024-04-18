@@ -21,6 +21,10 @@
   >
     <ng-template pTemplate="caption">
       <div class="flex">
+        <p-button
+          [label]="'public.add' | translate"
+          [routerLink]="rout.usersCreate"
+        ></p-button>
         <span class="p-input-icon-left ml-auto">
           <i class="pi pi-search"></i>
           <input
@@ -35,49 +39,45 @@
     <ng-template pTemplate="header">
       <tr>
         <!-- <th>{{ "service.img" | translate }}</th> -->
-        <th>fisrtname</th>
-        <th>lastname</th>
+        <th>FullName</th>
+
         <th>username</th>
         <th>email</th>
         <th>phoneNumber</th>
-        <th>lastLoggedInAt</th>
+
         <th>userState</th>
-        <th>createdAt</th>
-        <th>roles</th>
-        <!-- <th style="width: 12rem; text-align: center">
+
+        <th style="width: 12rem; text-align: center">
           {{ "service.actions" | translate }}
-        </th> -->
+        </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-users>
       <tr>
-        <td>{{ users.firstName }}</td>
-        <td>{{ users.lastName }}</td>
+        <td>{{ users.firstName }} {{ users.lastName }}</td>
         <td>{{ users.userName }}</td>
         <td>{{ users.email }}</td>
         <td>{{ users.phoneNumber }}</td>
-        <td>{{ users.lastLoggedInAt }}</td>
         <td>{{ users.userState }}</td>
-        <td>{{ users.createdAt }}</td>
-        <td>{{ users.roles }}</td>
         <td>
-          <!-- <div class="text-center">
+          <div class="text-center">
             <p-button
               icon="pi pi-info"
+              [routerLink]="rout.usersDetails + users.id"
               class="p-button-rounded p-button-success"
             ></p-button>
-             (click)="openDetailsServicesTypePopup(service.id)"
+
             <p-button
               icon="pi pi-pencil"
+              [routerLink]="rout.usersUpdate + users.id"
               class="p-button-rounded p-button-success mx-1"
             ></p-button>
-            <!-- (click)="openUpdateServicesTypePopup(service.id)"
+
             <p-button
               icon="pi pi-trash"
               class="p-button-rounded p-button-success"
             ></p-button>
-            <!-- (click)="deleteBtn(service.id)"
-          </div> -->
+          </div>
         </td>
       </tr>
     </ng-template>

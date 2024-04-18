@@ -39,6 +39,7 @@ const routes: Routes = [
     component: AppLayoutComponent,
     loadChildren: () => import('./users/user.module').then((m) => m.UserModule),
   },
+
   {
     path: '',
     redirectTo: 'dashboard',

@@ -106,20 +106,26 @@
       <label class="font-bold required mb-2">{{
         "categoriesItem.price" | translate
       }}</label>
-      <input
-        pInputText
+      <p-inputNumber
+        mode="decimal"
         id="price"
         #price="ngModel"
         [(ngModel)]="categoriesItem.price"
-        required
+        [minlength]="'0'"
         [placeholder]="'categoriesItem.price' | translate"
         [ngClass]="{
           'ng-dirty':
-            (name.invalid && submitted) || (name.dirty && name.invalid)
+            (price.invalid && submitted) ||
+            (price.dirty && price.invalid) ||
+            (price.value == 0 && submitted)
         }"
-      />
+      ></p-inputNumber>
       <samp
-        *ngIf="(name.invalid && submitted) || (name.dirty && name.invalid)"
+        *ngIf="
+          (price.invalid && submitted) ||
+          (price.dirty && price.invalid) ||
+          (price.value == 0 && submitted)
+        "
         class="p-error block"
       >
         {{ "public.inputRequired" | translate }}

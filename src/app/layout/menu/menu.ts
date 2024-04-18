@@ -13,7 +13,7 @@ export const menu = [
     ],
   },
   {
-    label: 'menu.company.title',
+    label: 'menu.service.title',
     items: [
       {
         label: 'menu.service.title',
@@ -39,11 +39,6 @@ export const menu = [
         label: 'menu.setting.users',
         icon: 'pi pi-fw pi-home',
         routerLink: [routes.users],
-      },
-      {
-        label: 'menu.setting.createUser',
-        icon: 'pi pi-fw pi-home',
-        routerLink: [routes.usersCreate],
       },
     ],
   },

@@ -173,9 +173,10 @@
 
   <div class="col-12">
     <div class="flex flex-wrap gap-2 mt-3 mb-2 justify-content-end">
-      <p-button [label]="'public.save' | translate"></p-button>
-      <!-- (click)="createCatgories()" -->
-
+      <p-button
+        (click)="updateCategoryItem()"
+        [label]="'public.save' | translate"
+      ></p-button>
       <p-button
         severity="danger"
         [label]="'public.cancel' | translate"
