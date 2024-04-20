@@ -40,6 +40,11 @@ export const menu = [
         icon: 'pi pi-fw pi-home',
         routerLink: [routes.users],
       },
+      {
+        label: 'menu.centers.title',
+        icon: 'pi pi-fw pi-home',
+        routerLink: [routes.centers],
+      },
     ],
   },
 ];

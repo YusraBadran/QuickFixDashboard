@@ -4,7 +4,6 @@ import { Filters, ItemFilters } from '../shared/models/filter';
 import { StatusReturn } from '../shared/models/status';
 import { environment } from 'src/environments/environment';
 import { BasMicroServicesApiService } from '../micro-services-api/micro-frontend-options/bas-micro-services-api.service';
-import { UserService } from './service/users.service';
 import { TranslatesService } from '../shared/translate/translate.service';
 import { AlertMessageService } from '../shared/services/alert-message.service';
 import { TablePageEvent } from 'primeng/table';
@@ -29,7 +28,6 @@ export class UserComponent {
   tempData!: any[];
   constructor(
     private httpService: BasMicroServicesApiService,
-    private userService: UserService,
     public translate: TranslatesService,
     public messageAlert: AlertMessageService
   ) {}
@@ -51,15 +49,6 @@ export class UserComponent {
     this.getByPost();
   }
 
-  // openCreateServicesTypePopup() {
-  //   this.userService.showCreate();
-  // }
-  // openDetailsServicesTypePopup(Id: any) {
-  //   this.userService.showDetails(Id);
-  // }
-  // openUpdateServicesTypePopup(Id: any) {
-  //   this.userService.showUpdate(Id);
-  // }
   getUsers() {
     this.httpService
       .getByPage('user', 1, 5)
@@ -126,10 +115,5 @@ export class UserComponent {
   }
   ngOnInit(): void {
     this.getUsers();
-    this.userService._loadData$.subscribe((res) => {
-      if (res) {
-        this.getByPost();
-      }
-    });
   }
 }

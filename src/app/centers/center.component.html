@@ -26,7 +26,7 @@
           [label]="'public.new' | translate"
           class="p-button-outlined"
           icon="pi pi-plus"
-          (click)="openCreateServicesTypePopup()"
+          [routerLink]="rout.usersCreate"
         ></button>
         <span class="p-input-icon-left ml-auto">
           <i class="pi pi-search"></i>
@@ -41,52 +41,43 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th>{{ "service.img" | translate }}</th>
-        <th>{{ "service.name" | translate }}</th>
-        <th>{{ "service.status" | translate }}</th>
+        <th>name</th>
+        <th>description</th>
+        <th>{{ "public.status" | translate }}</th>
+        <th>address</th>
+        <!-- <th>{{ "public.phoneNumber" | translate }}</th> -->
+
         <th style="width: 12rem; text-align: center">
           {{ "service.actions" | translate }}
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-service>
+    <ng-template pTemplate="body" let-category>
       <tr>
-        <td>
-          <img
-            [src]="
-              service.logo ? imageUrlApi.serverUrl + '/' + service.logo : ''
-            "
-            alt=""
-            srcset=""
-            width="60"
-          />
-        </td>
-        <td>{{ service.name }}</td>
-        <td>
-          <p-tag
-            [value]="status.getStatusName(service.status) | translate"
-            [icon]="status.getStatusIcon(service.status)"
-            [severity]="status.getStatusStyle(service.status)"
-          ></p-tag>
-        </td>
+        <td>{{ category.name }}</td>
+        <td>{{ category.description }}</td>
+        <td>{{ category.status }}</td>
+        <td>{{ category.address }}</td>
         <td>
           <div class="text-center">
             <p-button
               icon="pi pi-info"
-              (click)="openDetailsServicesTypePopup(service.id)"
+              [routerLink]="rout.usersDetails + category.id"
               class="p-button-rounded p-button-success"
             ></p-button>
+
             <p-button
               icon="pi pi-pencil"
-              (click)="openUpdateServicesTypePopup(service.id)"
+              [routerLink]="rout.usersUpdate + category.id"
               class="p-button-rounded p-button-success mx-1"
             ></p-button>
-            <p-button
+
+            <!-- <p-button
               icon="pi pi-trash"
-              severity="danger"
-              (click)="deleteBtn(service.id)"
               class="p-button-rounded p-button-success"
-            ></p-button>
+              severity="danger"
+              (click)="deleteBtn(centers.id)"
+            ></p-button> -->
           </div>
         </td>
       </tr>

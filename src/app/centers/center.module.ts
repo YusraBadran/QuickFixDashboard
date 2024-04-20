@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserRoutingModule } from './user-routing.module';
-import { UserComponent } from './user.component';
+import { CenterComponent } from './center.component';
+import { CenterRoutingModule } from './center-routing.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CustomLoader } from '../shared/models/CustomLoader ';
 import { HttpLoaderFactory } from '../app.module';
-import { SharedModule } from '../shared/shared.module';
 import { HttpClient } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [UserComponent],
+  declarations: [CenterComponent],
   imports: [
     CommonModule,
-    UserRoutingModule,
+    CenterRoutingModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -23,7 +23,6 @@ import { HttpClient } from '@angular/common/http';
     }),
     SharedModule,
   ],
-
-  exports: [UserComponent],
+  exports: [CenterComponent],
 })
-export class UserModule {}
+export class CenterModule {}

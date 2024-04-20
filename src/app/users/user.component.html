@@ -21,10 +21,13 @@
   >
     <ng-template pTemplate="caption">
       <div class="flex">
-        <p-button
-          [label]="'public.add' | translate"
+        <button
+          pButton
+          [label]="'public.new' | translate"
+          class="p-button-outlined"
+          icon="pi pi-plus"
           [routerLink]="rout.usersCreate"
-        ></p-button>
+        ></button>
         <span class="p-input-icon-left ml-auto">
           <i class="pi pi-search"></i>
           <input
@@ -38,14 +41,11 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <!-- <th>{{ "service.img" | translate }}</th> -->
-        <th>FullName</th>
-
-        <th>username</th>
-        <th>email</th>
-        <th>phoneNumber</th>
-
-        <th>userState</th>
+        <th>{{ "setting.users.fullName" | translate }}</th>
+        <th>{{ "setting.users.userName" | translate }}</th>
+        <th>{{ "setting.users.email" | translate }}</th>
+        <th>{{ "public.phoneNumber" | translate }}</th>
+        <th>{{ "public.status" | translate }}</th>
 
         <th style="width: 12rem; text-align: center">
           {{ "service.actions" | translate }}
@@ -76,6 +76,8 @@
             <p-button
               icon="pi pi-trash"
               class="p-button-rounded p-button-success"
+              severity="danger"
+              (click)="deleteBtn(users.id)"
             ></p-button>
           </div>
         </td>

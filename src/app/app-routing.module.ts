@@ -39,6 +39,12 @@ const routes: Routes = [
     component: AppLayoutComponent,
     loadChildren: () => import('./users/user.module').then((m) => m.UserModule),
   },
+  {
+    path: 'centers',
+    component: AppLayoutComponent,
+    loadChildren: () =>
+      import('./centers/center.module').then((m) => m.CenterModule),
+  },
 
   {
     path: '',

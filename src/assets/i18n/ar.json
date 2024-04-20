@@ -126,7 +126,10 @@
       "createUser": "إنشاء مستخدم",
       "detailsUser": "تفاصيل المستخدم",
       "updateUser": "تعديل المستخدم"
-    }
+    },
+    "centers":{
+      "title":"المراكز"
+  }
   },
   "auth": {
     "password": "كلمة المرور",

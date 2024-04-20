@@ -1,4 +1,14 @@
 <!-- <p-breadcrumb class="max-w-full " styleClass="mb-3" [model]="items" [home]="home"></p-breadcrumb> -->
+<div class="flex flex-wrap gap-2 mt-1 mb-2 justify-content-start">
+  <p-button
+    icon="pi pi-times"
+    [routerLink]="rout.users"
+    [rounded]="true"
+    severity="danger"
+    [outlined]="true"
+  ></p-button>
+</div>
+
 <div class="card">
   <div class="grid p-fluid bg-primary-reverse border-round">
     <div class="col-6">
@@ -8,12 +18,25 @@
         }}</label>
         <input
           pInputText
-          id="name"
           required
           [placeholder]="'setting.users.firstName' | translate"
+          id="firstName"
+          #firstName="ngModel"
+          [(ngModel)]="user.firstName"
+          [ngClass]="{
+            'ng-dirty':
+              (firstName.invalid && submitted) ||
+              (firstName.dirty && firstName.invalid)
+          }"
         />
 
-        <samp class="p-error block">
+        <samp
+          *ngIf="
+            (firstName.invalid && submitted) ||
+            (firstName.dirty && firstName.invalid)
+          "
+          class="p-error block"
+        >
           {{ "public.inputRequired" | translate }}
         </samp>
       </div>
@@ -26,12 +49,25 @@
         }}</label>
         <input
           pInputText
-          id="name"
           required
           [placeholder]="'setting.users.lastName' | translate"
+          id="lastName"
+          #lastName="ngModel"
+          [(ngModel)]="user.lastName"
+          [ngClass]="{
+            'ng-dirty':
+              (lastName.invalid && submitted) ||
+              (lastName.dirty && lastName.invalid)
+          }"
         />
 
-        <samp class="p-error block">
+        <samp
+          *ngIf="
+            (lastName.invalid && submitted) ||
+            (lastName.dirty && lastName.invalid)
+          "
+          class="p-error block"
+        >
           {{ "public.inputRequired" | translate }}
         </samp>
       </div>
@@ -44,12 +80,25 @@
         }}</label>
         <input
           pInputText
-          id="name"
           required
           [placeholder]="'setting.users.userName' | translate"
+          id="userName"
+          #userName="ngModel"
+          [(ngModel)]="user.userName"
+          [ngClass]="{
+            'ng-dirty':
+              (userName.invalid && submitted) ||
+              (userName.dirty && userName.invalid)
+          }"
         />
 
-        <samp class="p-error block">
+        <samp
+          *ngIf="
+            (userName.invalid && submitted) ||
+            (userName.dirty && userName.invalid)
+          "
+          class="p-error block"
+        >
           {{ "public.inputRequired" | translate }}
         </samp>
       </div>
@@ -62,12 +111,21 @@
         }}</label>
         <input
           pInputText
-          id="Email"
           required
           [placeholder]="'setting.users.email' | translate"
+          id="email"
+          #email="ngModel"
+          [(ngModel)]="user.email"
+          [ngClass]="{
+            'ng-dirty':
+              (email.invalid && submitted) || (email.dirty && email.invalid)
+          }"
         />
 
-        <samp class="p-error block">
+        <samp
+          *ngIf="(email.invalid && submitted) || (email.dirty && email.invalid)"
+          class="p-error block"
+        >
           {{ "public.inputRequired" | translate }}
         </samp>
       </div>
@@ -80,12 +138,25 @@
         }}</label>
         <input
           pInputText
-          id="Email"
           required
           [placeholder]="'public.phoneNumber' | translate"
+          id="phoneNumber"
+          #phoneNumber="ngModel"
+          [(ngModel)]="user.phoneNumber"
+          [ngClass]="{
+            'ng-dirty':
+              (phoneNumber.invalid && submitted) ||
+              (phoneNumber.dirty && phoneNumber.invalid)
+          }"
         />
 
-        <samp class="p-error block">
+        <samp
+          *ngIf="
+            (phoneNumber.invalid && submitted) ||
+            (phoneNumber.dirty && phoneNumber.invalid)
+          "
+          class="p-error block"
+        >
           {{ "public.inputRequired" | translate }}
         </samp>
       </div>
@@ -96,47 +167,18 @@
         <label class="font-bold mb-2">{{ "public.status" | translate }}</label>
         <p-dropdown
           [placeholder]="'public.selectOption' | translate"
+          [options]="states"
+          [(ngModel)]="state"
         ></p-dropdown>
-        <!-- [options]="states"
-        [(ngModel)]="state" -->
-      </div>
-    </div>
-
-    <div class="col-6">
-      <div class="flex flex-column">
-        <label class="font-bold required mb-2">{{
-          "setting.users.password" | translate
-        }}</label>
-        <p-password
-          required
-          [placeholder]="'setting.users.password' | translate"
-        ></p-password>
-
-        <samp class="p-error block">
-          {{ "public.inputRequired" | translate }}
-        </samp>
-      </div>
-    </div>
-
-    <div class="col-6">
-      <div class="flex flex-column">
-        <label class="font-bold required mb-2">{{
-          "setting.users.passwordConfiguration" | translate
-        }}</label>
-        <p-password
-          required
-          [placeholder]="'setting.users.passwordConfiguration' | translate"
-        ></p-password>
-
-        <samp class="p-error block">
-          {{ "public.inputRequired" | translate }}
-        </samp>
       </div>
     </div>
   </div>
 </div>
 
 <div class="card">
+  <div class="font-bold text-900 mb-3">
+    <label>{{ "setting.users.permission" | translate }}</label>
+  </div>
   <!-- table -->
   <p-table [value]="screen" [tableStyle]="{ 'min-width': '60rem' }">
     <ng-template pTemplate="header">
@@ -262,6 +304,8 @@
   </p-table>
 </div>
 <div class="flex flex-wrap gap-2 mt-1 mb-2 justify-content-end">
-  <p-button [label]="'public.save' | translate"></p-button>
-  <!-- (click)="createCatgories()" -->
+  <p-button
+    [label]="'public.save' | translate"
+    (onClick)="updateUser()"
+  ></p-button>
 </div>

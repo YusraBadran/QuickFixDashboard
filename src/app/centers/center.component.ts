@@ -1,22 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Paging } from '../shared/models/paging';
-import { BasMicroServicesApiService } from '../micro-services-api/micro-frontend-options/bas-micro-services-api.service';
-import { ServicesTypeService } from './service/services-type.service';
 import { Filters, ItemFilters } from '../shared/models/filter';
+import { routes } from '../shared/router/router';
 import { StatusReturn } from '../shared/models/status';
-import { TablePageEvent } from 'primeng/table';
-import { TranslatesService } from '../shared/translate/translate.service';
-import { map } from 'rxjs';
-import { AlertMessageService } from '../shared/services/alert-message.service';
 import { environment } from 'src/environments/environment';
+import { BasMicroServicesApiService } from '../micro-services-api/micro-frontend-options/bas-micro-services-api.service';
+import { TranslatesService } from '../shared/translate/translate.service';
+import { AlertMessageService } from '../shared/services/alert-message.service';
+import { map } from 'rxjs';
+import { TablePageEvent } from 'primeng/table';
 
 @Component({
-  selector: 'app-services-type',
-  templateUrl: './services-type.component.html',
+  selector: 'app-center',
+  templateUrl: './center.component.html',
 })
-export class ServicesTypeComponent {
+export class CenterComponent {
   paging: Paging = new Paging();
   filter: Filters = new Filters();
+  rout = routes;
   itemFilters!: Array<ItemFilters>;
   statusFilter: string = '';
   nameFilter: string = '';
@@ -27,7 +28,6 @@ export class ServicesTypeComponent {
   tempData!: any[];
   constructor(
     private httpService: BasMicroServicesApiService,
-    private servicesTypeService: ServicesTypeService,
     public translate: TranslatesService,
     public messageAlert: AlertMessageService
   ) {}
@@ -48,29 +48,20 @@ export class ServicesTypeComponent {
     this.rows = event.rows;
     this.getByPost();
   }
-
-  openCreateServicesTypePopup() {
-    this.servicesTypeService.showCreate();
-  }
-  openDetailsServicesTypePopup(Id: any) {
-    this.servicesTypeService.showDetails(Id);
-  }
-  openUpdateServicesTypePopup(Id: any) {
-    this.servicesTypeService.showUpdate(Id);
-  }
-  getServicesType() {
+  getCenters() {
     this.httpService
-      .getByPage('service_type', 1, 5)
+      .getByPage('centers', 1, 5)
       .pipe(
         map((response: any) => {
           return response;
         })
       )
       .subscribe((response) => {
-        this.paging = response.serviceType;
+        this.paging = response.category;
         this.tempData = this.paging.data;
       });
   }
+
   getByPost() {
     this.itemFilters = [];
 
@@ -82,14 +73,14 @@ export class ServicesTypeComponent {
       sorts: [],
     };
     this.httpService
-      .getPageByPost('service_type', this.page, this.rows, this.filter)
+      .getPageByPost('centers', this.page, this.rows, this.filter)
       .pipe(
         map((response: any) => {
           return response;
         })
       )
       .subscribe((response) => {
-        this.paging = response.serviceType;
+        this.paging = response.category;
         this.tempData = this.paging.data;
       });
   }
@@ -97,37 +88,32 @@ export class ServicesTypeComponent {
    * @description delete data from table
    * @param val
    */
-  async deleteBtn(Id: any) {
-    if (await this.messageAlert.msgQuestion()) {
-      this.httpService
-        .delete('service_type', Id)
-        .pipe(
-          map((response: any) => {
-            return response;
-          })
-        )
-        .subscribe(
-          async (response) => {
-            if (response.data.statusCode != undefined) {
-              if (response.data.statusCode == 200) {
-                if (await this.messageAlert.msgSuccess()) {
-                  this.getByPost();
-                }
-              }
-            }
-          },
-          (error) => {
-            this.messageAlert.msgError(error.detail);
-          }
-        );
-    }
-  }
+  // async deleteBtn(Id: any) {
+  //   if (await this.messageAlert.msgQuestion()) {
+  //     this.httpService
+  //       .delete('user', Id)
+  //       .pipe(
+  //         map((response: any) => {
+  //           return response;
+  //         })
+  //       )
+  //       .subscribe(
+  //         async (response) => {
+  //           if (response.data.statusCode != undefined) {
+  //             if (response.data.statusCode == 200) {
+  //               if (await this.messageAlert.msgSuccess()) {
+  //                 this.getByPost();
+  //               }
+  //             }
+  //           }
+  //         },
+  //         (error) => {
+  //           this.messageAlert.msgError(error.detail);
+  //         }
+  //       );
+  //   }
+  // }
   ngOnInit(): void {
-    this.getServicesType();
-    this.servicesTypeService._loadData$.subscribe((res) => {
-      if (res) {
-        this.getByPost();
-      }
-    });
+    this.getCenters();
   }
 }

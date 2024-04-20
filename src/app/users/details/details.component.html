@@ -3,50 +3,74 @@
   <p-button
     icon="pi pi-times"
     [rounded]="true"
+    severity="danger"
+    [outlined]="true"
     [routerLink]="rout.users"
   ></p-button>
 </div>
 
 <div class="card mt-4">
   <div class="grid p-fluid bg-primary-reverse flex justify-content-center">
-    <p-image
-      src="assets/images/icons/adminLogo.png"
-      alt="Image"
-      width="130"
-      height="130"
-      class="mr-1 mt-4 -ml-8"
-    ></p-image>
-    <div class="flex flex-column">
-      <label class="font-bold mt-5 ml-3">User Name</label>
-      <input
-        pInputText
-        type="text"
-        class="p-inputtext-sm ml-3 border-none"
-        [disabled]="true"
-      />
-      <label class="font-bold ml-3">Email</label>
-      <input
-        pInputText
-        type="text"
-        class="p-inputtext-sm ml-3 border-none"
-        [disabled]="true"
-      />
+    <div class="col-12 md:col-2">
+      <p-image
+        src="assets/images/icons/adminLogo.png"
+        alt="Image"
+        width="130"
+        height="130"
+        class="mr-1 mt-4 -ml-1"
+      ></p-image>
     </div>
-    <div class="flex flex-column">
-      <label class="font-bold mt-5 ml-4">PhoneNomber</label>
-      <input
-        pInputText
-        type="text"
-        class="p-inputtext-sm ml-4 border-none"
-        [disabled]="true"
-      />
-      <label class="font-bold ml-4">State</label>
-      <input
-        pInputText
-        type="text"
-        class="p-inputtext-sm ml-4 border-none"
-        [disabled]="true"
-      />
+    <div class="col-2">
+      <div class="flex flex-column">
+        <label class="font-bold mt-5 ml-3">{{
+          "setting.users.userName" | translate
+        }}</label>
+        <input
+          pInputText
+          id="username"
+          #username="ngModel"
+          [(ngModel)]="user.userName"
+          class="p-inputtext-sm ml-3 border-none"
+          [disabled]="true"
+        />
+      </div>
+      <div class="flex flex-column">
+        <label class="font-bold ml-3">{{
+          "setting.users.email" | translate
+        }}</label>
+        <input
+          pInputText
+          id="email"
+          #email="ngModel"
+          [(ngModel)]="user.email"
+          class="p-inputtext-sm ml-3 border-none"
+          [disabled]="true"
+        />
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="flex flex-column">
+        <label class="font-bold mt-5 ml-4">{{
+          "public.phoneNumber" | translate
+        }}</label>
+        <input
+          pInputText
+          id="phone"
+          #phone="ngModel"
+          [(ngModel)]="user.phoneNumber"
+          class="p-inputtext-sm ml-4 border-none"
+          [disabled]="true"
+        />
+      </div>
+      <div class="flex flex-column">
+        <label class="font-bold ml-4">{{ "public.status" | translate }}</label>
+        <input
+          pInputText
+          [(ngModel)]="state"
+          class="p-inputtext-sm ml-4 border-none"
+          [disabled]="true"
+        />
+      </div>
     </div>
   </div>
 </div>

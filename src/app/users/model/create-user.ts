@@ -7,5 +7,6 @@ export class Createusers {
   phoneNumber!: string;
   password!: string;
   confirmPassword!: string;
-  roles!: string;
+  userState!: Number;
+  roles: any[] = ['admin'];
 }

@@ -76,4 +76,21 @@ export class routes {
   public static get usersUpdate(): string {
     return this.users + '/update/';
   }
+
+  /**
+   * Center routes
+   */
+
+  public static get centers(): string {
+    return this.baseUrl + '/centers/';
+  }
+  public static get centersCreate(): string {
+    return this.centers + '/create/';
+  }
+  public static get centersDetails(): string {
+    return this.centers + '/details/';
+  }
+  public static get centersUpdate(): string {
+    return this.centers + '/update/';
+  }
 }
