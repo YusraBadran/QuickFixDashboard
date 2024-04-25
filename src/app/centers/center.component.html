@@ -26,7 +26,7 @@
           [label]="'public.new' | translate"
           class="p-button-outlined"
           icon="pi pi-plus"
-          [routerLink]="rout.usersCreate"
+          [routerLink]="rout.centersCreate"
         ></button>
         <span class="p-input-icon-left ml-auto">
           <i class="pi pi-search"></i>
@@ -41,10 +41,10 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th>name</th>
-        <th>description</th>
+        <th>{{ "service.name" | translate }}</th>
+        <th>{{ "public.description" | translate }}</th>
         <th>{{ "public.status" | translate }}</th>
-        <th>address</th>
+        <!-- <th>address</th> -->
         <!-- <th>{{ "public.phoneNumber" | translate }}</th> -->
 
         <th style="width: 12rem; text-align: center">
@@ -52,32 +52,32 @@
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-category>
+    <ng-template pTemplate="body" let-center>
       <tr>
-        <td>{{ category.name }}</td>
-        <td>{{ category.description }}</td>
-        <td>{{ category.status }}</td>
-        <td>{{ category.address }}</td>
+        <td>{{ center.name }}</td>
+        <td>{{ center.description }}</td>
+        <td>{{ center.status }}</td>
+        <!-- <td>{{ category.address }}</td> -->
         <td>
           <div class="text-center">
             <p-button
               icon="pi pi-info"
-              [routerLink]="rout.usersDetails + category.id"
+              [routerLink]="rout.centersDetails + center.id"
               class="p-button-rounded p-button-success"
             ></p-button>
 
             <p-button
               icon="pi pi-pencil"
-              [routerLink]="rout.usersUpdate + category.id"
+              [routerLink]="rout.centersUpdate + center.id"
               class="p-button-rounded p-button-success mx-1"
             ></p-button>
 
-            <!-- <p-button
+            <p-button
               icon="pi pi-trash"
               class="p-button-rounded p-button-success"
               severity="danger"
-              (click)="deleteBtn(centers.id)"
-            ></p-button> -->
+              (click)="deleteBtn(center.id)"
+            ></p-button>
           </div>
         </td>
       </tr>

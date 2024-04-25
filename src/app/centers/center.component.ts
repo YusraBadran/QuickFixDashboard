@@ -57,7 +57,7 @@ export class CenterComponent {
         })
       )
       .subscribe((response) => {
-        this.paging = response.category;
+        this.paging = response.center;
         this.tempData = this.paging.data;
       });
   }
@@ -80,7 +80,7 @@ export class CenterComponent {
         })
       )
       .subscribe((response) => {
-        this.paging = response.category;
+        this.paging = response.center;
         this.tempData = this.paging.data;
       });
   }
@@ -88,31 +88,31 @@ export class CenterComponent {
    * @description delete data from table
    * @param val
    */
-  // async deleteBtn(Id: any) {
-  //   if (await this.messageAlert.msgQuestion()) {
-  //     this.httpService
-  //       .delete('user', Id)
-  //       .pipe(
-  //         map((response: any) => {
-  //           return response;
-  //         })
-  //       )
-  //       .subscribe(
-  //         async (response) => {
-  //           if (response.data.statusCode != undefined) {
-  //             if (response.data.statusCode == 200) {
-  //               if (await this.messageAlert.msgSuccess()) {
-  //                 this.getByPost();
-  //               }
-  //             }
-  //           }
-  //         },
-  //         (error) => {
-  //           this.messageAlert.msgError(error.detail);
-  //         }
-  //       );
-  //   }
-  // }
+  async deleteBtn(Id: any) {
+    if (await this.messageAlert.msgQuestion()) {
+      this.httpService
+        .delete('centers', Id)
+        .pipe(
+          map((response: any) => {
+            return response;
+          })
+        )
+        .subscribe(
+          async (response) => {
+            if (response.data.statusCode != undefined) {
+              if (response.data.statusCode == 200) {
+                if (await this.messageAlert.msgSuccess()) {
+                  this.getByPost();
+                }
+              }
+            }
+          },
+          (error) => {
+            this.messageAlert.msgError(error.detail);
+          }
+        );
+    }
+  }
   ngOnInit(): void {
     this.getCenters();
   }
