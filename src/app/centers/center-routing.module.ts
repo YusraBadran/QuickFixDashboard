@@ -10,21 +10,21 @@ const routes: Routes = [
     path: '',
     component: CenterComponent,
   },
-  // {
-  //   path: 'create',
-  //   loadChildren: () =>
-  //     import('./create/create.module').then((m) => m.CreateModule),
-  // },
-  // {
-  //   path: 'details/:id',
-  //   loadChildren: () =>
-  //     import('./details/details.module').then((m) => m.DetailsModule),
-  // },
-  // {
-  //   path: 'update/:id',
-  //   loadChildren: () =>
-  //     import('./update/update.module').then((m) => m.UpdateModule),
-  // },
+  {
+    path: 'create',
+    loadChildren: () =>
+      import('./create/create.module').then((m) => m.CreateModule),
+  },
+  {
+    path: 'details/:id',
+    loadChildren: () =>
+      import('./details/details.module').then((m) => m.DetailsModule),
+  },
+  {
+    path: 'update/:id',
+    loadChildren: () =>
+      import('./update/update.module').then((m) => m.UpdateModule),
+  },
 ];
 
 @NgModule({

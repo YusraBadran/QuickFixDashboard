@@ -1,120 +1,102 @@
-<div
+<!-- <div
   class="surface-ground flex align-items-center justify-content-center min-h-screen overflow-hidden"
   style="
-    background-image: url(assets/images/Qf.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-image: url(assets/images/Qf.png);
   "
+> -->
+<div
+  style="max-width: 40rem; width: 40%; margin-left: 30%"
+  class="flex flex-column align-items-center justify-content-center min-h-screen overflow-hidden"
 >
+  <!-- <div
+    style="border-radius: 56px; padding: 0.3rem; width: -webkit-fill-available"
+  > -->
   <div
-    style="max-width: 40rem; width: 40%"
-    class="flex flex-column align-items-center justify-content-center"
+    class="py-5 px-100 md:px-8 hover:border-cyan-300 border-cyan-600 border-left-3 border-right-3 surface-section webkit-fill-available"
+    style="border-radius: 53px"
   >
-    <!-- <img
-      src="assets/images/quickFixLogo.png"
-      alt="QuickFix logo"
-      class="mb-5 w-6rem flex-shrink-0"
-    /> -->
-    <div
-      style="
-        border-radius: 56px;
-        padding: 0.3rem;
-        width: -webkit-fill-available;
-      "
-    >
-      <div
-        class="py-5 px-5 md:px-8 hover:border-red-300 border-indigo-200 border-left-2 border-right-2"
-        style="
-          border-radius: 53px;
-          background: transparent;
-
-          backdrop-filter: blur(10px);
-        "
-      >
-        <div class="text-center mb-5">
-          <img
-            src="assets/images/icons/user.jpg"
-            alt="Image"
-            height="75"
-            class="mb-3"
+    <div class="text-center mb-5">
+      <img
+        src="assets/images/icons/adminD.png"
+        alt="Image"
+        height="90"
+        class="mb-2"
+      />
+      <div class="text-900 text-3xl font-medium mb-1">
+        {{ "auth.welcomeBack" | translate }}
+      </div>
+      <span class="text-900 font-medium">{{
+        "auth.signInToContinue" | translate
+      }}</span>
+    </div>
+    <div></div>
+    <div class="grid p-fluid">
+      <div class="col-12">
+        <div class="flex flex-column">
+          <label for="userNmaeOrEmale" class="mb-1">{{
+            "auth.signIn.usernameEmail" | translate
+          }}</label>
+          <input
+            pInputText
+            type="text"
+            id="userNmaeOrEmale"
+            [placeholder]="'auth.signIn.enterYourUserNameOrEmail' | translate"
+            [(ngModel)]="loginRequest.userNameOrEmail"
+            style="padding: 1rem; background: transparent"
           />
-          <div class="text-900 text-3xl font-medium mb-1">
-            {{ "auth.welcomeBack" | translate }}
-          </div>
-          <span class="text-900 font-medium">{{
-            "auth.signInToContinue" | translate
-          }}</span>
         </div>
-        <div></div>
-        <div class="grid p-fluid">
-          <div class="col-12">
-            <div class="flex flex-column">
-              <label for="userNmaeOrEmale" class="text-white">{{
-                "auth.signIn.usernameEmail" | translate
-              }}</label>
-              <input
-                pInputText
-                type="text"
-                id="userNmaeOrEmale"
-                [placeholder]="
-                  'auth.signIn.enterYourUserNameOrEmail' | translate
-                "
-                [(ngModel)]="loginRequest.userNameOrEmail"
-                style="padding: 1rem; background: transparent"
-                class="mt-1 text-white"
-              />
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="flex flex-column">
-              <label for="password" class="text-white">{{
-                "auth.password" | translate
-              }}</label>
-              <input
-                pInputText
-                type="password"
-                id="password"
-                [placeholder]="'auth.enterYourPassword' | translate"
-                [(ngModel)]="loginRequest.password"
-                style="padding: 1rem; background: transparent"
-                class="mt-1 text-white"
-              />
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="flex align-items-center justify-content-between mb-2">
-              <div class="flex align-items-center">
-                <p-checkbox
-                  id="remember_me"
-                  [binary]="true"
-                  #remember_me="ngModel"
-                  [(ngModel)]="loginRequest.remember"
-                  aria-describedby="remember_me"
-                  styleClass="mr-2"
-                ></p-checkbox>
-                <label for="remember_me" class="text-white">{{
-                  "auth.signIn.rememberMe" | translate
-                }}</label>
-              </div>
-              <a
-                class="font-medium no-underline ml-2 text-right cursor-pointer text-white"
-                style="color: var(--primary-color)"
-                >{{ "auth.signIn.forgotPassword" | translate }}</a
-              >
-            </div>
-          </div>
-          <div class="col-12">
-            <button
-              pButton
-              pRipple
-              (click)="submit()"
-              [label]="'auth.signIn.login' | translate"
-              class="w-full p-3 text-xl"
-            ></button>
-          </div>
+      </div>
+      <div class="col-12">
+        <div class="flex flex-column">
+          <label for="password" class="mb-1">{{
+            "auth.password" | translate
+          }}</label>
+          <input
+            pInputText
+            type="password"
+            id="password"
+            [placeholder]="'auth.enterYourPassword' | translate"
+            [(ngModel)]="loginRequest.password"
+            style="padding: 1rem; background: transparent"
+          />
         </div>
+      </div>
+      <div class="col-12">
+        <div class="flex align-items-center justify-content-between mb-2">
+          <div class="flex align-items-center">
+            <p-checkbox
+              id="remember_me"
+              [binary]="true"
+              #remember_me="ngModel"
+              [(ngModel)]="loginRequest.remember"
+              aria-describedby="remember_me"
+              styleClass="mr-2 "
+            ></p-checkbox>
+            <label for="remember_me">{{
+              "auth.signIn.rememberMe" | translate
+            }}</label>
+          </div>
+          <a
+            class="font-medium no-underline ml-2 text-right cursor-pointer text-700"
+            style="color: var(--primary-color)"
+            >{{ "auth.signIn.forgotPassword" | translate }}</a
+          >
+        </div>
+      </div>
+      <div class="col-12">
+        <button
+          pButton
+          pRipple
+          (click)="submit()"
+          [label]="'auth.signIn.login' | translate"
+          class="w-full p-3 text-xl bg-cyan-600 hover:bg-cyan-500 border-round-bottom-3xl border-round-top"
+        ></button>
       </div>
     </div>
   </div>
 </div>
+<!-- </div>
+</div> -->

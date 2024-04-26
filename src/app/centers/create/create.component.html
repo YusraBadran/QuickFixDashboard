@@ -1,0 +1,20 @@
+<div class="flex flex-wrap gap-2 mt-1 mb-2 justify-content-start">
+  <p-button
+    icon="pi pi-times"
+    [routerLink]="rout.centers"
+    [rounded]="true"
+    severity="danger"
+    [outlined]="true"
+  ></p-button>
+</div>
+<div class="card">
+  <div class="grid p-filled">
+    <div class="col-12">
+      <shared-address
+        [submitted]="submitted"
+        [canAddMarker]="true"
+        (position)="getPosition($event)"
+      ></shared-address>
+    </div>
+  </div>
+</div>
