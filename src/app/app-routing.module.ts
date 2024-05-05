@@ -45,6 +45,18 @@ const routes: Routes = [
     loadChildren: () =>
       import('./centers/center.module').then((m) => m.CenterModule),
   },
+  {
+    path: 'profile',
+    component: AppLayoutComponent,
+    loadChildren: () =>
+      import('./users/profile/profile.module').then((m) => m.ProfileModule),
+  },
+  {
+    path: 'orders',
+    component: AppLayoutComponent,
+    loadChildren: () =>
+      import('./orders/order.module').then((m) => m.OrderModule),
+  },
 
   {
     path: '',

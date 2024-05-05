@@ -1,10 +1,47 @@
-<!-- <p-breadcrumb class="max-w-full " styleClass="mb-3" [model]="items" [home]="home"></p-breadcrumb> -->
-<div class="flex flex-wrap gap-2 mt-1 mb-2 justify-content-start">
-  <p-button
-    icon="pi pi-times"
-    [rounded]="true"
-    severity="danger"
-    [outlined]="true"
-    [routerLink]="rout.centers"
-  ></p-button>
+<p-breadcrumb
+  class="max-w-full"
+  styleClass="mb-3"
+  [model]="items"
+  [home]="home"
+></p-breadcrumb>
+<div class="card">
+  <div class="grid p-fluid">
+    <div class="col-6">
+      <div class="flex flex-column">
+        <label class="font-bold mb-2">{{ "center.name" | translate }}</label>
+        <p>{{ center.name }}</p>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="flex flex-column">
+        <label class="font-bold mb-2">{{ "center.phone" | translate }}</label>
+        <p>{{ center.phone }}</p>
+      </div>
+    </div>
+    <div class="col-6" style="margin-top: 0px">
+      <!-- col-6 the orginal -->
+      <div class="flex flex-column">
+        <label class="font-bold mb-2">{{ "center.status" | translate }}</label>
+        <p>{{ status.getStatusName(center.state) | translate }}</p>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="flex flex-column">
+        <label class="font-bold mb-2">{{
+          "center.description" | translate
+        }}</label>
+        <p>{{ center.description }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-filled mt-2">
+    <div class="col-12">
+      <h3>{{ "center.location" | translate }}</h3>
+      <shared-address
+        *ngIf="center.address?.id != null"
+        [tempAddress]="center.address"
+        [view]="false"
+      ></shared-address>
+    </div>
+  </div>
 </div>

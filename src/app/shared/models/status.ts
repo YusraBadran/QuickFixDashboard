@@ -8,10 +8,10 @@ export class StatusReturn {
   // void to return status name
   public getStatusName(value: any): string {
     switch (value) {
-      case 1:
+      case StatusEnum.Active:
         return 'public.active';
-      case 0:
-        return 'public.unactive';
+      case StatusEnum.Inactive:
+        return 'public.inactive';
       default:
         return 'public.active';
     }
@@ -19,22 +19,22 @@ export class StatusReturn {
   public getStatusNumber(value: any): number {
     switch (value) {
       case 'Active':
-        return 1;
+        return StatusEnum.Active;
       case 'نشط':
-        return 1;
-      case 'unactive':
-        return 0;
+        return StatusEnum.Active;
+      case 'Inactive':
+        return StatusEnum.Inactive;
       case 'غير نشط':
-        return 0;
+        return StatusEnum.Inactive;
       default:
-        return 1;
+        return StatusEnum.Active;
     }
   }
   public getStatusStyle(value: any): string {
     switch (value) {
-      case 1:
+      case StatusEnum.Active:
         return 'Primary';
-      case 0:
+      case StatusEnum.Inactive:
         return 'danger';
       default:
         return 'Primary';
@@ -43,11 +43,11 @@ export class StatusReturn {
 
   public getStatusIcon(value: any): string {
     switch (value) {
-      case 0:
+      case StatusEnum.Inactive:
         return 'pi pi-times-circle';
-      case 1:
+      case StatusEnum.Active:
         return 'pi pi-check';
-      case 2:
+      case StatusEnum.WaitingList:
         return 'pi pi-info-circle';
       default:
         return 'pi pi-check';
@@ -57,7 +57,16 @@ export class StatusReturn {
 
 // enum class
 export enum StatusEnum {
+  Inactive = 0,
   Active = 1,
-  Unactive = 0,
+  Delete = 2,
+  Locked = 3,
+  WaitingList = 4,
+  Public = 5,
+  Private = 6,
+  Accepted = 7,
+  Rejected = 8,
+  Cancelled = 9,
+  Removed = 10,
 }
 // status class

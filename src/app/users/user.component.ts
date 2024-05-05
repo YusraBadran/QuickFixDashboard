@@ -9,12 +9,18 @@ import { AlertMessageService } from '../shared/services/alert-message.service';
 import { TablePageEvent } from 'primeng/table';
 import { map } from 'rxjs';
 import { routes } from '../shared/router/router';
+import { MenuItem } from 'primeng/api';
+import { Permission } from './model/permissions';
+import { Tokens } from '../shared/models/tokens';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
 })
 export class UserComponent {
+  permission: Permission = new Permission();
+  token = Tokens;
   paging: Paging = new Paging();
   filter: Filters = new Filters();
   rout = routes;
@@ -26,15 +32,26 @@ export class UserComponent {
   rows: number = 5;
   imageUrlApi = environment;
   tempData!: any[];
+  items!: MenuItem[];
+  home!: MenuItem;
   constructor(
     private httpService: BasMicroServicesApiService,
     public translate: TranslatesService,
-    public messageAlert: AlertMessageService
+    public messageAlert: AlertMessageService,
+    private route: Router
   ) {}
   filterUpdate(event: any) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempData.filter(function (d) {
-      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+      return (
+        d.firstName.toLowerCase().indexOf(val) !== -1 ||
+        d.lastName.toLowerCase().indexOf(val) !== -1 ||
+        d.email.toLowerCase().indexOf(val) !== -1 ||
+        d.userName.toLowerCase().indexOf(val) !== -1 ||
+        d.phoneNumber.toLowerCase().indexOf(val) !== -1 ||
+        d.userState.toString().indexOf(val) !== -1 ||
+        !val
+      );
     });
     this.paging.data = temp;
   }
@@ -114,6 +131,19 @@ export class UserComponent {
     }
   }
   ngOnInit(): void {
+    let pagePerm = this.token.getPermissions('users');
+    if (pagePerm == null) {
+      this.route.navigate([this.rout.baseUrl]);
+    }
+    this.permission = pagePerm;
+    setTimeout(() => {
+      this.home = { icon: 'pi pi-home', routerLink: '/' };
+      this.items = [
+        {
+          label: this.translate.getTranslate('setting.users.userList'),
+        },
+      ];
+    }, 1000);
     this.getUsers();
   }
 }

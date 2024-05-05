@@ -80,16 +80,22 @@
       <span>Profile</span>
     </button>
     <p-overlayPanel #profile>
-      <div class="flex align-items-center m-1">
-        <p-button [link]="true" (click)="profile.toggle($event)">
+      <div class="m-1">
+        <p-button
+          [link]="true"
+          [routerLink]="route.profile"
+          styleClass="w-full"
+          (click)="profile.toggle($event)"
+        >
           <i class="pi pi-user"></i>
           <span class="ml-2">{{ token.UserName }}</span>
         </p-button>
       </div>
-      <div class="flex align-items-center m-1">
+      <div class="m-1">
         <p-button
           [text]="true"
           severity="danger "
+          styleClass="w-full"
           (click)="logout(); profile.toggle($event)"
         >
           <i class="pi pi-power-off"></i>

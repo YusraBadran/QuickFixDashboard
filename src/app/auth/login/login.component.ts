@@ -10,9 +10,8 @@ import { LogInRequest } from './model/login_request';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-
 })
-export class LoginComponent  {
+export class LoginComponent {
   public routes = routes;
   public loginRequest: LogInRequest = new LogInRequest();
   public submitted = false;
@@ -33,7 +32,8 @@ export class LoginComponent  {
 
           if (response.statusCode === 200) {
             this.token.setToken(response.data.accessToken);
-            // localStorage.setItem('menu', JSON.stringify(response.data.menu));
+            this.token.setMenu(response.data.menu);
+            this.token.setPermissions(response.data.permissions);
             this._router.navigate([routes.baseUrl]);
           }
         },

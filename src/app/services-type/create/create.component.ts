@@ -17,6 +17,7 @@ export class CreateComponent {
   submitted: boolean = false;
   states: any[] = [];
   state: any;
+  submitLode: boolean = false;
   serviceType: createServiceTypeRequest = new createServiceTypeRequest();
   status: StatusReturn = new StatusReturn();
   constructor(
@@ -36,7 +37,7 @@ export class CreateComponent {
           this.status.getStatusName(StatusEnum.Active)
         ),
         this.translate.getTranslate(
-          this.status.getStatusName(StatusEnum.Unactive)
+          this.status.getStatusName(StatusEnum.Inactive)
         ),
       ];
     }, 1000);
@@ -50,6 +51,7 @@ export class CreateComponent {
   createServiceType() {
     if (this.serviceType.name && this.serviceType.description && this.state) {
       this.serviceType.status = this.status.getStatusNumber(this.state);
+      this.submitLode = true;
       this.httpService
         .create('service_type', this.serviceType)
         .pipe(
@@ -60,6 +62,7 @@ export class CreateComponent {
         .subscribe((response: any) => {
           if (response.data.statusCode === 200) {
             this.messageAlert.saveSuccess();
+            this.submitLode = false;
             this.createService.onClose();
           }
         });

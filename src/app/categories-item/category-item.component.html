@@ -1,3 +1,9 @@
+<p-breadcrumb
+  class="max-w-full"
+  styleClass="mb-3"
+  [model]="items"
+  [home]="home"
+></p-breadcrumb>
 <div class="card">
   <p-table
     #dt
@@ -26,6 +32,7 @@
           [label]="'public.new' | translate"
           class="p-button-outlined"
           icon="pi pi-plus"
+          *ngIf="permission.isCreated"
           (click)="openCreateCategoriesItemPopup()"
         ></button>
         <span class="p-input-icon-left ml-auto">
@@ -53,6 +60,14 @@
     <ng-template pTemplate="body" let-categoryItem>
       <tr>
         <td>
+          <!-- <div class="flex">
+            <img
+              *ngFor="let item of categoryItem.image"
+              [src]="imageUrlApi.serverUrl + '/' + item.url"
+              alt=""
+              width="60"
+            />
+          </div> -->
           <p-avatarGroup styleClass="mb-3">
             <p-avatar
               *ngFor="let item of categoryItem.image"
@@ -61,7 +76,7 @@
               shape="circle"
             ></p-avatar>
           </p-avatarGroup>
-          <img
+          <!-- <img
             [src]="
               categoryItem.logo
                 ? imageUrlApi.serverUrl + '/' + categoryItem.logo
@@ -70,7 +85,7 @@
             alt=""
             srcset=""
             width="60"
-          />
+          /> -->
         </td>
         <td>{{ categoryItem.name }}</td>
         <td>{{ categoryItem.price }}</td>
@@ -85,16 +100,19 @@
           <div class="text-center">
             <p-button
               icon="pi pi-info"
+              *ngIf="permission.isDetail"
               class="p-button-rounded p-button-success"
               (click)="openDetailsCategoriesItemPopup(categoryItem.id)"
             ></p-button>
             <p-button
               icon="pi pi-pencil"
+              *ngIf="permission.isUpdated"
               (click)="openUpdateCategoriesItemPopup(categoryItem.id)"
               class="p-button-rounded p-button-success mx-1"
             ></p-button>
             <p-button
               icon="pi pi-trash"
+              *ngIf="permission.isDeleted"
               severity="danger"
               class="p-button-rounded p-button-success"
               (click)="deleteBtn(categoryItem.id)"

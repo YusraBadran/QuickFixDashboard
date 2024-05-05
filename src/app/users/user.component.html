@@ -1,3 +1,9 @@
+<p-breadcrumb
+  class="max-w-full"
+  styleClass="mb-3"
+  [model]="items"
+  [home]="home"
+></p-breadcrumb>
 <div class="card">
   <p-table
     #dt
@@ -24,6 +30,7 @@
         <button
           pButton
           [label]="'public.new' | translate"
+          *ngIf="permission.isCreated"
           class="p-button-outlined"
           icon="pi pi-plus"
           [routerLink]="rout.usersCreate"
@@ -58,16 +65,24 @@
         <td>{{ users.userName }}</td>
         <td>{{ users.email }}</td>
         <td>{{ users.phoneNumber }}</td>
-        <td>{{ users.userState }}</td>
+        <td>
+          <p-tag
+            [value]="status.getStatusName(users.userState) | translate"
+            [icon]="status.getStatusIcon(users.userState)"
+            [severity]="status.getStatusStyle(users.userState)"
+          ></p-tag>
+        </td>
         <td>
           <div class="text-center">
             <p-button
+              *ngIf="permission.isDetail"
               icon="pi pi-info"
               [routerLink]="rout.usersDetails + users.id"
               class="p-button-rounded p-button-success"
             ></p-button>
 
             <p-button
+              *ngIf="permission.isUpdated"
               icon="pi pi-pencil"
               [routerLink]="rout.usersUpdate + users.id"
               class="p-button-rounded p-button-success mx-1"
@@ -78,6 +93,7 @@
               class="p-button-rounded p-button-success"
               severity="danger"
               (click)="deleteBtn(users.id)"
+              *ngIf="permission.isDeleted"
             ></p-button>
           </div>
         </td>

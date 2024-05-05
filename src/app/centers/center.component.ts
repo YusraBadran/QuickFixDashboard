@@ -9,12 +9,18 @@ import { TranslatesService } from '../shared/translate/translate.service';
 import { AlertMessageService } from '../shared/services/alert-message.service';
 import { map } from 'rxjs';
 import { TablePageEvent } from 'primeng/table';
+import { MenuItem } from 'primeng/api';
+import { Permission } from '../users/model/permissions';
+import { Tokens } from '../shared/models/tokens';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-center',
   templateUrl: './center.component.html',
 })
 export class CenterComponent {
+  permission: Permission = new Permission();
+  token = Tokens;
   paging: Paging = new Paging();
   filter: Filters = new Filters();
   rout = routes;
@@ -26,15 +32,22 @@ export class CenterComponent {
   rows: number = 5;
   imageUrlApi = environment;
   tempData!: any[];
+  items!: MenuItem[];
+  home!: MenuItem;
   constructor(
     private httpService: BasMicroServicesApiService,
     public translate: TranslatesService,
-    public messageAlert: AlertMessageService
+    public messageAlert: AlertMessageService,
+    private route: Router
   ) {}
   filterUpdate(event: any) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempData.filter(function (d) {
-      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+      return (
+        d.name.toLowerCase().indexOf(val) !== -1 ||
+        d.phone.toLowerCase().indexOf(val) !== -1 ||
+        !val
+      );
     });
     this.paging.data = temp;
   }
@@ -114,6 +127,19 @@ export class CenterComponent {
     }
   }
   ngOnInit(): void {
+    let pagePerm = this.token.getPermissions('centers');
+    if (pagePerm == null) {
+      this.route.navigate([this.rout.baseUrl]);
+    }
+    this.permission = pagePerm;
+    setTimeout(() => {
+      this.home = { icon: 'pi pi-home', routerLink: '/' };
+      this.items = [
+        {
+          label: this.translate.getTranslate('center.centerList'),
+        },
+      ];
+    }, 1000);
     this.getCenters();
   }
 }

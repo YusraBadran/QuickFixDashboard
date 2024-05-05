@@ -9,12 +9,20 @@ import { TranslatesService } from '../shared/translate/translate.service';
 import { map } from 'rxjs';
 import { AlertMessageService } from '../shared/services/alert-message.service';
 import { environment } from 'src/environments/environment';
+import { MenuItem } from 'primeng/api';
+import { Permission } from '../users/model/permissions';
+import { Tokens } from '../shared/models/tokens';
+import { Router } from '@angular/router';
+import { routes } from '../shared/router/router';
 
 @Component({
   selector: 'app-services-type',
   templateUrl: './services-type.component.html',
 })
 export class ServicesTypeComponent {
+  permission: Permission = new Permission();
+  token = Tokens;
+  rout = routes;
   paging: Paging = new Paging();
   filter: Filters = new Filters();
   itemFilters!: Array<ItemFilters>;
@@ -25,11 +33,14 @@ export class ServicesTypeComponent {
   rows: number = 5;
   imageUrlApi = environment;
   tempData!: any[];
+  items!: MenuItem[];
+  home!: MenuItem;
   constructor(
     private httpService: BasMicroServicesApiService,
     private servicesTypeService: ServicesTypeService,
     public translate: TranslatesService,
-    public messageAlert: AlertMessageService
+    public messageAlert: AlertMessageService,
+    private route: Router
   ) {}
   filterUpdate(event: any) {
     const val = event.target.value.toLowerCase();
@@ -123,6 +134,19 @@ export class ServicesTypeComponent {
     }
   }
   ngOnInit(): void {
+    let pagePerm = this.token.getPermissions('serviceType');
+    if (pagePerm == null) {
+      this.route.navigate([this.rout.baseUrl]);
+    }
+    this.permission = pagePerm;
+    setTimeout(() => {
+      this.home = { icon: 'pi pi-home', routerLink: '/' };
+      this.items = [
+        {
+          label: this.translate.getTranslate('service.serviceList'),
+        },
+      ];
+    }, 1000);
     this.getServicesType();
     this.servicesTypeService._loadData$.subscribe((res) => {
       if (res) {

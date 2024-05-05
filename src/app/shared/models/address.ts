@@ -1,7 +1,7 @@
 export class Address {
   id!: any;
-  address!: string;
-  longitude!: string;
-  latitude!: string;
+  location!: string;
+  longitude!: number;
+  latitude!: number;
   description!: string;
 }

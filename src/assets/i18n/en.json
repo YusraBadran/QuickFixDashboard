@@ -16,6 +16,8 @@
     "upload": "Upload",
     "edit": "Edit",
     "delete": "Delete",
+    "details": "Details",
+    "update": "Update",
     "save": "Save",
     "saveCont": "Save And continue",
     "cancel": "Cancel",
@@ -24,7 +26,7 @@
     "no": "No",
     "status": "Status",
     "active": "Active",
-    "unactive": "unactive",
+    "inactive": "Inactive",
     "email": "Email",
     "confirm": "Confirm",
     "are_you_sure": "Are you sure?",
@@ -116,18 +118,22 @@
     },
     "service": {
       "title": "Services",
+      "serviceType": "Service Type",
       "create": "Create Service"
     },
-    "units": {
-      "title": "Units",
-      "create": "Create Unit"
-    },
+  "orders":{
+    "title":"Orders"
+  },
     "categories": {
       "title": "Categories"
+    },
+    "categoryItems": {
+      "title": "Category Items"
     },
     "setting": {
       "title": "Settings",
       "users": "Users",
+      "profile" : "Profile",
       "createUser": "Create User",
       "detailsUser": "Details User",
       "updateUser": "Update User"
@@ -156,38 +162,52 @@
   "service": {
     "service": "Service",
     "services": "Services",
+    "serviceList": "Service List",
     "name": "Service Name",
     "pricePerUnit": "Price Per Unit",
     "unit": "Unit",
     "img":"Image",
-    "name": "Name",
+    "serviceUpdate": "Update Service",
+    "serviceDetail": "Service Detail",
+    "serviceCreate": "Create Service",
     "status" : "Status",
     "search" : "Search...",
     "actions" :"Actions"
   },
-  "units": {
-    "name": "Unit Name",
-    "shortName": "Short Name",
-    "unit": "Unit",
-    "units": "Units",
-    "unitType": "Unit Type",
-    "public": "Public",
-    "private": "Private"
-  },
+
   "categories": {
     "name": "Category Name",
     "category": "Category",
     "categories": "Categories",
     "nothing" : "Nothing",
     "subCategory": "Sub Category",
-    "hasSubCategory": "Has Sub Category"
+    "hasSubCategory": "Has Sub Category",
+    "categoryList": "Category List",
+    "categoryCreate": "Create Category",
+    "categoryUpdate": "Update Category",
+    "categoryDetail": "Category Detail"
   },
   "categoriesItem": {
     "title": "Category Item",
     "name": "Category Item Name",
     "category": "Category Item",
+    "categoryItemList": "Category Item List",
     "categories": "Categories Item",
-    "price": "Price"
+    "price": "Price",
+    "categoryItemCreate": "Create Category Item",
+    "categoryItemUpdate": "Update Category Item",
+    "categoryItemDetail": "Category Item Detail"
+  },
+  "center" : {
+    "center": "Center",
+    "centerList": "Center List",
+    "name": "Center Name",
+    "phone": "Phone",
+    "address": "Address",
+    "description": "Description",
+    "status": "Status",
+    "actions": "Actions",
+    "location":"location"
   },
   "setting": {
     "users": {
@@ -199,7 +219,7 @@
       "password" :"Password",
       "passwordConfiguration" : "password configuration",
       "user": "User",
-
+      "userList":"User List",
       "permission": "Permissions",
       "title": "Users",
       "create": "Create User",

@@ -1,3 +1,9 @@
+<p-breadcrumb
+  class="max-w-full"
+  styleClass="mb-3"
+  [model]="items"
+  [home]="home"
+></p-breadcrumb>
 <div class="card">
   <p-table
     #dt
@@ -26,6 +32,7 @@
           [label]="'public.new' | translate"
           class="p-button-outlined"
           icon="pi pi-plus"
+          *ngIf="permission.isCreated"
           (click)="openCreateServicesTypePopup()"
         ></button>
         <span class="p-input-icon-left ml-auto">
@@ -73,16 +80,19 @@
           <div class="text-center">
             <p-button
               icon="pi pi-info"
+              *ngIf="permission.isDetail"
               (click)="openDetailsServicesTypePopup(service.id)"
               class="p-button-rounded p-button-success"
             ></p-button>
             <p-button
               icon="pi pi-pencil"
+              *ngIf="permission.isUpdated"
               (click)="openUpdateServicesTypePopup(service.id)"
               class="p-button-rounded p-button-success mx-1"
             ></p-button>
             <p-button
               icon="pi pi-trash"
+              *ngIf="permission.isDeleted"
               severity="danger"
               (click)="deleteBtn(service.id)"
               class="p-button-rounded p-button-success"

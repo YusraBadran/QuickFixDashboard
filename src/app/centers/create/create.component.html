@@ -1,20 +1,131 @@
-<div class="flex flex-wrap gap-2 mt-1 mb-2 justify-content-start">
-  <p-button
-    icon="pi pi-times"
-    [routerLink]="rout.centers"
-    [rounded]="true"
-    severity="danger"
-    [outlined]="true"
-  ></p-button>
-</div>
+<p-breadcrumb
+  class="max-w-full"
+  styleClass="mb-3"
+  [model]="items"
+  [home]="home"
+></p-breadcrumb>
 <div class="card">
-  <div class="grid p-filled">
+  <div class="grid p-fluid">
+    <div class="col-6">
+      <div class="flex flex-column">
+        <label class="font-bold required mb-2">{{
+          "center.name" | translate
+        }}</label>
+        <input
+          pInputText
+          required
+          [placeholder]="'center.name' | translate"
+          id="name"
+          #name="ngModel"
+          [(ngModel)]="center.name"
+          [ngClass]="{
+            'ng-dirty':
+              (name.invalid && submitted) || (name.dirty && name.invalid)
+          }"
+        />
+
+        <samp
+          *ngIf="(name.invalid && submitted) || (name.dirty && name.invalid)"
+          class="p-error block"
+        >
+          {{ "public.inputRequired" | translate }}
+        </samp>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="flex flex-column">
+        <label class="font-bold required mb-2">{{
+          "center.phone" | translate
+        }}</label>
+        <input
+          pInputText
+          required
+          [placeholder]="'center.phone' | translate"
+          id="phoneNumber"
+          #phoneNumber="ngModel"
+          [(ngModel)]="phone"
+          [ngClass]="{
+            'ng-dirty':
+              (phoneNumber.invalid && submitted) ||
+              (phoneNumber.dirty && phoneNumber.invalid)
+          }"
+        />
+
+        <samp
+          *ngIf="
+            (phoneNumber.invalid && submitted) ||
+            (phoneNumber.dirty && phoneNumber.invalid)
+          "
+          class="p-error block"
+        >
+          {{ "public.inputRequired" | translate }}
+        </samp>
+      </div>
+    </div>
+    <div class="col-6" style="margin-top: 0px">
+      <!-- col-6 the orginal -->
+      <div class="flex flex-column">
+        <label class="font-bold mb-2">{{ "center.status" | translate }}</label>
+        <p-dropdown
+          [options]="states"
+          [(ngModel)]="state"
+          [placeholder]="'public.selectOption' | translate"
+        ></p-dropdown>
+      </div>
+    </div>
     <div class="col-12">
+      <div class="flex flex-column">
+        <label class="font-bold required mb-2">{{
+          "center.description" | translate
+        }}</label>
+
+        <textarea
+          pInputTextarea
+          id="description"
+          #description="ngModel"
+          [(ngModel)]="center.description"
+          required
+          [placeholder]="'center.description' | translate"
+          [ngClass]="{
+            'ng-dirty':
+              (description.invalid && submitted) ||
+              (description.dirty && description.invalid)
+          }"
+        ></textarea>
+        <samp
+          *ngIf="
+            (description.invalid && submitted) ||
+            (description.dirty && description.invalid)
+          "
+          class="p-error block"
+        >
+          {{ "public.inputRequired" | translate }}
+        </samp>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-filled mt-2">
+    <div class="col-12">
+      <h3>{{ "center.location" | translate }}</h3>
       <shared-address
         [submitted]="submitted"
         [canAddMarker]="true"
         (position)="getPosition($event)"
       ></shared-address>
+    </div>
+    <div class="col-12 m-1">
+      <div class="flex flex-wrap gap-2 mt-3 mb-2 justify-content-end">
+        <p-button
+          [label]="'public.save' | translate"
+          [loading]="submitLode"
+          (click)="createCenter()"
+        ></p-button>
+        <p-button
+          severity="danger"
+          [routerLink]="rout.centers"
+          [label]="'public.cancel' | translate"
+        ></p-button>
+      </div>
     </div>
   </div>
 </div>

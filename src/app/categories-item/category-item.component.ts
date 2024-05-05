@@ -9,12 +9,20 @@ import { TranslatesService } from '../shared/translate/translate.service';
 import { AlertMessageService } from '../shared/services/alert-message.service';
 import { TablePageEvent } from 'primeng/table';
 import { map } from 'rxjs';
+import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
+import { routes } from '../shared/router/router';
+import { Tokens } from '../shared/models/tokens';
+import { Permission } from '../users/model/permissions';
 
 @Component({
   selector: 'app-category-item',
   templateUrl: './category-item.component.html',
 })
 export class CategoryItemComponent {
+  permission: Permission = new Permission();
+  token = Tokens;
+  rout = routes;
   paging: Paging = new Paging();
   filter: Filters = new Filters();
   itemFilters!: Array<ItemFilters>;
@@ -25,12 +33,14 @@ export class CategoryItemComponent {
   page: number = 1;
   rows: number = 5;
   tempData!: any[];
-
+  items!: MenuItem[];
+  home!: MenuItem;
   constructor(
     private httpService: BasMicroServicesApiService,
     private serviceCategoriesItem: ServiceCategoriesItem,
     public translate: TranslatesService,
-    public messageAlert: AlertMessageService
+    public messageAlert: AlertMessageService,
+    private route: Router
   ) {}
   filterUpdate(event: any) {
     const val = event.target.value.toLowerCase();
@@ -119,6 +129,19 @@ export class CategoryItemComponent {
   }
 
   ngOnInit(): void {
+    let pagePerm = this.token.getPermissions('centers');
+    if (pagePerm == null) {
+      this.route.navigate([this.rout.baseUrl]);
+    }
+    this.permission = pagePerm;
+    setTimeout(() => {
+      this.home = { icon: 'pi pi-home', routerLink: '/' };
+      this.items = [
+        {
+          label: this.translate.getTranslate('categoriesItem.categoryItemList'),
+        },
+      ];
+    }, 1000);
     this.getCategoryItem();
     this.serviceCategoriesItem._loadData$.subscribe((res) => {
       if (res) {

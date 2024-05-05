@@ -1,3 +1,9 @@
+<p-breadcrumb
+  class="max-w-full"
+  styleClass="mb-3"
+  [model]="items"
+  [home]="home"
+></p-breadcrumb>
 <div class="card">
   <p-table
     #dt
@@ -26,6 +32,7 @@
           [label]="'public.new' | translate"
           class="p-button-outlined"
           icon="pi pi-plus"
+          *ngIf="permission.isCreated"
           [routerLink]="rout.centersCreate"
         ></button>
         <span class="p-input-icon-left ml-auto">
@@ -41,39 +48,48 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th>{{ "service.name" | translate }}</th>
-        <th>{{ "public.description" | translate }}</th>
-        <th>{{ "public.status" | translate }}</th>
+        <th>{{ "center.name" | translate }}</th>
+        <th>{{ "center.phone" | translate }}</th>
+        <th>{{ "center.status" | translate }}</th>
         <!-- <th>address</th> -->
         <!-- <th>{{ "public.phoneNumber" | translate }}</th> -->
 
         <th style="width: 12rem; text-align: center">
-          {{ "service.actions" | translate }}
+          {{ "center.actions" | translate }}
         </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-center>
       <tr>
         <td>{{ center.name }}</td>
-        <td>{{ center.description }}</td>
-        <td>{{ center.status }}</td>
-        <!-- <td>{{ category.address }}</td> -->
+        <td>{{ center.phone }}</td>
+
+        <td>
+          <p-tag
+            [value]="status.getStatusName(center.status) | translate"
+            [icon]="status.getStatusIcon(center.status)"
+            [severity]="status.getStatusStyle(center.status)"
+          ></p-tag>
+        </td>
         <td>
           <div class="text-center">
             <p-button
               icon="pi pi-info"
+              *ngIf="permission.isDetail"
               [routerLink]="rout.centersDetails + center.id"
               class="p-button-rounded p-button-success"
             ></p-button>
 
             <p-button
               icon="pi pi-pencil"
+              *ngIf="permission.isUpdated"
               [routerLink]="rout.centersUpdate + center.id"
               class="p-button-rounded p-button-success mx-1"
             ></p-button>
 
             <p-button
               icon="pi pi-trash"
+              *ngIf="permission.isDeleted"
               class="p-button-rounded p-button-success"
               severity="danger"
               (click)="deleteBtn(center.id)"

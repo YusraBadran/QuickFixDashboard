@@ -1,6 +1,7 @@
 <div class="flex flex-column">
   <p-fileUpload
     name="demo[]"
+    accept=".png, .jpg, .jpeg"
     (onSelect)="onUpload($event)"
     (onRemove)="onRemove($event)"
     [multiple]="multiple"

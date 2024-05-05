@@ -15,6 +15,7 @@ import { map } from 'rxjs';
 })
 export class CreateComponent {
   submitted: boolean = false;
+  submitLode: boolean = false;
   states: any[] = [];
   state: any;
   categories: createCategoriesRequest = new createCategoriesRequest();
@@ -42,7 +43,7 @@ export class CreateComponent {
           this.status.getStatusName(StatusEnum.Active)
         ),
         this.translate.getTranslate(
-          this.status.getStatusName(StatusEnum.Unactive)
+          this.status.getStatusName(StatusEnum.Inactive)
         ),
       ];
       this.option = [
@@ -108,6 +109,7 @@ export class CreateComponent {
       ) {
         this.categories.subCategoryId = this.categoryLookupValue.id;
       }
+      this.submitLode = true;
       this.httpService
         .create('category', this.categories)
         .pipe(
@@ -118,6 +120,7 @@ export class CreateComponent {
         .subscribe((response: any) => {
           if (response.data.statusCode === 200) {
             this.messageAlert.saveSuccess();
+            this.submitLode = false;
             this.createCategories.onClose();
           }
         });

@@ -1,3 +1,9 @@
+<p-breadcrumb
+  class="max-w-full"
+  styleClass="mb-3"
+  [model]="items"
+  [home]="home"
+></p-breadcrumb>
 <div class="card">
   <p-table
     #dt
@@ -26,6 +32,7 @@
           [label]="'public.new' | translate"
           class="p-button-outlined"
           icon="pi pi-plus"
+          *ngIf="permission.isCreated"
           (click)="openCreateCategoriesPopup()"
         ></button>
         <span class="p-input-icon-left ml-auto">
@@ -89,16 +96,19 @@
           <div class="text-center">
             <p-button
               icon="pi pi-info"
+              *ngIf="permission.isDetail"
               class="p-button-rounded p-button-success"
               (click)="openDetailsCategoriesPopup(category.id)"
             ></p-button>
             <p-button
               icon="pi pi-pencil"
+              *ngIf="permission.isUpdated"
               (click)="openUpdateCategoriesPopup(category.id)"
               class="p-button-rounded p-button-success mx-1"
             ></p-button>
             <p-button
               icon="pi pi-trash"
+              *ngIf="permission.isDeleted"
               severity="danger"
               class="p-button-rounded p-button-success"
               (click)="deleteBtn(category.id)"

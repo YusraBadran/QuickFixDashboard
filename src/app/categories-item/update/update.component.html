@@ -175,6 +175,7 @@
     <div class="flex flex-wrap gap-2 mt-3 mb-2 justify-content-end">
       <p-button
         (click)="updateCategoryItem()"
+        [loading]="submitLode"
         [label]="'public.save' | translate"
       ></p-button>
       <p-button

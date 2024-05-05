@@ -14,6 +14,7 @@ import { BasMicroServicesApiService } from 'src/app/micro-services-api/micro-fro
 })
 export class CreateComponent {
   submitted: boolean = false;
+  submitLode: boolean = false;
   states: any[] = [];
   state: any;
   categoriesItem: createCategoriesItemRequest =
@@ -40,7 +41,7 @@ export class CreateComponent {
           this.status.getStatusName(StatusEnum.Active)
         ),
         this.translate.getTranslate(
-          this.status.getStatusName(StatusEnum.Unactive)
+          this.status.getStatusName(StatusEnum.Inactive)
         ),
       ];
       this.option = [
@@ -87,6 +88,7 @@ export class CreateComponent {
       ) {
         this.categoriesItem.categoryId = this.categoryLookupValue.id;
       }
+      this.submitLode = true;
       this.httpService
         .create('category_item', this.categoriesItem)
         .pipe(
@@ -97,6 +99,7 @@ export class CreateComponent {
         .subscribe((response: any) => {
           if (response.data.statusCode === 200) {
             this.messageAlert.saveSuccess();
+            this.submitLode = false;
             this.createCategoriesItem.onClose();
           }
         });

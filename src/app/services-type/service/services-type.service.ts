@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { CreateComponent } from '../create/create.component';
 import { DetailsComponent } from '../details/details.component';
 import { UpdateComponent } from '../update/update.component';
+import { TranslatesService } from 'src/app/shared/translate/translate.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,10 +15,13 @@ export class ServicesTypeService {
   public Id: any;
   private _loadData = new BehaviorSubject<boolean>(false);
   public readonly _loadData$ = this._loadData.asObservable();
-  constructor(public dialogService: DialogService) {}
+  constructor(
+    public dialogService: DialogService,
+    private translate: TranslatesService
+  ) {}
   showCreate() {
     this.ref = this.dialogService.open(CreateComponent, {
-      header: 'Create Service Type',
+      header: this.translate.getTranslate('service.serviceCreate'),
       width: '50rem',
       contentStyle: {
         'max-height': '800px',
@@ -29,7 +33,7 @@ export class ServicesTypeService {
   showDetails(Id: any) {
     this.Id = Id;
     this.ref = this.dialogService.open(DetailsComponent, {
-      header: 'Details Category',
+      header: this.translate.getTranslate('service.serviceDetail'),
       width: '50rem',
 
       contentStyle: {
@@ -42,7 +46,7 @@ export class ServicesTypeService {
   showUpdate(Id: any) {
     this.Id = Id;
     this.ref = this.dialogService.open(UpdateComponent, {
-      header: 'Update Category',
+      header: this.translate.getTranslate('service.serviceUpdate'),
       width: '50rem',
 
       contentStyle: {

@@ -8,6 +8,7 @@ import { TranslatesService } from 'src/app/shared/translate/translate.service';
 import { AlertMessageService } from 'src/app/shared/services/alert-message.service';
 import { BasMicroServicesApiService } from 'src/app/micro-services-api/micro-frontend-options/bas-micro-services-api.service';
 import { map } from 'rxjs';
+import { UpdateCategoriesRequest } from '../model/update-Requst';
 
 @Component({
   selector: 'app-update',
@@ -19,8 +20,10 @@ export class UpdateComponent implements OnInit {
   states: any[] = [];
   state: any;
   categories: Categories = new Categories();
+  categoryUpdate: UpdateCategoriesRequest = new UpdateCategoriesRequest();
   status: StatusReturn = new StatusReturn();
   serviceType: any;
+  submitLode: boolean = false;
   serviceTypeValue = {} as any;
   categoryLookup: any;
   categoryLookupValue = {} as any;
@@ -41,7 +44,7 @@ export class UpdateComponent implements OnInit {
           this.status.getStatusName(StatusEnum.Active)
         ),
         this.translate.getTranslate(
-          this.status.getStatusName(StatusEnum.Unactive)
+          this.status.getStatusName(StatusEnum.Inactive)
         ),
       ];
       this.option = [
@@ -113,34 +116,35 @@ export class UpdateComponent implements OnInit {
       });
   }
   getIog(event: any) {
-    this.serviceType.logo = event[0];
+    this.categories.logo = event[0];
   }
   closePopup() {
     this.updateCategories.close();
   }
   updateCategory() {
-    // console.log(this.optionValue?.value==true);{
-
-    // }
-
     if (this.categories.name && this.categories.description && this.state) {
-      this.categories.state = this.status.getStatusNumber(this.state);
+      this.categoryUpdate.id = this.categories.id;
+      this.categoryUpdate.name = this.categories.name;
+      this.categoryUpdate.description = this.categories.description;
+      this.categoryUpdate.logo = this.categories.logo;
+      this.categoryUpdate.state = this.status.getStatusNumber(this.state);
       if (
         this.serviceTypeValue &&
         this.serviceTypeValue != null &&
         this.serviceTypeValue != undefined
       ) {
-        this.categories.serviceId = this.serviceTypeValue.id;
+        this.categoryUpdate.serviceId = this.serviceTypeValue.id;
       }
       if (
         this.categoryLookupValue &&
         this.categoryLookupValue != null &&
         this.categoryLookupValue != undefined
       ) {
-        this.categories.subCategoryId = this.categoryLookupValue.id;
+        this.categoryUpdate.subCategoryId = this.categoryLookupValue.id;
       }
+      this.submitLode = true;
       this.httpService
-        .update('category', this.categories)
+        .update('category', this.categoryUpdate)
         .pipe(
           map((response: any) => {
             return response;
@@ -149,6 +153,7 @@ export class UpdateComponent implements OnInit {
         .subscribe((response: any) => {
           if (response.data.statusCode === 200) {
             this.messageAlert.saveSuccess();
+            this.submitLode = false;
             this.updateCategories.onClose();
           }
         });

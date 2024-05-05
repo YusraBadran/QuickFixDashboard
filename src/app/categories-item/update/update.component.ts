@@ -14,21 +14,9 @@ import { map } from 'rxjs';
   templateUrl: './update.component.html',
 })
 export class UpdateComponent implements OnInit {
-  // id: any;
-  // submitted: boolean = false;
-  // states: any[] = [];
-  // state: any;
-  // categoriesItem: CategoriesItem = new CategoriesItem();
-  // status: StatusReturn = new StatusReturn();
-  // serviceType: any;
-  // serviceTypeValue = {} as any;
-  // categoryLookup: any;
-  // categoryLookupValue = {} as any;
-  // option: any[] = [];
-  // optionValue: any = {} as any;
-
   id: any;
   submitted: boolean = false;
+  submitLode: boolean = false;
   states: any[] = [];
   state: any;
   categoriesItem: CategoriesItem = new CategoriesItem();
@@ -55,7 +43,7 @@ export class UpdateComponent implements OnInit {
           this.status.getStatusName(StatusEnum.Active)
         ),
         this.translate.getTranslate(
-          this.status.getStatusName(StatusEnum.Unactive)
+          this.status.getStatusName(StatusEnum.Inactive)
         ),
       ];
       this.option = [
@@ -125,6 +113,7 @@ export class UpdateComponent implements OnInit {
       ) {
         this.categoriesItem.categoryId = this.categoryLookupValue.id;
       }
+      this.submitLode = true;
       this.httpService
         .update('category_item', this.categoriesItem)
         .pipe(
@@ -135,6 +124,7 @@ export class UpdateComponent implements OnInit {
         .subscribe((response: any) => {
           if (response.data.statusCode === 200) {
             this.messageAlert.saveSuccess();
+            this.submitLode = false;
             this.updateCategories.onClose();
           }
         });

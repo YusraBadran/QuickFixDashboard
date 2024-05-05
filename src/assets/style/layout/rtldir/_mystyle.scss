@@ -312,3 +312,9 @@
   left: 0.75rem;
   right: auto;
 }
+.p-breadcrumb .p-breadcrumb-list li.p-menuitem-separator {
+  transform: rotate(180deg);
+}
+.p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+  margin-right: 0 !important;
+}

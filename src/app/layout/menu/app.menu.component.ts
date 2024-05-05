@@ -12,8 +12,8 @@ import { BasMicroServicesApiService } from '../../micro-services-api/micro-front
   templateUrl: './app.menu.component.html',
 })
 export class AppMenuComponent implements OnInit {
-  model: any[] = menu;
-  // model: any[] = [];
+  // model: any[] = menu;
+  model: any[] = [];
   constructor(
     public layoutService: LayoutService,
     private loadMenu: MenuService,
@@ -26,5 +26,9 @@ export class AppMenuComponent implements OnInit {
     // if (menudata) {
     //   this.model = JSON.parse(menudata);
     // }
+    var menuData = localStorage.getItem('menu') ?? null;
+    if (menuData) {
+      this.model = JSON.parse(menuData);
+    }
   }
 }

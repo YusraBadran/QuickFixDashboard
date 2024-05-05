@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UpdateComponent {
   submitted: boolean = false;
+  submitLode: boolean = false;
   states: any[] = [];
   state: any;
   imageUrlApi = environment;
@@ -35,6 +36,7 @@ export class UpdateComponent {
   updateServiceType() {
     if (this.serviceType.name && this.serviceType.description && this.state) {
       this.serviceType.status = this.status.getStatusNumber(this.state);
+      this.submitLode = true;
       this.httpService
         .update('service_type', this.serviceType)
         .pipe(
@@ -45,6 +47,7 @@ export class UpdateComponent {
         .subscribe((response: any) => {
           if (response.data.statusCode === 200) {
             this.messageAlert.saveSuccess();
+            this.submitLode = false;
             this.updateService.onClose();
           }
         });
@@ -76,7 +79,7 @@ export class UpdateComponent {
           this.status.getStatusName(StatusEnum.Active)
         ),
         this.translate.getTranslate(
-          this.status.getStatusName(StatusEnum.Unactive)
+          this.status.getStatusName(StatusEnum.Inactive)
         ),
       ];
     }, 1000);

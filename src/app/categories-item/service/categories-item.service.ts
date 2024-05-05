@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { CreateComponent } from '../create/create.component';
 import { DetailsComponent } from '../details/details.component';
 import { UpdateComponent } from '../update/update.component';
+import { TranslatesService } from 'src/app/shared/translate/translate.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,10 +15,13 @@ export class ServiceCategoriesItem {
   public Id: any;
   private _loadData = new BehaviorSubject<boolean>(false);
   public readonly _loadData$ = this._loadData.asObservable();
-  constructor(public dialogCatogriesItem: DialogService) {}
+  constructor(
+    public dialogCatogriesItem: DialogService,
+    private translate: TranslatesService
+  ) {}
   showCreate() {
     this.ref = this.dialogCatogriesItem.open(CreateComponent, {
-      header: 'Create Categories',
+      header: this.translate.getTranslate('categoriesItem.categoryItemCreate'),
       width: '50rem',
       contentStyle: {
         'max-height': '800px',
@@ -29,7 +33,7 @@ export class ServiceCategoriesItem {
   showDetails(Id: any) {
     this.Id = Id;
     this.ref = this.dialogCatogriesItem.open(DetailsComponent, {
-      header: 'Details Category',
+      header: this.translate.getTranslate('categoriesItem.categoryItemDetail'),
       width: '50rem',
 
       contentStyle: {
@@ -42,7 +46,7 @@ export class ServiceCategoriesItem {
   showUpdate(Id: any) {
     this.Id = Id;
     this.ref = this.dialogCatogriesItem.open(UpdateComponent, {
-      header: 'Update Category',
+      header: this.translate.getTranslate('categoriesItem.categoryItemUpdate'),
       width: '50rem',
 
       contentStyle: {

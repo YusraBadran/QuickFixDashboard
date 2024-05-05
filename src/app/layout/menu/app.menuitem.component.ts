@@ -48,7 +48,10 @@ import { environment } from 'src/environments/environment.development';
         }}</span>
       </div>
       <a
-        *ngIf="(!item.routerLink || item.items) && item.visible !== false"
+        *ngIf="
+          (!item.routerLink || item.items?.length != 0) &&
+          item.visible !== false
+        "
         [attr.href]="item.url"
         (click)="itemClick($event)"
         [ngClass]="item.class"
@@ -66,7 +69,7 @@ import { environment } from 'src/environments/environment.development';
           [src]="apiImgUrl + '/' + item.iconImge"
           width="20"
         />
-        <!-- <span class="layout-menuitem-text">{{ item.label | translate }}</span> -->
+
         <span *ngIf="!item.translate" class="layout-menuitem-text px-2">{{
           item.label | translate
         }}</span>
@@ -75,11 +78,13 @@ import { environment } from 'src/environments/environment.development';
         }}</span>
         <i
           class="pi pi-fw pi-angle-down layout-submenu-toggler"
-          *ngIf="item.items"
+          *ngIf="item.items?.length != 0"
         ></i>
       </a>
       <a
-        *ngIf="item.routerLink && !item.items && item.visible !== false"
+        *ngIf="
+          item.routerLink && item.items?.length == 0 && item.visible !== false
+        "
         (click)="itemClick($event)"
         [ngClass]="item.class"
         [routerLink]="item.routerLink"
@@ -121,12 +126,12 @@ import { environment } from 'src/environments/environment.development';
         }}</span>
         <i
           class="pi pi-fw pi-angle-down layout-submenu-toggler"
-          *ngIf="item.items"
+          *ngIf="item.items?.length != 0"
         ></i>
       </a>
 
       <ul
-        *ngIf="item.items && item.visible !== false"
+        *ngIf="item.items?.length != 0 && item.visible !== false"
         [@children]="submenuAnimation"
       >
         <ng-template ngFor let-child let-i="index" [ngForOf]="item.items">

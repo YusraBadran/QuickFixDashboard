@@ -8,6 +8,8 @@
     "new":"جديد",
     "upload": " رفع",
     "delete": "حذف",
+    "details": "تفاصيل",
+    "update": "تعديل",
     "save": "حفظ",
     "saveCont": "حفظ واستمرار",
     "cancel": "إلغاء",
@@ -21,7 +23,7 @@
     "status": "الحالة",
     "phoneUser": "رقم المستخدم",
     "active": "نشط",
-    "unactive": "غير نشط",
+    "inactive": "غير نشط",
     "actions": "الإجراءات",
     "image":"الصوره",
     "confirm": "تأكيد",
@@ -108,13 +110,16 @@
     "topbar": {
       "title": "الإصلاح السريع"
     },
+    "orders":{
+      "title":"الطلبات"
+    },
     "service": {
       "title": "الخدمات",
+      "serviceType": "أنواع الخدمات",
       "create": "إنشاء خدمة"
     },
-    "units": {
-      "title": "الوحدات",
-      "create": "إنشاء وحدة"
+    "categoryItems": {
+      "title": "عناصر الفئات"
     },
     "categories": {
       "title": "الفئات"
@@ -123,6 +128,7 @@
     "setting": {
       "title": "الإعدادات",
       "users": "المستخدمين",
+      "profile": "الملف الشخصي",
       "createUser": "إنشاء مستخدم",
       "detailsUser": "تفاصيل المستخدم",
       "updateUser": "تعديل المستخدم"
@@ -151,39 +157,53 @@
   "service": {
     "service": "الخدمة",
     "services": "الخدمات",
+    "serviceList": "قائمة الخدمات",
     "name": "اسم الخدمة",
     "pricePerUnit": "السعر للوحدة",
     "unit": "الوحدة",
     "img":"الصورة",
-    "name": "الاسم ",
+    "serviceUpdate": "تعديل الخدمة",
+    "serviceDetail": "تفاصيل الخدمة",
+    "serviceCreate": "إنشاء خدمة",
     "status" : "الحالة",
     "search" : "بحث...",
     "actions" :"الإجراءات"
   },
 
-  "units": {
-    "name": "اسم الوحدة",
-    "shortName": "الاسم المختصر",
-    "unit": "الوحدة",
-    "units": "الوحدات",
-    "unitType": "نوع الوحدة",
-    "public": "عام",
-    "private": "خاص"
-  },
+
   "categories": {
     "name": "اسم الفئه",
     "unit": "الفئه",
     "category": "الفئات",
     "nothing" : "لا يوجد",
     "subCategory": "الفئات الفرعية",
-    "hasSubCategory": "يمتلك فئات فرعية"
+    "hasSubCategory": "يمتلك فئات فرعية",
+    "categoryList":"قائمة الفئات",
+    "categoryCreate": "إنشاء فئة",
+    "categoryUpdate": "تعديل فئة",
+    "categoryDetail": "تفاصيل الفئة"
   },
   "categoriesItem": {
     "title": "عناصر الفئات",
     "name": "اسم عناصر الفئه",
     "categoryItem": " الفئه",
+    "categoryItemList": "قائمة عناصر الفئات",
     "categoriesItem": "عناصر الفئات",
-    "price": "السعر"
+    "price": "السعر",
+    "categoryItemCreate": "إنشاء عنصر فئة",
+    "categoryItemUpdate": "تعديل عنصر فئة",
+    "categoryItemDetail": "تفاصيل عنصر فئة"
+  },
+  "center" : {
+    "center": "المراكز",
+    "centerList": "قائمةالمراكز",
+    "name": "اسم المركز",
+    "phone": "رقم الهاتف",
+    "address": "الموقع",
+    "description": "الوصف",
+    "status": "الحالة",
+    "actions": "الإجراءات",
+    "location": "الموقع"
   },
   "setting": {
     "users": {
@@ -193,6 +213,7 @@
       "userName": "اسم المستخدم",
       "email": "البريد الإلكتروني",
       "password" : "كلمة المرور",
+      "userList": "قائمة المستخدمين",
       "passwordConfiguration" : "تأكيد كلمة المرور",
       "user": "المستخدم",
       "permission": "الصلاحيات",

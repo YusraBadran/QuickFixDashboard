@@ -1,6 +1,4 @@
-import { Permission } from './permissions';
-
-export class users {
+export class UpdateRequest {
   id!: string;
   firstName!: string;
   lastName!: string;
@@ -8,6 +6,5 @@ export class users {
   email!: string;
   phoneNumber!: string;
   userState!: Number;
-  roles: string[] = [];
-  permissions: Permission[] = [];
+  permissions: any[] = [];
 }

@@ -29,6 +29,12 @@ export class Tokens {
     return this.tokenData.unique_name;
   }
   /**
+   * @description get the user id from token data
+   */
+  public static get UserId(): string {
+    return this.tokenData.nameid;
+  }
+  /**
    * @description get all roles from token data
    */
   public static get allRole(): string[] {
@@ -71,7 +77,56 @@ export class Tokens {
     localStorage.setItem('jwt', jwt);
     localStorage.setItem('isLogin', 'true');
   }
-  public static get getCompanyId(): any {
-    return this.tokenData.companyId ?? null;
+  /**
+   * @description remove the token from local storage
+   */
+  public static removeToken(): void {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('isLogin');
+    localStorage.removeItem('menu');
+    localStorage.removeItem('permissions');
+  }
+  /**
+   * @description set the menu in local storage
+   * @param menu
+   */
+  public static setMenu(menu: any): void {
+    localStorage.setItem('menu', JSON.stringify(menu));
+  }
+  /**
+   * @description get the menu from local storage
+   * @param menu
+   */
+  public static get getMenu(): any {
+    return JSON.parse(localStorage.getItem('menu') ?? '');
+  }
+  /**
+   * @description set the permissions in local storage
+   * @param permissions
+   */
+  public static setPermissions(permissions: any): void {
+    localStorage.setItem('permissions', JSON.stringify(permissions));
+  }
+  /**
+   * @description get the permissions from local storage
+   * @param permissions
+   */
+  public static getPermissions(hashName: string): any {
+    let permission = localStorage.getItem('permissions') ?? null;
+    if (permission == null && permission == undefined) {
+      return null;
+    }
+    let permissions = JSON.parse(permission);
+    let permissionPage = permissions.filter(
+      (x: any) => x.hashName == hashName
+    )[0];
+    if (
+      permissionPage == null ||
+      permission == undefined ||
+      permissionPage == -1
+    ) {
+      return null;
+    }
+    return permissionPage;
   }
 }

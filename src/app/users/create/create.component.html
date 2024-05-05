@@ -1,14 +1,11 @@
 <!-- <p-breadcrumb class="max-w-full " styleClass="mb-3" [model]="items" [home]="home"></p-breadcrumb> -->
-<div class="flex flex-wrap gap-2 mt-1 mb-2 justify-content-start">
-  <p-button
-    icon="pi pi-times"
-    [routerLink]="rout.users"
-    [rounded]="true"
-    severity="danger"
-    [outlined]="true"
-  ></p-button>
-</div>
 
+<p-breadcrumb
+  class="max-w-full"
+  styleClass="mb-3"
+  [model]="items"
+  [home]="home"
+></p-breadcrumb>
 <div class="card">
   <div class="grid p-fluid bg-primary-reverse border-round">
     <div class="col-6">
@@ -136,19 +133,23 @@
         <label class="font-bold required mb-2">{{
           "public.phoneNumber" | translate
         }}</label>
-        <input
-          pInputText
-          required
-          [placeholder]="'public.phoneNumber' | translate"
+        <p-inputNumber
+          mode="decimal"
+          inputId="withoutgrouping"
+          [useGrouping]="false"
           id="phoneNumber"
           #phoneNumber="ngModel"
-          [(ngModel)]="user.phoneNumber"
+          [(ngModel)]="phone"
+          [required]="true"
+          [minlength]="7"
+          [maxlength]="9"
+          [placeholder]="'public.phone' | translate"
           [ngClass]="{
             'ng-dirty':
               (phoneNumber.invalid && submitted) ||
               (phoneNumber.dirty && phoneNumber.invalid)
           }"
-        />
+        ></p-inputNumber>
 
         <samp
           *ngIf="
@@ -284,7 +285,7 @@
           <p-checkbox
             [binary]="true"
             [(ngModel)]="screen.isView"
-            (onChange)="addPermission()"
+            (onChange)="addPermission(screen)"
           ></p-checkbox>
         </td>
         <td>
@@ -292,7 +293,7 @@
             [binary]="true"
             [(ngModel)]="screen.menu"
             [disabled]="!screen.isView"
-            (onChange)="addPermission()"
+            (onChange)="addPermission(screen)"
           ></p-checkbox>
         </td>
         <td>
@@ -300,7 +301,7 @@
             [binary]="true"
             [disabled]="!screen.isView"
             [(ngModel)]="screen.isDetail"
-            (onChange)="addPermission()"
+            (onChange)="addPermission(screen)"
           ></p-checkbox>
         </td>
         <td>
@@ -308,7 +309,7 @@
             [binary]="true"
             [disabled]="!screen.isView"
             [(ngModel)]="screen.isCreated"
-            (onChange)="addPermission()"
+            (onChange)="addPermission(screen)"
           ></p-checkbox>
         </td>
         <td>
@@ -316,7 +317,7 @@
             [binary]="true"
             [disabled]="!screen.isView"
             [(ngModel)]="screen.isUpdated"
-            (onChange)="addPermission()"
+            (onChange)="addPermission(screen)"
           ></p-checkbox>
         </td>
         <td>
@@ -324,7 +325,7 @@
             [binary]="true"
             [disabled]="!screen.isView"
             [(ngModel)]="screen.isDeleted"
-            (onChange)="addPermission()"
+            (onChange)="addPermission(screen)"
           ></p-checkbox>
         </td>
         <td>
@@ -332,7 +333,7 @@
             [binary]="true"
             [disabled]="!screen.isView"
             [(ngModel)]="screen.isPrint"
-            (onChange)="addPermission()"
+            (onChange)="addPermission(screen)"
           ></p-checkbox>
         </td>
         <td>
@@ -340,7 +341,7 @@
             [binary]="true"
             [disabled]="!screen.isView"
             [(ngModel)]="screen.isImport"
-            (onChange)="addPermission()"
+            (onChange)="addPermission(screen)"
           ></p-checkbox>
         </td>
         <td>
@@ -348,14 +349,14 @@
             [binary]="true"
             [disabled]="!screen.isView"
             [(ngModel)]="screen.isExport"
-            (onChange)="addPermission()"
+            (onChange)="addPermission(screen)"
           ></p-checkbox>
         </td>
         <td>
           <p-checkbox
             [binary]="true"
             [(ngModel)]="screen.all"
-            (onChange)="addAllPermissionToScreen()"
+            (onChange)="addAllPermissionToScreen($event.checked, screen)"
           ></p-checkbox>
         </td>
       </tr>
@@ -365,6 +366,12 @@
 <div class="flex flex-wrap gap-2 mt-1 mb-2 justify-content-end">
   <p-button
     [label]="'public.save' | translate"
+    [loading]="submitLode"
     (onClick)="createUser()"
+  ></p-button>
+  <p-button
+    severity="danger"
+    [routerLink]="rout.users"
+    [label]="'public.cancel' | translate"
   ></p-button>
 </div>

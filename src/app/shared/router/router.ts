@@ -13,12 +13,17 @@ export class routes {
   }
 
   // core pages child routes *ends*
-
+  public static get orders(): string {
+    return this.baseUrl + '/orders';
+  }
+  public static get ordersDetails(): string {
+    return this.orders + '/details/';
+  }
   /**
    * Services routes
    */
   public static get servicesType(): string {
-    return this.baseUrl + '/services-type/';
+    return this.baseUrl + '/services-type';
   }
   public static get servicesCreate(): string {
     return this.servicesType + '/create/';
@@ -33,7 +38,7 @@ export class routes {
    * Category routes
    */
   public static get categories(): string {
-    return this.baseUrl + '/categories/';
+    return this.baseUrl + '/categories';
   }
   public static get categoryCreate(): string {
     return this.categories + '/create/';
@@ -48,7 +53,7 @@ export class routes {
    * Category routes
    */
   public static get categoriesItem(): string {
-    return this.baseUrl + '/categoriesItem/';
+    return this.baseUrl + '/categoriesItem';
   }
   public static get categoryItemCreate(): string {
     return this.categoriesItem + '/create/';
@@ -65,7 +70,7 @@ export class routes {
    * Users routes
    */
   public static get users(): string {
-    return this.baseUrl + '/users/';
+    return this.baseUrl + '/users';
   }
   public static get usersCreate(): string {
     return this.users + '/create/';
@@ -82,7 +87,7 @@ export class routes {
    */
 
   public static get centers(): string {
-    return this.baseUrl + '/centers/';
+    return this.baseUrl + '/centers';
   }
   public static get centersCreate(): string {
     return this.centers + '/create/';
@@ -92,5 +97,12 @@ export class routes {
   }
   public static get centersUpdate(): string {
     return this.centers + '/update/';
+  }
+
+  /**
+   * Profile routes
+   */
+  public static get profile(): string {
+    return this.baseUrl + '/profile';
   }
 }
