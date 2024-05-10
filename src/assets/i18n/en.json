@@ -209,6 +209,10 @@
     "actions": "Actions",
     "location":"location"
   },
+  "order" :{
+    "order": "Order",
+    "orderList": "Order List"
+  },
   "setting": {
     "users": {
       "fullName": "Full Name",

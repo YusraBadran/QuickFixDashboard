@@ -9,8 +9,13 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'dashboard',
+    path: '',
     component: AppLayoutComponent,
+    loadChildren: () =>
+      import('./layout/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+    // canActivate: [gateWayGuard],
   },
   {
     path: 'services-type',

@@ -22,27 +22,13 @@
         <label class="font-bold mt-5 ml-3">{{
           "setting.users.userName" | translate
         }}</label>
-        <input
-          pInputText
-          id="username"
-          #username="ngModel"
-          [(ngModel)]="user.userName"
-          class="p-inputtext-sm ml-3 border-none"
-          [disabled]="true"
-        />
+        <span class="ml-5 p-0 mt-1 text-800">{{ user.userName }}</span>
       </div>
       <div class="flex flex-column">
         <label class="font-bold ml-3">{{
           "setting.users.email" | translate
         }}</label>
-        <input
-          pInputText
-          id="email"
-          #email="ngModel"
-          [(ngModel)]="user.email"
-          class="p-inputtext-sm ml-3 border-none"
-          [disabled]="true"
-        />
+        <span class="ml-5 p-0 mt-1 text-800">{{ user.email }}</span>
       </div>
     </div>
     <div class="col-2">
@@ -50,23 +36,11 @@
         <label class="font-bold mt-5">{{
           "public.phoneNumber" | translate
         }}</label>
-        <input
-          pInputText
-          id="phone"
-          #phone="ngModel"
-          [(ngModel)]="user.phoneNumber"
-          class="p-inputtext-sm ml-1 border-none"
-          [disabled]="true"
-        />
+        <span class="ml-3 p-0 mt-1 text-800">{{ user.phoneNumber }}</span>
       </div>
       <div class="flex flex-column">
         <label class="font-bold">{{ "public.status" | translate }}</label>
-        <input
-          pInputText
-          [(ngModel)]="state"
-          class="p-inputtext-sm ml-1 border-none"
-          [disabled]="true"
-        />
+        <span class="ml-3 p-0 mt-1 text-800">{{ state }}</span>
       </div>
     </div>
   </div>

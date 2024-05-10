@@ -1,1 +1,107 @@
-<!-- order.component.html -->
+<p-breadcrumb
+  class="max-w-full"
+  styleClass="mb-3"
+  [model]="items"
+  [home]="home"
+></p-breadcrumb>
+<div class="card">
+  <p-table
+    #dt
+    [value]="paging.data"
+    [rows]="paging.pageSize"
+    [lazy]="true"
+    [paginator]="true"
+    [first]="paging.currentStartIndex"
+    [totalRecords]="paging.totalItems"
+    (onPage)="onPageChange($event)"
+    [rowHover]="true"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="{{ 'public.showing' | translate }} {{
+      paging.currentStartIndex
+    }} {{ 'public.to' | translate }} {{ paging.currentEndIndex }} {{
+      'public.of' | translate
+    }} {{ paging.totalItems }} {{ 'public.rows' | translate }}"
+    [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+    dataKey="id"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <!-- <button
+          pButton
+          [label]="'public.new' | translate"
+          *ngIf="permission.isCreated"
+          class="p-button-outlined"
+          icon="pi pi-plus"
+          [routerLink]="rout.usersCreate"
+        ></button> -->
+        <span class="p-input-icon-left ml-auto">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            (keyup)="filterUpdate($event)"
+            [placeholder]="'service.search' | translate"
+          />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <!-- <th>{{ "setting.users.fullName" | translate }}</th> -->
+        <th>FullNameUser</th>
+        <th>Note</th>
+        <th>phone</th>
+        <th>total Price</th>
+        <th>date</th>
+        <th>{{ "public.status" | translate }}</th>
+
+        <th style="width: 12rem; text-align: center">
+          {{ "service.actions" | translate }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order>
+      <tr>
+        <td>{{ order.fullNameUser }}</td>
+        <td>{{ order.note }}</td>
+        <td>{{ order.phone }}</td>
+        <td>{{ order.totalPrice }}</td>
+        <td>{{ order.date }}</td>
+
+        <td>
+          <p-tag
+            [value]="status.getStatusName(order.userState) | translate"
+            [icon]="status.getStatusIcon(order.userState)"
+            [severity]="status.getStatusStyle(order.userState)"
+          ></p-tag>
+        </td>
+        <td>
+          <div class="text-center flex">
+            <p-button
+              *ngIf="permission.isDetail"
+              icon="pi pi-info"
+              size="small"
+              class="p-button-rounded p-button-success mr-1"
+              [routerLink]="rout.ordersDetails + order.id"
+            ></p-button>
+            <p-button
+              label="Accept"
+              icon="pi pi-check"
+              iconPos="right"
+              size="small"
+              class="mr-1"
+            ></p-button>
+            <p-button
+              label="Cancel"
+              severity="danger"
+              icon="pi pi-times"
+              iconPos="right"
+              size="small"
+            ></p-button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

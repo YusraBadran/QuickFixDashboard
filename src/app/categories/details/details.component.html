@@ -2,84 +2,50 @@
 <div class="grid p-fluid">
   <div class="col-6">
     <div class="flex flex-column">
-      <label class="font-bold required mb-2">{{
-        "service.name" | translate
-      }}</label>
-      <input
-        pInputText
-        id="name"
-        #name="ngModel"
-        [(ngModel)]="categories.name"
-        [disabled]="true"
-      />
-      <samp
-        *ngIf="(name.invalid && submitted) || (name.dirty && name.invalid)"
-        class="p-error block"
-      >
-        {{ "public.inputRequired" | translate }}
-      </samp>
+      <label class="font-bold mb-2">{{ "service.name" | translate }}</label>
+      <div class="border-1 border-round h-3rem pt-2 border-blue-200">
+        <span class="text-800 ml-3">{{ categories.name }}</span>
+      </div>
     </div>
   </div>
 
   <div class="col-6" *ngIf="categories.subCategory">
     <div class="flex flex-column">
-      <label class="font-bold required mb-2">{{
+      <label class="font-bold mb-2">{{
         "categories.subCategory" | translate
       }}</label>
-      <input
-        pInputText
-        id="subCategory"
-        #subCategory="ngModel"
-        [(ngModel)]="categories.subCategory.name"
-        [disabled]="true"
-      />
+      <div class="border-1 border-round h-3rem pt-2 border-blue-200">
+        <span class="text-800 ml-3">{{ categories.subCategory.name }}</span>
+      </div>
     </div>
   </div>
   <div class="col-6" *ngIf="categories.serviceType">
     <div class="flex flex-column">
-      <label class="font-bold required mb-2">{{
+      <label class="font-bold mb-2">{{
         "menu.service.title" | translate
       }}</label>
-      <input
-        pInputText
-        id="serviceType"
-        #serviceId="ngModel"
-        [(ngModel)]="categories.serviceType.name"
-        [disabled]="true"
-      />
+      <div class="border-1 border-round h-3rem pt-2 border-blue-200">
+        <span class="text-800 ml-3">{{ categories.serviceType.name }}</span>
+      </div>
     </div>
   </div>
   <div class="col-6">
     <div class="flex flex-column">
-      <label class="font-bold mb-2 required">{{
-        "public.status" | translate
-      }}</label>
-      <input pInputText [(ngModel)]="state" [disabled]="true" />
+      <label class="font-bold mb-2">{{ "public.status" | translate }}</label>
+      <div class="border-1 border-round h-3rem pt-2 border-blue-200">
+        <span class="text-800 ml-3">{{ state }}</span>
+      </div>
     </div>
   </div>
 
   <div class="col-12">
     <div class="flex flex-column">
-      <label class="font-bold required mb-2">{{
+      <label class="font-bold mb-2">{{
         "public.description" | translate
       }}</label>
-
-      <textarea
-        pInputTextarea
-        id="description"
-        #description="ngModel"
-        [(ngModel)]="categories.description"
-        [disabled]="true"
-      ></textarea>
-      <samp
-        *ngIf="
-          (description.invalid && submitted) ||
-          (description.dirty && description.invalid)
-        "
-        class="p-error block"
-      >
-        {{ "public.inputRequired" | translate }}
-      </samp>
+      <div class="border-1 border-round h-7rem pt-2 border-blue-200">
+        <span class="text-800 ml-3">{{ categories.description }}</span>
+      </div>
     </div>
   </div>
 

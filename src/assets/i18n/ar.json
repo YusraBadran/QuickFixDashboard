@@ -205,6 +205,10 @@
     "actions": "الإجراءات",
     "location": "الموقع"
   },
+  "order" :{
+    "order": "الطلبات",
+    "orderList": "قائمة الطلبات"
+  },
   "setting": {
     "users": {
       "fullName": "الاسم الكامل",

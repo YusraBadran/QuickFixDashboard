@@ -3,36 +3,29 @@
   <div class="col-6">
     <div class="flex flex-column">
       <label class="font-bold mb-2">{{ "service.name" | translate }}</label>
-      <input
-        pInputText
-        id="name"
-        #name="ngModel"
-        [(ngModel)]="categoriesItem.name"
-        [disabled]="true"
-      />
+      <div class="border-1 border-round h-3rem pt-2 border-blue-200">
+        <span class="text-800 ml-3">{{ categoriesItem.name }}</span>
+      </div>
     </div>
   </div>
 
   <div class="col-6">
     <div class="flex flex-column">
       <label class="font-bold mb-2">{{ "categories.name" | translate }}</label>
-      <input
-        pInputText
-        id="name"
-        #name="ngModel"
-        [(ngModel)]="categoriesItem.category.name"
-        [disabled]="true"
-      />
+
+      <div class="border-1 border-round h-3rem pt-2 border-blue-200">
+        <span class="text-800 ml-3">{{ categoriesItem.category.name }}</span>
+      </div>
     </div>
   </div>
 
   <div class="col-6">
     <div class="flex flex-column">
       <label class="font-bold mb-2">{{ "public.status" | translate }}</label>
-      <input pInputText [(ngModel)]="state" [disabled]="true" />
-      <!-- <p-dropdown></p-dropdown> -->
-      <!-- [options]="states"
-        [(ngModel)]="state" -->
+
+      <div class="border-1 border-round h-3rem pt-2 border-blue-200">
+        <span class="text-800 ml-3">{{ state }}</span>
+      </div>
     </div>
   </div>
 
@@ -41,32 +34,22 @@
       <label class="font-bold mb-2">{{
         "categoriesItem.price" | translate
       }}</label>
-      <input
-        pInputText
-        id="price"
-        #price="ngModel"
-        [(ngModel)]="categoriesItem.price"
-        disabled="true"
-      />
+
+      <div class="border-1 border-round h-3rem pt-2 border-blue-200">
+        <span class="text-800 ml-3">{{ categoriesItem.price }}</span>
+      </div>
     </div>
   </div>
 
-  <div class="col-12 m-1">
-    <div class="flex flex-column"></div>
-  </div>
-  <div class="col-12">
+  <div class="col-12 pb-0">
     <div class="flex flex-column">
       <label class="font-bold mb-2">{{
         "public.description" | translate
       }}</label>
 
-      <textarea
-        pInputTextarea
-        id="description"
-        #description="ngModel"
-        [(ngModel)]="categoriesItem.description"
-        disabled="true"
-      ></textarea>
+      <div class="border-1 border-round h-7rem pt-2 border-blue-200">
+        <span class="text-800 ml-3">{{ categoriesItem.description }}</span>
+      </div>
     </div>
   </div>
 

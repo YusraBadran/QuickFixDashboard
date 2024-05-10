@@ -4,6 +4,7 @@ export class routes {
   public static get baseUrl(): string {
     return this.base;
   }
+
   // auth routes
   public static get auth(): string {
     return this.baseUrl + '/auth';
@@ -83,6 +84,13 @@ export class routes {
   }
 
   /**
+   * Profile routes
+   */
+  public static get profile(): string {
+    return this.baseUrl + '/profile';
+  }
+
+  /**
    * Center routes
    */
 
@@ -97,12 +105,5 @@ export class routes {
   }
   public static get centersUpdate(): string {
     return this.centers + '/update/';
-  }
-
-  /**
-   * Profile routes
-   */
-  public static get profile(): string {
-    return this.baseUrl + '/profile';
   }
 }

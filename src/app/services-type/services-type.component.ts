@@ -134,7 +134,7 @@ export class ServicesTypeComponent {
     }
   }
   ngOnInit(): void {
-    let pagePerm = this.token.getPermissions('serviceType');
+    let pagePerm = this.token.getPermissions('servicesType');
     if (pagePerm == null) {
       this.route.navigate([this.rout.baseUrl]);
     }
