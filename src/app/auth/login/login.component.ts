@@ -6,6 +6,9 @@ import { Tokens } from 'src/app/shared/models/tokens';
 import { routes } from 'src/app/shared/router/router';
 import { TranslatesService } from 'src/app/shared/translate/translate.service';
 import { LogInRequest } from './model/login_request';
+import { NotificationsService } from 'src/app/layout/service/notifications.service';
+import { EventHandlerService } from 'src/app/layout/service/event-handler.service';
+import { Notification } from 'src/app/layout/topbar/model/notification';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +22,8 @@ export class LoginComponent {
   constructor(
     private apiService: BasMicroServicesApiService,
     private _router: Router,
+    private notifyService: NotificationsService,
+    private eventHandlerService: EventHandlerService,
     public translate: TranslatesService // private identity: ServiceService // private _router: Router
   ) {}
   @HostListener('window:keydown.enter')
@@ -35,6 +40,17 @@ export class LoginComponent {
             this.token.setMenu(response.data.menu);
             this.token.setPermissions(response.data.permissions);
             this._router.navigate([routes.baseUrl]);
+            if (this.token.isLogin) {
+              this.notifyService.startConnection();
+              this.notifyService.listenToNotifications(
+                (response: Notification) => {
+                  this.eventHandlerService.notificationEvent.emit('refresh');
+                }
+              );
+              setTimeout(() => {
+                this.notifyService.joinGroupFeed('Admin');
+              }, 2000);
+            }
           }
         },
         error: (err) => {

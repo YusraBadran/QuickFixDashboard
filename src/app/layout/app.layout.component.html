@@ -1,11 +1,11 @@
 <!-- [ngClass]="containerClass" -->
 <div class="layout-wrapper" [ngClass]="containerClass">
-  <app-topbar></app-topbar>
+  <app-topbar class="print"></app-topbar>
 
   <div class="layout-sidebar">
     <app-sidebar></app-sidebar>
   </div>
-  <div class="layout-main-container ">
+  <div class="layout-main-container">
     <div class="layout-main">
       <router-outlet></router-outlet>
     </div>
@@ -15,3 +15,11 @@
   <div class="layout-mask"></div>
 </div>
 <p-toast></p-toast>
+
+<style>
+  @media print {
+    .print {
+      display: none;
+    }
+  }
+</style>

@@ -4,6 +4,13 @@
     "ar": "Arabic",
     "add": "Add",
     "addNew": "Add New",
+    "public": "Public",
+    "private": "Private",
+    "New": "New",
+    "accept": "Accept",
+    "reject": "Reject",
+    "rejected": "Rejected",
+    "accepted": "Accepted",
     "phone": "Phone",
     "new":"New",
     "phoneNumber": "Phone Number",
@@ -25,8 +32,12 @@
     "yes": "Yes",
     "no": "No",
     "status": "Status",
+
+
     "active": "Active",
     "inactive": "Inactive",
+    "waitingList": "Waiting List",
+    "removed": "Removed",
     "email": "Email",
     "confirm": "Confirm",
     "are_you_sure": "Are you sure?",
@@ -114,7 +125,8 @@
     },
 
     "topbar": {
-      "title": "Quick Fix"
+      "title": "Quick Fix",
+      "notifications": "Notifications"
     },
     "service": {
       "title": "Services",
@@ -211,7 +223,31 @@
   },
   "order" :{
     "order": "Order",
-    "orderList": "Order List"
+    "orders": "Orders",
+    "orderList": "Order List",
+    "fullUserName": "Full User Name",
+    "note": "Note",
+    "phone": "Phone",
+    "Phone": "Phone : ",
+    "totalPrice": "Total Price",
+    "date": "Date",
+    "Date": "Date : ",
+    "status": "Status",
+    "customerDetails" : "Customer Details",
+    "fullName" : "Full Name : ",
+    "email" : "Email : ",
+    "orderDetails" : "Order Details",
+    "orderStatus": "Order Status : ",
+    "orderNumber" : "Order Number : ",
+    "name": "Name",
+    "category": "Category",
+    "price":"Price",
+    "total":"Total",
+    "actions":"Actions",
+    "search":"Search...",
+    "accept":"Accept",
+    "cancel":"Cancel",
+    "print":"Print"
   },
   "setting": {
     "users": {

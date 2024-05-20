@@ -54,14 +54,15 @@
           <label for="password" class="mb-1">{{
             "auth.password" | translate
           }}</label>
-          <input
-            pInputText
+          <p-password
             type="password"
             id="password"
             [placeholder]="'auth.enterYourPassword' | translate"
             [(ngModel)]="loginRequest.password"
-            style="padding: 1rem; background: transparent"
+            [toggleMask]="true"
+            [feedback]="false"
           />
+          <!-- style="padding: 1rem; background: transparent" -->
         </div>
       </div>
       <div class="col-12">

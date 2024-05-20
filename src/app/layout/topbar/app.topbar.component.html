@@ -39,6 +39,7 @@
         />
         <span class="ml-2">{{ activeLang.label | translate }}</span>
       </p-button>
+
       <p-overlayPanel #op1>
         <div
           class="flex align-items-center m-1"
@@ -60,6 +61,38 @@
         <!-- </ng-template> -->
       </p-overlayPanel>
     </div>
+
+    <!-- Notification -->
+
+    <div>
+      <p-toast></p-toast>
+      <button class="p-link layout-topbar-button" (click)="op.toggle($event)">
+        <i class="pi pi-bell" id="notify" pBadge [value]="notifyCount"></i>
+      </button>
+
+      <p-overlayPanel #op [style]="{ width: '400px' }">
+        <div class="mt-3 mb-2">
+          <span class="ml-4 mr-4 font-bold">{{
+            "menu.topbar.notifications" | translate
+          }}</span>
+        </div>
+        <div class="max-w-30rem max-h-30rem overflow-x-hidden">
+          <div *ngFor="let item of notification" class="col-12 flex flex-row">
+            <div class="col-2 flex align-items-center justify-content-center">
+              <i class="pi pi-list" style="font-size: 2.5rem"></i>
+            </div>
+            <div class="col-10 flex flex-column">
+              <span>{{ item.title }}</span>
+              <span>{{ item.subTitle }}</span>
+              <span>{{ item.time }}</span>
+              <span>{{ item.description }}</span>
+            </div>
+          </div>
+        </div>
+      </p-overlayPanel>
+    </div>
+
+    <!-- them mode -->
     <div [hidden]="!isDArkTheme">
       <button class="p-link layout-topbar-button" (click)="light()">
         <i class="pi pi-sun"></i>

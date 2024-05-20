@@ -4,6 +4,13 @@
     "ar": "عربي",
     "add": "إضافة",
     "addNew": "إضافة جديد",
+    "public": "عام",
+    "private": "خاص",
+    "accept": "قبول",
+    "reject": "رفض",
+    "rejected": "تم الرفض",
+    "print": "طباعة",
+    "accepted": "تم القبول",
     "edit": "تعديل",
     "new":"جديد",
     "upload": " رفع",
@@ -24,6 +31,8 @@
     "phoneUser": "رقم المستخدم",
     "active": "نشط",
     "inactive": "غير نشط",
+    "waitingList": "قائمة الانتظار",
+    "removed": "تم الحذف",
     "actions": "الإجراءات",
     "image":"الصوره",
     "confirm": "تأكيد",
@@ -108,7 +117,8 @@
       "dashboard": "لوحة التحكم"
     },
     "topbar": {
-      "title": "الإصلاح السريع"
+      "title": "الإصلاح السريع",
+      "notifications": "الإشعارات"
     },
     "orders":{
       "title":"الطلبات"
@@ -207,7 +217,31 @@
   },
   "order" :{
     "order": "الطلبات",
-    "orderList": "قائمة الطلبات"
+    "orders": "الطلبات",
+    "orderList": "قائمة الطلبات",
+    "fullUserName": " اسم المستخدم الكامل",
+    "note": " ملاحظة",
+    "phone": " الهاتف",
+    "Phone": " الهاتف : ",
+    "totalPrice": "السعر الكلي",
+    "date": " التاريخ",
+    "Date": "التاريخ : ",
+    "status": " الحالة",
+    "customerDetails" : " تفاصيل العميل",
+    "fullName" : " الاسم الكامل :  ",
+    "email" : "البريد الإلكتروني : " ,
+    "orderDetails" : "تفاصيل الطلب ",
+    "orderStatus": "حالة الطلب : ",
+    "orderNumber" : "رقم الطلب : ",
+    "name": " الاسم",
+    "category": " الفئة",
+    "price":" السعر",
+    "total":" السعر الكلي",
+    "actions" :"الإجراءات",
+    "search" : "بحث...",
+    "accept":"قبول",
+    "cancel":"الغاء",
+    "print":"طباعة"
   },
   "setting": {
     "users": {

@@ -11,6 +11,7 @@ import { map } from 'rxjs';
 import { Paging } from 'src/app/shared/models/paging';
 import { Filters, ItemFilters } from 'src/app/shared/models/filter';
 import { Order } from '../model/order';
+import { updateOrderStatus } from '../model/updateOrderStatus';
 
 @Component({
   selector: 'app-details',
@@ -32,6 +33,7 @@ export class DetailsComponent {
   page: number = 1;
   rows: number = 5;
   tempData!: any[];
+  updateOrder: updateOrderStatus = new updateOrderStatus();
 
   constructor(
     public translate: TranslatesService,
@@ -57,13 +59,35 @@ export class DetailsComponent {
       });
   }
 
+  updateOrders(status: number) {
+    this.updateOrder.id = this.order.id;
+    this.updateOrder.status = status;
+    this.httpService
+      .update('orders', this.updateOrder)
+      .pipe(
+        map((response: any) => {
+          return response;
+        })
+      )
+      .subscribe((response) => {
+        if (response.status == 200) {
+          this.messageAlert.saveSuccess();
+          window.location.reload();
+        }
+      });
+  }
+
+  printPage() {
+    window.print();
+  }
+
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     setTimeout(() => {
       this.home = { icon: 'pi pi-home', routerLink: '/' };
       this.items = [
         {
-          label: this.translate.getTranslate('orders'),
+          label: this.translate.getTranslate('order.orders'),
           routerLink: this.rout.orders,
         },
         {

@@ -8,14 +8,22 @@ import { BasMicroServicesApiService } from 'src/app/micro-services-api/micro-fro
 import { routes } from 'src/app/shared/router/router';
 import { ShearedService } from 'src/app/shared/services/sheared.service';
 import { Tokens } from 'src/app/shared/models/tokens';
+import { map } from 'rxjs';
+import { Paging } from 'src/app/shared/models/paging';
+import { Notification } from './model/notification';
+import { EventHandlerService } from '../service/event-handler.service';
 
 @Component({
   selector: 'app-topbar',
   templateUrl: './app.topbar.component.html',
 })
 export class AppTopBarComponent {
+  paging: Paging = new Paging();
+  tempData!: any[];
   public lang: any = [];
   public activeLang: any;
+  notification: Notification[] = [];
+  notifyCount: any = 0;
   isDArkTheme: boolean = false;
   route = routes;
   token = Tokens;
@@ -28,12 +36,19 @@ export class AppTopBarComponent {
   @ViewChild('settingsmenubutton') settingsmenubutton!: ElementRef;
 
   constructor(
+    private httpService: BasMicroServicesApiService,
     public layoutService: LayoutService,
     public translate: TranslatesService,
     private apiService: BasMicroServicesApiService,
     private router: Router,
+    private eventHandlerService: EventHandlerService,
     private ShearedService: ShearedService
   ) {
+    this.eventHandlerService.notificationEvent.subscribe((data: string) => {
+      if (data == 'refresh') {
+        this.getNotify();
+      }
+    });
     // the lang to use, if the lang isn't available, it will use the current loader to get them
   }
   get inputStyle(): string {
@@ -49,6 +64,20 @@ export class AppTopBarComponent {
       localStorage.removeItem('menu');
       this.router.navigate([this.route.signIn]);
     });
+  }
+  getNotify() {
+    let moduleType = 'orders';
+    this.apiService
+      .notification(moduleType)
+      .pipe(
+        map((response: any) => {
+          return response;
+        })
+      )
+      .subscribe((response) => {
+        this.notification = response.notify;
+        this.notifyCount = this.notification.length;
+      });
   }
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.

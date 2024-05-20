@@ -24,6 +24,9 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ToastModule } from 'primeng/toast';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoaderModule } from '../shared/loader/loader.module';
+import { TableModule } from 'primeng/table';
+import { DataViewModule } from 'primeng/dataview';
+
 @NgModule({
   declarations: [
     AppMenuitemComponent,
@@ -53,6 +56,8 @@ import { LoaderModule } from '../shared/loader/loader.module';
     ToastModule,
     TranslateModule.forChild(),
     LoaderModule,
+    TableModule,
+    DataViewModule,
   ],
   exports: [AppLayoutComponent],
 })

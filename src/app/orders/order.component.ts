@@ -14,6 +14,7 @@ import { MenuItem } from 'primeng/api';
 import { TablePageEvent } from 'primeng/table';
 import { map } from 'rxjs';
 import { Orders } from './model/orders';
+import { updateOrderStatus } from './model/updateOrderStatus';
 
 @Component({
   selector: 'app-order',
@@ -36,7 +37,7 @@ export class OrderComponent {
   items!: MenuItem[];
   home!: MenuItem;
   order: Orders = new Orders();
-
+  updateOrder: updateOrderStatus = new updateOrderStatus();
   constructor(
     private httpService: BasMicroServicesApiService,
     public translate: TranslatesService,
@@ -47,7 +48,14 @@ export class OrderComponent {
   filterUpdate(event: any) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempData.filter(function (d) {
-      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+      return (
+        d.fullNameUser.toLowerCase().indexOf(val) !== -1 ||
+        d.phone.toLowerCase().indexOf(val) !== -1 ||
+        d.totalPrice.toString().indexOf(val) !== -1 ||
+        d.date.toString().indexOf(val) !== -1 ||
+        d.status.toString().indexOf(val) !== -1 ||
+        !val
+      );
     });
     this.paging.data = temp;
   }
@@ -96,6 +104,24 @@ export class OrderComponent {
       .subscribe((response) => {
         this.paging = response.order;
         this.tempData = this.paging.data;
+      });
+  }
+
+  updateOrders(order: updateOrderStatus) {
+    // this.updateOrder.id = this.order.id;
+    // this.updateOrder.status = status;
+    this.httpService
+      .update('orders', order)
+      .pipe(
+        map((response: any) => {
+          return response;
+        })
+      )
+      .subscribe((response) => {
+        if (response.status == 200) {
+          this.messageAlert.saveSuccess();
+          this.getOrders();
+        }
       });
   }
 

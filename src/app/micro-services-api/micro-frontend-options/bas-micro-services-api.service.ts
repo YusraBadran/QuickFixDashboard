@@ -289,6 +289,34 @@ export class BasMicroServicesApiService {
         })
       );
   }
+  public notification<T>(
+    moduleType: any,
+    operation: string = 'notification',
+    id?: any,
+    version: number = 1,
+    headers?:
+      | HttpHeaders
+      | {
+          [header: string]: string | string[];
+        }
+  ): Observable<T> {
+    // this.refreshToken();
+    return this.http
+      .get<T>(
+        `${env.serverUrl}/api/${moduleType}/${operation}/v${version}?Id=${id}`,
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+          }),
+        }
+      )
+      .pipe(
+        catchError(this.handleError<T>('Notification')),
+        map((response: T) => {
+          return response;
+        })
+      );
+  }
   /**
    * Get
    * @param moduleType `moduleType` the for module type
