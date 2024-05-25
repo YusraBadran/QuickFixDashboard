@@ -318,3 +318,7 @@
 .p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
   margin-right: 0 !important;
 }
+.p-input-icon-right > .p-icon-wrapper, .p-input-icon-right > i:last-of-type {
+  left: 0.75rem !important;
+  right: auto !important;;
+}

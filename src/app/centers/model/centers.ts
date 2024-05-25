@@ -5,6 +5,6 @@ export class Centers {
   name!: string;
   phone!: string;
   description!: string;
-  state!: number;
+  status!: number;
   address: Address = new Address();
 }

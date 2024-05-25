@@ -8,7 +8,7 @@
   "
 > -->
 <div
-  style="max-width: 40rem; width: 40%; margin-left: 30%"
+  style="max-width: 40rem; width: 40%; margin-left: 30%; margin-right: 30%"
   class="flex flex-column align-items-center justify-content-center min-h-screen overflow-hidden"
 >
   <!-- <div
@@ -36,7 +36,7 @@
     <div class="grid p-fluid">
       <div class="col-12">
         <div class="flex flex-column">
-          <label for="userNmaeOrEmale" class="mb-1">{{
+          <label for="userNmaeOrEmale" class="mb-2">{{
             "auth.signIn.usernameEmail" | translate
           }}</label>
           <input
@@ -45,13 +45,13 @@
             id="userNmaeOrEmale"
             [placeholder]="'auth.signIn.enterYourUserNameOrEmail' | translate"
             [(ngModel)]="loginRequest.userNameOrEmail"
-            style="padding: 1rem; background: transparent"
+            style="background: transparent"
           />
         </div>
       </div>
       <div class="col-12">
         <div class="flex flex-column">
-          <label for="password" class="mb-1">{{
+          <label for="password" class="mb-2">{{
             "auth.password" | translate
           }}</label>
           <p-password

@@ -52,7 +52,7 @@ export class UpdateComponent implements OnInit {
       this.center.address.longitude
     ) {
       this.center.phone = this.phone.toString();
-      this.center.state = this.status.getStatusNumber(this.state);
+      this.center.status = this.status.getStatusNumber(this.state);
       this.submitLode = true;
       this.httpService
         .update('centers', this.center)
@@ -84,7 +84,7 @@ export class UpdateComponent implements OnInit {
         this.phone = this.center.phone;
         this.address = this.center.address;
         this.state = this.translate.getTranslate(
-          this.status.getStatusName(this.center.state)
+          this.status.getStatusName(this.center.status)
         );
       });
   }

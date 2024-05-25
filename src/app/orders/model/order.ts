@@ -27,7 +27,6 @@ export class Address {
 export class OrderDetail {
   id!: string;
   serviceId!: string;
-  name!: string;
   price!: number;
   category!: string;
   note!: string;

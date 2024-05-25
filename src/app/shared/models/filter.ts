@@ -8,5 +8,5 @@ export class Filters {
 export class ItemFilters {
   fieldName!: string;
   comparision!: string;
-  fieldValue!: string;
+  fieldValue!: any;
 }

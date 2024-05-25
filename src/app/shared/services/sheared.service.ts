@@ -16,17 +16,16 @@ export class ShearedService {
   dark() {
     var theme = document.getElementById('theme');
     theme?.setAttributeNode(document.createAttribute('href'));
-    theme?.setAttribute('href', 'assets/style/themes/lara-dark-blue/theme.css');
+    // dark theme
+    theme?.setAttribute('href', 'assets/style/themes/vela-blue/theme.css');
     localStorage.setItem('theme', 'dark');
     // this.isDArkTheme = true;
   }
   light() {
     var theme = document.getElementById('theme');
     theme?.setAttributeNode(document.createAttribute('href'));
-    theme?.setAttribute(
-      'href',
-      'assets/style/themes/lara-light-blue/theme.css'
-    );
+    // light theme
+    theme?.setAttribute('href', 'assets/style/themes/saga-blue/theme.css');
     localStorage.setItem('theme', 'light');
     // this.isDArkTheme = false;
   }

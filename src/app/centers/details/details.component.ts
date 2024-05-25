@@ -40,7 +40,7 @@ export class DetailsComponent implements OnInit {
       .subscribe((response) => {
         this.center = response;
         this.state = this.translate.getTranslate(
-          this.status.getStatusName(this.center.state)
+          this.status.getStatusName(this.center.status)
         );
       });
   }

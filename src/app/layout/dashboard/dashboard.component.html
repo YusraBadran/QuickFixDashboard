@@ -1,60 +1,63 @@
-<div class="grid">
-  <!-- 1 -->
-  <div class="col-12 lg:col-6 xl:col-4">
-    <div class="card mb-0 p-3 shadow-5">
-      <div class="flex mb-1">
-        <div
-          class="flex align-items-center justify-content-center border-round bg-blue-100 w-4 h-4rem mr-3"
-        >
-          <i class="pi pi-shopping-cart text-blue-500 text-4xl font-bold"></i>
-        </div>
-        <div class="align-content-start">
-          <div class="text-900 font-medium text-3xl text-left">152</div>
-          <span class="text-primary font-medium text-left">Orders</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- 2 -->
-  <div class="col-12 lg:col-6 xl:col-4">
-    <div class="card mb-0 p-3 shadow-5">
-      <div class="flex mb-1">
-        <div
-          class="flex align-items-center justify-content-center border-round bg-pink-100 w-4 h-4rem mr-3"
-        >
-          <i class="pi pi-comments text-pink-600 text-3xl font-bold"></i>
-        </div>
-        <div>
-          <div class="text-900 font-medium text-3xl">200</div>
-          <span class="text-pink-600 font-medium">Comments</span>
+<div class="card shadow-5">
+  <div class="grid">
+    <!-- 1 -->
+    <div class="col-12 lg:col-6 xl:col-4">
+      <div class="card mb-0 p-3 hover:bg-blue-50 bg-blue-100">
+        <div class="flex mb-1">
+          <div
+            class="flex align-items-center justify-content-center bg-white border-round w-4 h-4rem mr-3"
+          >
+            <i class="pi pi-shopping-cart text-blue-500 text-4xl font-bold"></i>
+          </div>
+          <div class="align-content-start">
+            <div class="text-900 font-medium text-3xl text-left">152</div>
+            <span class="text-primary font-medium text-left">Orders</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- 3 -->
-  <div class="col-12 lg:col-6 xl:col-4">
-    <div class="card mb-0 p-3 shadow-5">
-      <div class="flex mb-1">
-        <div
-          class="flex align-items-center justify-content-center border-round bg-indigo-100 w-4 h-4rem mr-3"
-        >
-          <i class="pi pi-eye text-indigo-500 text-4xl font-bold"></i>
+    <!-- 2 -->
+    <div class="col-12 lg:col-6 xl:col-4">
+      <div class="card mb-0 p-3 hover:bg-pink-50 bg-pink-100">
+        <div class="flex mb-1">
+          <div
+            class="flex align-items-center justify-content-center border-round bg-white w-4 h-4rem mr-3"
+          >
+            <i class="pi pi-comments text-pink-600 text-3xl font-bold"></i>
+          </div>
+          <div>
+            <div class="text-900 font-medium text-3xl">200</div>
+            <span class="text-pink-600 font-medium">Comments</span>
+          </div>
         </div>
-        <div>
-          <div class="text-900 font-medium text-3xl">152</div>
-          <span class="text-indigo-500 font-bold font-medium">Daily Views</span>
+      </div>
+    </div>
+    <!-- 3 -->
+    <div class="col-12 lg:col-6 xl:col-4">
+      <div class="card mb-0 p-3 bg-indigo-100 hover:bg-indigo-50">
+        <div class="flex mb-1">
+          <div
+            class="flex align-items-center justify-content-center border-round bg-white w-4 h-4rem mr-3"
+          >
+            <i class="pi pi-eye text-indigo-500 text-4xl font-bold"></i>
+          </div>
+          <div>
+            <div class="text-900 font-medium text-3xl">152</div>
+            <span class="text-indigo-500 font-bold font-medium"
+              >Daily Views</span
+            >
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <!--table for resents orders  -->
 <div class="grid">
-  <div class="col-12 lg:col-6 xl:col-8 m-0">
-    <div class="card shadow-5">
-      <h5 class="font-semibold font-italic line-through text-cyan-700">
-        Recent Sales
+  <div class="col-12 lg:col-6 xl:col-12 m-0">
+    <div class="card shadow-6 hover:shadow-7">
+      <h5 class="font-semibold font-italic text-cyan-700">
+        Accepted Orders Information
       </h5>
       <p-table
         #dt
@@ -78,17 +81,18 @@
         <!-- [rowsPerPageOptions]="[5, 10, 25, 50, 100]" -->
         <ng-template pTemplate="header">
           <tr>
-            <th>{{ "order.name" | translate }}</th>
-            <th>{{ "order.category" | translate }}</th>
-            <th>{{ "order.price" | translate }}</th>
+            <th>{{ "order.fullUserName" | translate }}</th>
+            <th>{{ "order.phone" | translate }}</th>
+            <th>{{ "order.totalPrice" | translate }}</th>
             <th>{{ "order.date" | translate }}</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-order>
           <tr>
-            <td>{{ order.name }}</td>
-            <td>{{ order.category }}</td>
-            <td>{{ order.price }}</td>
+            <td>{{ order.fullNameUser }}</td>
+            <td>{{ order.phone }}</td>
+
+            <td>{{ order.totalPrice }}</td>
             <td>{{ order.date | date }}</td>
           </tr>
         </ng-template>
@@ -96,8 +100,8 @@
     </div>
   </div>
 
-  <div class="col-12 lg:col-6 xl:col-4">
-    <div class="card shadow-5 h-28rem">
+  <!-- <div class="col-12 lg:col-6 xl:col-4">
+    <div class="card shadow-5 h-28rem hover:shadow-7">
       <h5 class="font-semibold font-italic line-through text-cyan-700">
         Notifications
       </h5>
@@ -106,4 +110,5 @@
       </div>
     </div>
   </div>
+</div> -->
 </div>
