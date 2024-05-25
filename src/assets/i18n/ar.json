@@ -147,6 +147,18 @@
       "title":"المراكز"
   }
   },
+
+  "home":{
+    "orders" :"الطلبات",
+    "comments" : " التعليقات",
+    "dailyViews" : " المشاهدات اليومية",
+    "acceptedOrdersInformation" : " معلومات الطلبات المقبولة",
+    "fullUserName" : " اسم المستخدم الكامل",
+    "Phone": " الهاتف",
+    "totalPrice" : " السعر الكلي",
+    "date" : " التاريخ"
+  },
+
   "auth": {
     "password": "كلمة المرور",
     "enterYourPassword":"ادخل كلمة المرور",

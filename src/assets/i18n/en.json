@@ -154,6 +154,17 @@
         "title":"Centers"
     }
   },
+
+  "home":{
+    "orders" :"Orders",
+    "comments" : "Comments",
+    "dailyViews" : "Daily Views",
+    "acceptedOrdersInformation" : "Accepted Orders Information",
+    "fullUserName" : "Full User Name",
+    "Phone": "Phone",
+    "totalPrice" : "Total Price",
+    "date" : "Date"
+  },
   "auth": {
     "password": "Password",
     "enterYourPassword": "Enter Your Password",

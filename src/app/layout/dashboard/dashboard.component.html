@@ -11,7 +11,9 @@
           </div>
           <div class="align-content-start">
             <div class="text-900 font-medium text-3xl text-left">152</div>
-            <span class="text-primary font-medium text-left">Orders</span>
+            <span class="text-primary font-medium text-left">{{
+              "home.orders" | translate
+            }}</span>
           </div>
         </div>
       </div>
@@ -27,7 +29,9 @@
           </div>
           <div>
             <div class="text-900 font-medium text-3xl">200</div>
-            <span class="text-pink-600 font-medium">Comments</span>
+            <span class="text-pink-600 font-medium">{{
+              "home.comments" | translate
+            }}</span>
           </div>
         </div>
       </div>
@@ -43,9 +47,9 @@
           </div>
           <div>
             <div class="text-900 font-medium text-3xl">152</div>
-            <span class="text-indigo-500 font-bold font-medium"
-              >Daily Views</span
-            >
+            <span class="text-indigo-500 font-bold font-medium">{{
+              "home.dailyViews" | translate
+            }}</span>
           </div>
         </div>
       </div>
@@ -56,8 +60,8 @@
 <div class="grid">
   <div class="col-12 lg:col-6 xl:col-12 m-0">
     <div class="card shadow-6 hover:shadow-7">
-      <h5 class="font-semibold font-italic text-cyan-700">
-        Accepted Orders Information
+      <h5 class="font-semibold text-cyan-700">
+        {{ "home.acceptedOrdersInformation" | translate }}
       </h5>
       <p-table
         #dt
@@ -81,10 +85,10 @@
         <!-- [rowsPerPageOptions]="[5, 10, 25, 50, 100]" -->
         <ng-template pTemplate="header">
           <tr>
-            <th>{{ "order.fullUserName" | translate }}</th>
-            <th>{{ "order.phone" | translate }}</th>
-            <th>{{ "order.totalPrice" | translate }}</th>
-            <th>{{ "order.date" | translate }}</th>
+            <th>{{ "home.fullUserName" | translate }}</th>
+            <th>{{ "home.phone" | translate }}</th>
+            <th>{{ "home.totalPrice" | translate }}</th>
+            <th>{{ "home.date" | translate }}</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-order>
@@ -99,16 +103,4 @@
       </p-table>
     </div>
   </div>
-
-  <!-- <div class="col-12 lg:col-6 xl:col-4">
-    <div class="card shadow-5 h-28rem hover:shadow-7">
-      <h5 class="font-semibold font-italic line-through text-cyan-700">
-        Notifications
-      </h5>
-      <div class="flex flex-column align-items-center">
-        <span class="">There are Not Notifications</span>
-      </div>
-    </div>
-  </div>
-</div> -->
 </div>
